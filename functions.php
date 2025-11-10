@@ -87,10 +87,11 @@ add_action('after_setup_theme', 'mytheme_setup');
 function yourthemename_register_menus()
 {
     register_nav_menus(array(
-        'footer_expertise' => __('Areas of Expertise', 'yourthemename'),
+        'footer_expertise_col1' => __('Areas of Expertise Column 1', 'yourthemename'),
+        'footer_expertise_col2' => __('Areas of Expertise Column 2', 'yourthemename'),
         'footer_quicklinks' => __('Quick Links', 'yourthemename'),
-       
     ));
+
 }
 add_action('init', 'yourthemename_register_menus');
 // .........................................

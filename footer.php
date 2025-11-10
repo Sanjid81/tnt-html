@@ -36,29 +36,34 @@ $quick_links = carbon_get_theme_option('footer_quick_links'); // complex field
                 <div class="area-of-expertise">
 
                     <?php
+                    // First column
                     wp_nav_menu(array(
-                        'theme_location' => 'area-of-expertise',
+                        'theme_location' => 'footer_expertise_col1',
                         'container' => false,
                         'menu_class' => 'footer-links',
                     ));
 
+                    // Second column
+                    wp_nav_menu(array(
+                        'theme_location' => 'footer_expertise_col2',
+                        'container' => false,
+                        'menu_class' => 'footer-links',
+                    ));
                     ?>
-                   
+
                 </div>
             </div>
 
             <!-- Quick Links Section -->
             <div class="footer-column">
                 <h3 class="footer-title">Quick Links</h3>
-                <?php if ($quick_links): ?>
-                    <ul class="footer-links">
-                        <?php foreach ($quick_links as $link): ?>
-                            <li><a
-                                    href="<?php echo esc_url($link['link_url']); ?>"><?php echo esc_html($link['link_label']); ?></a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                <?php endif; ?>
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'footer_quicklinks',
+                    'container' => false,
+                    'menu_class' => 'footer-links',
+                ));
+                ?>
             </div>
 
             <!-- Contact Section -->
