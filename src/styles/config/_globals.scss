@@ -4,8 +4,7 @@
     box-sizing: border-box;
     font-family: $font-body;
     background: transparent;
-    border: none;
-    outline: none;
+
 }
 
 html {
@@ -32,44 +31,71 @@ img {
 
 body {
     overflow-x: hidden;
+    outline: none; // keyboard outline remove
+    -webkit-tap-highlight-color: transparent;
 
     &.popup-open {
         overflow-y: hidden !important;
     }
+
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--dark-bg);
 }
 
 .container {
     margin: 0 auto;
     width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 120px;
+    padding-right: 120px;
+    max-width: 1920px;
 
-    @include breakpoint-min(sm) {
-        max-width: 750px;
+    @include breakpoint-max(3xl) {
+        max-width: 1680px;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
-    @include breakpoint-min(md) {
-        max-width: 970px;
+    @include breakpoint-max(xxl) {
+        max-width: 1440px;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
-    @include breakpoint-min(lg) {
-        max-width: 1170px;
+    @include breakpoint-max(xl) {
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
-    @include breakpoint-min(xxl) {
-        max-width: 1250px;
-        padding-left: 0;
-        padding-right: 0;
+    @include breakpoint-max(lg) {
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
-    @include breakpoint-min(3xl) {
-        max-width: 1520px;
+    @include breakpoint-max(md) {
+        padding-left: 25px;
+        padding-right: 25px;
     }
 
-    @include breakpoint-min(4xl) {
-        max-width: 1820px;
+    @include breakpoint-max(sm) {
+        max-width: 680px;
+        padding-left: 25px;
+        padding-right: 25px;
     }
+
+   
 }
+
+
+
 
 .swiper {
     width: 100%;
@@ -108,4 +134,70 @@ button {
 .swiper-wrapper {
     cursor: grab;
     user-select: none;
+}
+
+
+.primary-button {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: fit-content;
+    justify-content: center;
+    background: #FFFFFF;
+    color: var(--text-light);
+    padding: 6px 6px 6px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 56px;
+    // position: relative;
+
+    @media (max-width: 1030px) {
+        height: 48px;
+        padding: 6px 6px 6px 24px;
+        gap: 8px;
+    }
+
+    a {
+        color: var(--dark-bg);
+        @extend .button-text;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    svg {
+        transition: all 0.3s ease;
+        // position: absolute;
+
+        rect {
+            transition: fill 0.3s ease;
+        }
+
+        path {
+            transition: stroke 0.3s ease;
+        }
+    }
+
+    &:hover {
+        background-color: var(--primary-red);
+
+        a {
+            transform: translateX(45px);
+            color: #fff;
+        }
+
+        svg {
+            transform: translateX(-130px);
+
+            rect {
+                fill: #fff; 
+            }
+
+            path {
+                stroke: var(--primary-red); 
+            }
+        }
+    }
 }

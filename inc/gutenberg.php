@@ -1,24 +1,47 @@
 <?php
-use Carbon_Fields\Block;
+use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
-add_action('carbon_fields_register_fields', 'nh_register_components');
+add_action('carbon_fields_register_fields', function () {
+    Container::make('theme_options', 'Header Options')
+        ->set_icon('dashicons-admin-generic') // optional
+        ->add_fields(array(
+            Field::make('image', 'site_logo', 'Site Logo'),
+            Field::make('text', 'facebook_link', 'Facebook URL'),
+            Field::make('text', 'instagram_link', 'Instagram URL'),
+            Field::make('text', 'linkedin_link', 'LinkedIn URL'),
+            Field::make('text', 'button_text', 'Button Text'),
+            Field::make('text', 'button_link', 'Button Link'),
+        ));
+});
 
-function nh_register_components()
+// footer
+
+
+add_action('carbon_fields_register_fields', 'footer_theme_options');
+function footer_theme_options()
 {
-    // Hero Section as Gutenberg Block
-    Block::make('Hero Section')
-        ->set_icon('star-filled')
-        ->set_keywords(['hero', 'banner'])
-        ->set_description('Custom Hero Block')
-        ->add_fields([
-            Field::make('text', 'hero_title', 'Hero Title'),
-            Field::make('text', 'hero_subtitle', 'Hero Subtitle'),
-            Field::make('image', 'hero_background', 'Background Image'),
-        ])
-        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            // Pass $fields to template
-            get_template_part('components/test', null, ['fields' => $fields]);
-        });
+    Container::make('theme_options', __('Footer Settings'))
+        ->set_icon('dashicons-editor-quote')
+        ->add_fields(array(
+            Field::make('image', 'footer_logo', 'Footer Logo'),
+            Field::make('image', 'footer_mobile_logo', 'Footer Mobile Logo'),
+            Field::make('text', 'footer_tagline', 'Footer Tagline'),
+
+            Field::make('complex', 'footer_expertise', 'Areas of Expertise')
+                ->add_fields(array(
+                    Field::make('text', 'expertise_item', 'Expertise Item')
+                )),
+
+            Field::make('complex', 'footer_quick_links', 'Quick Links')
+                ->add_fields(array(
+                    Field::make('text', 'link_label', 'Link Label'),
+                    Field::make('text', 'link_url', 'Link URL')
+                )),
+
+            Field::make('text', 'footer_address', 'Address'),
+            Field::make('text', 'footer_email', 'Email'),
+            Field::make('text', 'footer_copyright', 'Copyright Text')
+        ));
 }
 
