@@ -13,9 +13,9 @@ defined('ABSPATH') || exit;
     <title><?php bloginfo('name'); ?></title>
     <!-- <link rel="stylesheet" href="< ?php echo THEMEROOT; ?>/dist/font.css"> -->
     <link rel="stylesheet" href="<?php echo THEMEROOT; ?>/dist/app.css">
-    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
     <?php wp_head(); ?>
 </head>
 

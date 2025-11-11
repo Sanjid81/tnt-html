@@ -1,11 +1,10 @@
 import "../styles/index.scss";
 
 
-// import "../scripts/components/testimonials";
+import "../scripts/components/hero-slider";
+import "../scripts/components/testimonials";
 import "../scripts/components/navbar";
 // import "../scripts/components/accolades ";
-// import "../scripts/components/hero-slider";
-// import "../scripts/components/navbar";
 
 
 
