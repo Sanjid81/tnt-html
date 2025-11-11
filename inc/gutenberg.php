@@ -114,8 +114,8 @@ add_action('carbon_fields_register_fields', function () {
 
 
 
-
-  Block::make('Testimonials Section')
+    // .....................Testimonials Section...................
+    Block::make('Testimonials Section')
         ->add_fields(array(
             Field::make('complex', 'testimonials', 'Testimonials')
                 ->set_layout('tabbed-horizontal')
@@ -128,28 +128,46 @@ add_action('carbon_fields_register_fields', function () {
 
             set_query_var('testimonials', $fields['testimonials'] ?? []);
 
-            get_template_part('components/home/home-testimonials'); 
+            get_template_part('components/home/home-testimonials');
         });
 
 
 
 
 
+    // ......................Accolades.................
 
-
-
-         Block::make('Accolades Section')
+    Block::make('Accolades Section')
         ->add_fields(array(
+            Field::make('text', 'accolades_title', 'Accolades Section Title')
+                ->set_default_value('News & Events'),
             Field::make('complex', 'companies', 'Companies')
                 ->set_layout('tabbed-horizontal')
                 ->add_fields(array(
                     Field::make('image', 'logo', 'Company Logo'),
                     Field::make('text', 'alt', 'Alt Text'),
                 )),
+            // Buttons
+            Field::make('text', 'acolades_button_text', 'Acolades Button Text')->set_default_value('View more'),
+            Field::make('text', 'acolades_button_link', 'Acolades Button Link')->set_default_value('#'),
         ))
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            set_query_var('companies', $fields['companies'] ?? []);
-            get_template_part('components/home/accolades'); 
+            $companies = $fields['companies'] ?? [];
+            include get_template_directory() . '/components/home/accolades.php';
+        });
+
+
+
+
+
+    Block::make('Legal Solutions Section')
+        ->add_fields(array(
+            Field::make('text', 'lead_text', 'Lead Text')
+                ->set_help_text('Use <br> for line breaks if needed'),
+        ))
+        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+            set_query_var('lead_text', $fields['lead_text'] ?? '');
+            get_template_part('components/home/legal-solution');
         });
 
 });

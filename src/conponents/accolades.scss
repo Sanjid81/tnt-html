@@ -3,6 +3,7 @@
   width: 100%;
   margin: 0 auto;
   position: relative;
+  background-color: rgba(0, 0, 0, 1);
 
   .banner-overlay {
     position: absolute;
@@ -36,22 +37,20 @@
       padding: 60px 40px;
       gap: 30px;
     }
+
     @include breakpoint-max(sm) {
       padding: 60px 15px;
       gap: 30px;
     }
 
-    .desktop-h2 {
+    .heading-two {
       display: flex;
-      justify-content: start;
-      align-items: start;
+      justify-content: center;
+      align-items: center;
       text-wrap: nowrap;
+      color: rgba(255, 255, 255, 1);
 
-      @include breakpoint-max(sm) {
-        font-size: 32px;
-        line-height: 44px;
-        letter-spacing: -0.72px !important;
-      }
+
     }
 
     .company-swiper {
@@ -74,26 +73,91 @@
       }
     }
 
+    .company-swiper-two {
+      display: none;
+
+      @media (max-width: 800px) {
+        display: block;
+      }
+
+      width: 100%;
+      overflow: hidden;
+
+      .swiper-wrapper {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        transition-timing-function: linear !important;
+
+      }
+
+      .swiper-slide {
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .company-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        padding: 36px 50px;
+        background-color: var(--light-bg);
+        max-width: 200px;
+        position: relative;
+        z-index: 2;
+        border-radius: 12px;
+      }
+
+      .company-content img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+      }
+    }
+
     .company-content {
       display: flex;
       flex-direction: column;
       gap: 20px;
       justify-content: center;
       align-items: center;
-      padding: 55px 0;
-      background-color: rgb(239 239 239 / 45%);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      min-width: 328px;
+      padding: 55px 72px;
+      background-color: var(--light-bg);
+      // border: 1px solid rgba(255, 255, 255, 0.7);
+      max-width: 263px;
       // height: 200px;
       position: relative;
       z-index: 2;
       border-radius: 12px;
+
+      @media (max-width: 800px) {
+        padding: 36px 50px;
+        background-color: var(--light-bg);
+        max-width: 200px;
+      }
     }
 
     .company-content img {
-      width: 200px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       object-fit: contain;
+
+      @media (max-width: 800px) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    .button-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+
+
     }
   }
 }

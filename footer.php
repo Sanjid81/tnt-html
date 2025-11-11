@@ -82,41 +82,94 @@ $quick_links = carbon_get_theme_option('footer_quick_links'); // complex field
 </footer>
 
 <?php wp_footer(); ?>
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
-      const autoSwiper = new Swiper('.company-swiper', {
-        loop: true,
-        spaceBetween: 30,
-        slidesPerView: 'auto',
-        allowTouchMove: true,
-        grabCursor: true,
-        simulateTouch: true,
-        speed: 10000,
-        autoplay: {
-          delay: 0,
-          disableOnInteraction: false,  // autoplay off hobe na click/swipe korleo
-        },
-        freeMode: true,
-        freeModeMomentum: false,
-      });
+        // -------- Desktop Swiper --------
+        const autoSwiper = new Swiper('.company-swiper', {
+            loop: true,
+            slidesPerView: 'auto',
+            allowTouchMove: true,
+            grabCursor: true,
+            simulateTouch: true,
+            speed: 10000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false, // autoplay off hobe na click/swipe korleo
+                reverseDirection: true, // left e scroll hobe
+            },
+            freeMode: true,
+            freeModeMomentum: false,
+            spaceBetween: 20, 
 
-      // Slide click listener
-      swiper.slides.forEach(slide => {
-        slide.addEventListener('click', () => {
-          swiper.slideNext();  // click korle next slide e jabe
+            breakpoints: {
+                0: { 
+                    spaceBetween: 10,
+                },
+                801: { 
+                    spaceBetween: 20,
+                }
+            }
         });
-      });
 
-      // Note: slides may be duplicated by loop mode, so to catch all slides dynamically:
-      swiper.on('slidesLengthChange', () => {
-        swiper.slides.forEach(slide => {
-          slide.addEventListener('click', () => {
-            swiper.slideNext();
-          });
+        // Slide click listener (desktop)
+        autoSwiper.slides.forEach(slide => {
+            slide.addEventListener('click', () => {
+                autoSwiper.slideNext();
+            });
         });
-      });
+
+        autoSwiper.on('slidesLengthChange', () => {
+            autoSwiper.slides.forEach(slide => {
+                slide.addEventListener('click', () => {
+                    autoSwiper.slideNext();
+                });
+            });
+        });
+
+
     });
-  </script>
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // -------- Desktop Swiper --------
+        const autoSwiper_two = new Swiper('.company-swiper-two', {
+            loop: true,
+            spaceBetween: 10,
+            slidesPerView: 'auto',
+            allowTouchMove: true,
+            grabCursor: true,
+            simulateTouch: true,
+            speed: 10000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false, // autoplay off hobe na click/swipe korleo
+                reverseDirection: false, // left e scroll hobe
+            },
+            freeMode: true,
+            freeModeMomentum: false,
+        });
+
+        // Slide click listener (desktop)
+        autoSwiper_two.slides.forEach(slide => {
+            slide.addEventListener('click', () => {
+                autoSwiper_two.slideNext();
+            });
+        });
+
+        autoSwiper_two.on('slidesLengthChange', () => {
+            autoSwiper_two.slides.forEach(slide => {
+                slide.addEventListener('click', () => {
+                    autoSwiper_two.slideNext();
+                });
+            });
+        });
+
+
+    });
+
+
+
+</script>
 </body>
 
 </html>

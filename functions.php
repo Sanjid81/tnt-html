@@ -61,6 +61,8 @@ function theme_enqueue_assets()
     // Swiper & AOS
     wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css');
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', [], null, true);
+    // wp_enqueue_script('accolades-js', get_template_directory_uri() . '/assets/js/accolades.js', ['swiper-js'], null, true);
+
 
 
     wp_enqueue_style('aos-css', 'https://unpkg.com/aos@next/dist/aos.css');
@@ -69,7 +71,7 @@ function theme_enqueue_assets()
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
 
 
-   
+
 
 
 
