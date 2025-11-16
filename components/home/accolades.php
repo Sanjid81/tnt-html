@@ -1,6 +1,11 @@
 <?php
-if (!empty($companies)): ?>
+if (!empty($companies)):
 
+    $accolades_title = $fields['accolades_title'] ?? 'Our Trusted Companies';
+    $acolades_button_text = $fields['acolades_button_text'] ?? 'Load more';
+    $acolades_button_link = $fields['acolades_button_link'] ?? '#';
+
+    ?>
 
     <section class="company-section">
         <div class="banner-overlay"></div>
@@ -60,11 +65,12 @@ if (!empty($companies)): ?>
                     </div>
                 </div>
             </div>
-
-            <div class="button-wrap">
+            <div class="button-wraper">
                 <div class="primary-button">
-                    <a href="<?php echo esc_url($acolades_button_link); ?>"
-                        class="button-text"><?php echo esc_html($acolades_button_text); ?></a>
+                    <a href="<?php echo esc_url($acolades_button_link); ?>" class="button-text">
+                        <?php echo esc_html($acolades_button_text); ?>
+                    </a>
+
                     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="44" height="44" rx="22" fill="#BC001A" />
                         <g clip-path="url(#clip0_642_270)">
@@ -79,6 +85,8 @@ if (!empty($companies)): ?>
                     </svg>
                 </div>
             </div>
+
+        </div>
         </div>
     </section>
 <?php endif; ?>

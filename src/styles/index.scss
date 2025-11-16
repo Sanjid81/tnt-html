@@ -8,13 +8,20 @@
 @import "./config/_animations";
 
 // utilities
-@import "../conponents/navbar.scss";
-@import "../conponents/footer.scss";
-@import "../conponents/hero.scss";
-@import "../conponents/news-events.scss";
-@import "../conponents/testimonials.scss";
-@import "../conponents/accolades.scss";
-@import "../conponents/leagal-solution.scss";
+
+// Home components
+@import "../conponents/home/navbar.scss";
+@import "../conponents/home/footer.scss";
+@import "../conponents/home/hero.scss";
+@import "../conponents/home/news-events.scss";
+@import "../conponents/home/testimonials.scss";
+@import "../conponents/home/accolades.scss";
+@import "../conponents/home/leagal-solution.scss";
 
 
-
+// about components
+@import "../conponents/about/about-header.scss";
+@import "../conponents/about/our-story.scss";
+@import "../conponents/about/counter.scss";
+@import "../conponents/about/mission-vission.scss";
+@import "../conponents/about/managing-partner.scss";
