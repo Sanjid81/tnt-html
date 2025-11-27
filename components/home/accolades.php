@@ -10,12 +10,12 @@ if (!empty($companies)):
     <section class="company-section">
         <div class="banner-overlay"></div>
         <div class="company-container">
-            <h2 class="heading-two">
+            <h2 class="heading-two" data-aos="fade-up">
                 <?php echo esc_html($fields['accolades_title'] ?? 'Our Trusted Companies');
                 ?>
             </h2>
 
-            <div class="initail-slider">
+            <div class="initail-slider" data-aos="fade-up">
                 <div class="swiper">
                     <div class="company-swiper">
                         <div class="swiper-wrapper">
@@ -65,11 +65,11 @@ if (!empty($companies)):
                     </div>
                 </div>
             </div>
-            <div class="button-wraper">
-                <div class="primary-button">
-                    <a href="<?php echo esc_url($acolades_button_link); ?>" class="button-text">
+            <div class="button-wraper" data-aos="fade-up">
+                <a href="<?php echo esc_url($acolades_button_link); ?>" class="primary-button">
+                    <div class="button-text">
                         <?php echo esc_html($acolades_button_text); ?>
-                    </a>
+                    </div>
 
                     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="44" height="44" rx="22" fill="#BC001A" />
@@ -83,7 +83,7 @@ if (!empty($companies)):
                             </clipPath>
                         </defs>
                     </svg>
-                </div>
+                </a>
             </div>
 
         </div>

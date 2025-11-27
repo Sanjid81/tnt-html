@@ -57,11 +57,20 @@ function theme_enqueue_assets()
     // Webpack compiled CSS & JS
     wp_enqueue_style('app-style', get_template_directory_uri() . '/dist/app.css', [], '1.0');
     wp_enqueue_script('app-js', get_template_directory_uri() . '/dist/app.js', [], '1.0', true);
+    // Animate.css (REQUIRED for WOW)
+    wp_enqueue_style(
+        'animate-css',
+        'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css',
+        [],
+        '4.1.1'
+    );
 
     // Swiper & AOS
     wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css');
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', [], null, true);
-    // wp_enqueue_script('accolades-js', get_template_directory_uri() . '/assets/js/accolades.js', ['swiper-js'], null, true);
+    wp_enqueue_script('wow-js', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', [], null, true);
+
+
 
 
 
@@ -122,3 +131,29 @@ add_filter('auto_update_theme', '__return_false');
  * Remove Contact Form 7 auto <p> and <br>
  */
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+
+// wow script 
+function wow_init_script() {
+    echo '<script>
+        new WOW({
+            resetAnimation: true
+        }).init();
+    </script>';
+}
+add_action("wp_footer", "wow_init_script");
+
+
+
+// AOS script
+function aos_init_script() {
+    echo '<script>
+        AOS.init({
+            duration: 1000, // animation duration in ms
+            offset: 100,    // scroll offset before animation triggers
+            once: false,    // true: animate only once, false: animate every scroll
+        });
+    </script>';
+}
+add_action('wp_footer', 'aos_init_script', 100);
+

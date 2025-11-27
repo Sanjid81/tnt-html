@@ -1,5 +1,7 @@
 .managing-partner-section {
   padding: 120px 0;
+  background-color: #ffff;
+  margin-top: -2px;
 
 
   .partner-content {
@@ -24,13 +26,14 @@
       flex: 1 1 400px;
 
       h2 {
-        
+                color: var(--dark-normal);
+
         margin-bottom: 20px;
       }
 
       .heading-four {
        font-weight: 400;
-        color: #555;
+        color: var(--dark-normal);
         position: relative;
         padding-left: 12px;
 
@@ -48,7 +51,7 @@
       .body-text-two {
         display: block;
         margin-top: 15px;
-        color: #888;
+        color: var(--dark-80);
       }
     }
   }

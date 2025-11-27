@@ -91,7 +91,7 @@ body {
         padding-right: 25px;
     }
 
-   
+
 }
 
 
@@ -145,31 +145,36 @@ button {
     justify-content: center;
     background: #FFFFFF;
     color: var(--text-light);
-    padding: 6px 6px 6px 32px;
+    padding: 6px 70px 6px 32px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     height: 56px;
-    // position: relative;
+    position: relative;
 
-    @media (max-width: 1030px) {
+    @media (max-width: 1300px) {
         height: 48px;
-        padding: 6px 6px 6px 24px;
+        padding: 6px 50px 6px 16px;
         gap: 8px;
     }
 
-    a {
+    .button-text {
         color: var(--dark-bg);
-        @extend .button-text;
+        // @extend .button-text;
         text-decoration: none;
         transition: all 0.3s ease;
+        box-shadow: none;
     }
 
     svg {
         transition: all 0.3s ease;
-        // position: absolute;
+        position: absolute;
+        top: 50%;
+        right: 6px;
+        transform: translateY(-50%);
+        transition: right 0.3s ease;
 
         rect {
             transition: fill 0.3s ease;
@@ -178,26 +183,45 @@ button {
         path {
             transition: stroke 0.3s ease;
         }
+
+        @media (max-width: 1300px) {
+            height: 36px;
+            width: 36px;
+
+        }
     }
 
     &:hover {
         background-color: var(--primary-red);
+        padding: 6px 32px 6px 70px;
 
-        a {
-            transform: translateX(45px);
+        @media (max-width: 1300px) {
+            padding: 6px 16px 6px 50px;
+
+        }
+
+        .button-text {
             color: #fff;
+            box-shadow: none;
+
         }
 
         svg {
-            transform: translateX(-130px);
+            right: calc(100% - 50px);
 
             rect {
-                fill: #fff; 
+                fill: #fff;
             }
 
             path {
-                stroke: var(--primary-red); 
+                stroke: var(--primary-red);
+            }
+
+            @media (max-width: 1300px) {
+                right: calc(100% - 42px);
+
             }
         }
+
     }
 }

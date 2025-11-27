@@ -27,12 +27,22 @@
                     align-items: center;
                     gap: 40px;
 
-                    .logo {
-                        svg {
-                            width: 120px;
-                            height: 62px;
+                    @media (max-width: 1100px) {
+                        gap: 20px;
+                    }
 
-                            @media (max-width: 1030px) {
+                    .logo {
+                        img {
+                            width: 100%;
+                            height: 62px;
+                            object-fit: contain;
+
+                            @media (max-width: 1300px) {
+                                width: 120px;
+                                height: 40px;
+                            }
+
+                            @media (max-width: 1100px) {
                                 width: 93px;
                                 height: 30px;
                             }
@@ -49,17 +59,41 @@
                             gap: 30px;
                             position: relative;
 
+                            @media (max-width: 1100px) {
+                                gap: 20px;
+                            }
+
                             li {
                                 position: relative;
+                                display: flex;
 
                                 a {
+                                    display: inline-flex;
+                                    align-items: center;
+                                    gap: 5px;
                                     text-decoration: none;
                                     @extend .navbar-text;
                                     color: var(--color-white);
                                     transition: color 0.3s;
+                                    position: relative;
+
+                                    &::before {
+                                        content: "";
+                                        position: absolute;
+                                        left: 0;
+                                        bottom: -4px;
+                                        width: 0;
+                                        height: 1px;
+                                        background-color: var(--text-red);
+                                        transition: width 0.3s ease;
+                                    }
 
                                     &:hover {
-                                        color: #FF6600;
+                                        // color: var(--text-red);
+
+                                        &::before {
+                                            width: 100%;
+                                        }
                                     }
                                 }
 
@@ -112,7 +146,7 @@
                                             line-height: 24px;
 
                                             &:hover {
-                                                color: #FF6600;
+                                                // color: var(--text-red);
                                             }
                                         }
                                     }
@@ -120,27 +154,12 @@
 
 
                             }
+
+
+
+
+
                         }
-
-                        // ul li.menu-item-has-children>a {
-                        //     position: relative;
-
-                        //     &::after {
-                        //         content: '';
-                        //         display: inline-block;
-                        //         width: 16px;
-                        //         height: 16px;
-                        //         margin-left: 6px;
-                        //         vertical-align: middle;
-                        //         background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_924_233)'%3E%3Cpath d='M13 6L8 11L3 6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_924_233'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E") no-repeat center;
-                        //         background-size: 16px 16px;
-                        //         transition: transform 0.3s ease, background-color 0.3s ease;
-                        //     }
-
-                        //     &:hover::after {
-                        //         transform: rotate(180deg);
-                        //     }
-                        // }
 
                     }
                 }
@@ -149,6 +168,34 @@
                     display: flex;
                     align-items: center;
                     gap: 20px;
+
+                    .social-media {
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+
+                        a {
+                            transition: all 0.3s ease;
+                            display: flex;
+                            border-radius: 50%;
+
+                            &:hover {
+                                cursor: pointer;
+                                box-shadow: 0 0 18px rgba(255, 0, 0, 0.5);
+
+
+                                svg {
+                                    rect {
+                                        stroke: var(--text-red);
+                                    }
+
+                                    // path {
+                                    //     fill: var(--text-red);
+                                    // }
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -161,7 +208,7 @@
             }
 
             /* Responsive Styles */
-            @media (max-width: 1100px) {
+            @media (max-width: 900px) {
                 .nav-wraper {
                     .nav-first-half {
                         .nav-menu {
@@ -177,32 +224,35 @@
                 .small-nav-wraper {
                     border-top: 1px solid rgba(255, 255, 255, 0.2);
                     position: absolute;
-                    top: 127px;
+                    top: 105px;
                     left: 0;
                     width: 100%;
                     background-color: rgba(0, 0, 0, 1);
+                    display: flex;
                     flex-direction: column;
                     padding: 12px 30px 40px;
                     z-index: 9;
                     overflow: hidden;
                     height: calc(100vh - 103px);
                     max-height: 0;
-                    transition: opacity 0.4s ease, max-height 0.4s ease;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.4s ease, max-height 0.4s ease;
 
+                    @media (max-width: 782px) {
+                        top: 115px;
+                    }
 
                     &.active {
                         max-height: calc(100vh - 103px);
-                        display: flex;
-                        flex-direction: column;
                         opacity: 1;
+                        visibility: visible;
 
                         .small-nav-container {
                             display: flex;
                             flex-direction: column;
                             justify-content: space-between;
-                            // height: calc(100vh - 103px);
                             height: 100vh;
-                            // gap: 30px;
 
                             .small-nav-first-half {
                                 display: block;
@@ -223,6 +273,7 @@
 
                                         li {
                                             position: relative;
+                                            // display: flex;
 
                                             &:not(:nth-child(2)) {
                                                 padding: 18px 0;
@@ -236,20 +287,38 @@
                                                 border-bottom: 1px solid rgba(255, 255, 255, 0.2);
                                             }
 
+
+
+
+
                                             a {
+                                                display: inline-flex;
                                                 font-size: 16px;
                                                 font-family: var(--font-primary);
                                                 font-weight: 500;
                                                 line-height: 20px;
                                                 letter-spacing: 0;
                                                 color: var(--color-white);
+                                                transition: color 0.3s;
+                                                position: relative;
 
-
-
-                                                text-decoration: none;
+                                                &::before {
+                                                    content: "";
+                                                    position: absolute;
+                                                    left: 0;
+                                                    bottom: -4px;
+                                                    width: 0;
+                                                    height: 1px;
+                                                    background-color: var(--text-red);
+                                                    transition: width 0.3s ease;
+                                                }
 
                                                 &:hover {
-                                                    color: #FF6600;
+                                                    // color: var(--text-red);
+
+                                                    &::before {
+                                                        width: 100%;
+                                                    }
                                                 }
                                             }
 
@@ -261,7 +330,7 @@
 
 
                                                 a {
-                                                    display: flex;
+                                                    display: inline-flex;
                                                     gap: 5px;
                                                     align-items: center;
                                                     color: var(--light-bg);
@@ -269,19 +338,28 @@
                                                     text-decoration: none;
                                                     font-size: 14px;
                                                     line-height: 19px;
+                                                    transition: color 0.3s;
+                                                    position: relative;
 
-                                                    &:hover {
-                                                        color: #ff6600;
+                                                    &::before {
+                                                        content: "";
+                                                        position: absolute;
+                                                        left: 0;
+                                                        bottom: -4px;
+                                                        width: 0;
+                                                        height: 1px;
+                                                        background-color: var(--text-red);
+                                                        transition: width 0.3s ease;
                                                     }
 
-                                                    // &::after {
-                                                    //     content: '';
-                                                    //     display: inline-block;
-                                                    //     width: 10px;
-                                                    //     height: 10px;
-                                                    //     margin-left: 6px;
-                                                    //     transition: transform 0.3s ease, border-color 0.3s ease;
-                                                    // }
+                                                    &:hover {
+                                                        // color: var(--text-red);
+
+                                                        &::before {
+                                                            width: 100%;
+                                                        }
+                                                    }
+
                                                 }
 
                                                 svg {
@@ -309,15 +387,31 @@
                                                         padding: 12px 12px;
 
                                                         a {
-                                                            display: block;
+                                                            display: inline-flex;
                                                             // padding: 12px;
                                                             font-size: 14px;
                                                             color: #e2d5d5;
                                                             text-decoration: none;
+                                                            transition: color 0.3s;
+                                                            position: relative;
+
+                                                            &::before {
+                                                                content: "";
+                                                                position: absolute;
+                                                                left: 0;
+                                                                bottom: -4px;
+                                                                width: 0;
+                                                                height: 1px;
+                                                                background-color: var(--text-red);
+                                                                transition: width 0.3s ease;
+                                                            }
 
                                                             &:hover {
-                                                                color: #ff6600;
-                                                                background: rgba(255, 102, 0, 0.1);
+                                                                // color: var(--text-red);
+
+                                                                &::before {
+                                                                    width: 100%;
+                                                                }
                                                             }
                                                         }
                                                     }
@@ -325,7 +419,7 @@
 
                                                 &:hover a svg {
                                                     transform: rotate(0deg);
-                                                    stroke: #FF6600;
+                                                    stroke: var(--text-red);
                                                 }
 
                                                 &.active {
@@ -342,6 +436,10 @@
                                             }
 
 
+                                        }
+
+                                        .active {
+                                            color: var(--text-red);
                                         }
                                     }
                                 }
@@ -363,23 +461,54 @@
                 }
 
 
-
                 .hamburger {
                     display: block;
                     cursor: pointer;
+                    position: relative;
 
-                    svg.cross {
-                        display: none;
+                    .hamburger-icon,
+                    .cross {
+                        position: absolute;
+                        top: -12px;
+                        left: -14px;
+                        transition: opacity 0.3s ease, transform 0.3s ease;
                     }
 
-                    &.active svg.hamburger-icon {
-                        display: none;
+                    .hamburger-icon {
+                        opacity: 1;
+                        transform: rotate(0deg);
+                        z-index: 2;
                     }
 
-                    &.active svg.cross {
-                        display: block;
+                    .cross {
+                        opacity: 0;
+                        transform: rotate(-90deg);
+                        z-index: 1;
+                    }
+
+                    &.active .hamburger-icon {
+                        opacity: 0;
+                        transform: rotate(90deg);
+                        z-index: 1;
+                    }
+
+                    &.active .cross {
+                        opacity: 1;
+                        transform: rotate(0deg);
+                        z-index: 2;
                     }
                 }
+
+                .hamburger {
+                    outline: none;
+                }
+
+                .hamburger:focus {
+                    display: none;
+                    outline: none;
+                    box-shadow: none;
+                }
+
 
             }
 
@@ -413,9 +542,13 @@
             /* When submenu is open → rotate arrow + color change */
             ul li.menu-item-has-children.active>a::after {
                 transform: rotate(180deg);
-                filter: brightness(0) saturate(100%) invert(59%) sepia(81%) saturate(3806%) hue-rotate(3deg) brightness(110%) contrast(102%);
+                // filter: brightness(0) saturate(100%) invert(59%) sepia(81%) saturate(3806%) hue-rotate(3deg) brightness(110%) contrast(102%);
             }
 
+            .resizable-element {
+                resize: none;
+                overflow: hidden;
+            }
 
 
         }

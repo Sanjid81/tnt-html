@@ -1,42 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   // Hamburger menu toggle (mobile)
-//   const hamburger = document.getElementById("hamburger");
-//   const smallNavWrapper = document.querySelector(".small-nav-wraper");
-
-//   if (hamburger && smallNavWrapper) {
-//     hamburger.addEventListener("click", () => {
-//       hamburger.classList.toggle("active");
-//       smallNavWrapper.classList.toggle("active");
-//     });
-//   }
-
-//   // Submenu toggle
-//   const menuItems = document.querySelectorAll(".menu-item-has-children");
-
-//   menuItems.forEach((item) => {
-//     const link = item.querySelector("a");
-
-//     link.addEventListener("click", (e) => {
-//       e.preventDefault(); 
-
-//       const isActive = item.classList.contains("active");
-
-//       // Close all other menus
-//       menuItems.forEach((other) => {
-//         if (other !== item) {
-//           other.classList.remove("active");
-//         }
-//       });
-
-//       // Toggle current menu
-//       if (!isActive) {
-//         item.classList.add("active");
-//       } else {
-//         item.classList.remove("active");
-//       }
-//     });
-//   });
-// });
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -48,20 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
       smallNavWrapper.classList.toggle("active");
+
       // Disable body scroll when menu is active
-      if (smallNavWrapper.classList.contains("active")) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
-      // Fade animation
-      if (smallNavWrapper.classList.contains("active")) {
-        smallNavWrapper.style.opacity = "1";
-      } else {
-        smallNavWrapper.style.opacity = "0";
-      }
+      document.body.style.overflow = smallNavWrapper.classList.contains("active") ? "hidden" : "auto";
     });
   }
+
 
   // Submenu toggle
   const menuItems = document.querySelectorAll(".menu-item-has-children");

@@ -14,7 +14,7 @@ $quick_links = carbon_get_theme_option('footer_quick_links'); // complex field
     <div class="container">
         <div class="footer-container">
             <!-- About / Logo Section -->
-            <div class="footer-column footer-about">
+            <div class="footer-column footer-about" data-aos="fade-up">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="logo">
                     <?php if ($footer_logo): ?>
                         <?php echo wp_get_attachment_image($footer_logo, 'full', false, ['alt' => get_bloginfo('name')]); ?>
@@ -31,7 +31,7 @@ $quick_links = carbon_get_theme_option('footer_quick_links'); // complex field
             </div>
 
             <!-- Areas of Expertise Section -->
-            <div class="footer-column double-menu-column">
+            <div class="footer-column double-menu-column" data-aos="fade-up">
                 <h3 class="footer-title">Areas of Expertise</h3>
                 <div class="area-of-expertise">
 
@@ -55,7 +55,7 @@ $quick_links = carbon_get_theme_option('footer_quick_links'); // complex field
             </div>
 
             <!-- Quick Links Section -->
-            <div class="footer-column">
+            <div class="footer-column" data-aos="fade-up">
                 <h3 class="footer-title">Quick Links</h3>
                 <?php
                 wp_nav_menu(array(
@@ -67,7 +67,7 @@ $quick_links = carbon_get_theme_option('footer_quick_links'); // complex field
             </div>
 
             <!-- Contact Section -->
-            <div class="footer-column footer-address">
+            <div class="footer-column footer-address" data-aos="fade-up">
                 <h3 class="footer-title">Contact</h3>
                 <p><?php echo nl2br(esc_html($footer_address)); ?></p>
                 <a href="mailto:<?php echo esc_attr($footer_email); ?>"><?php echo esc_html($footer_email); ?></a>
@@ -75,7 +75,7 @@ $quick_links = carbon_get_theme_option('footer_quick_links'); // complex field
         </div>
 
         <!-- Footer Bottom -->
-        <div class="footer-bottom">
+        <div class="footer-bottom" data-aos="fade-up">
             <p><?php echo esc_html($footer_copyright); ?> | Site by Your Name</p>
         </div>
     </div>
@@ -99,13 +99,13 @@ $quick_links = carbon_get_theme_option('footer_quick_links'); // complex field
             },
             freeMode: true,
             freeModeMomentum: false,
-            spaceBetween: 20, 
+            spaceBetween: 20,
 
             breakpoints: {
-                0: { 
+                0: {
                     spaceBetween: 10,
                 },
-                801: { 
+                801: {
                     spaceBetween: 20,
                 }
             }

@@ -7,7 +7,7 @@ if (!empty($testimonials)): ?>
     <section class="testimonials-section">
         <div class="overlay"></div>
         <div class="container">
-            <div class="header-row">
+            <div class="header-row" data-aos="fade-up">
                 <h2>Testimonials</h2>
                 <div class="testimonials-slider-buttons">
                     <div class="swiper-button-prev"></div>
@@ -15,7 +15,7 @@ if (!empty($testimonials)): ?>
                 </div>
             </div>
 
-            <div class="testimonials-slider">
+            <div class="testimonials-slider" data-aos="fade-up">
                 <div class="swiper">
                     <div class="testimonials-swiper">
                         <div class="swiper-wrapper">

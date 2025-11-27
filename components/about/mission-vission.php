@@ -20,13 +20,13 @@ $image_id = $mv['about_middle_image'] ?? '';
             <div class="mission-vission-content">
 
                 <div class="mission-content">
-                    <h3><?php echo esc_html($mission_title); ?></h3>
-                    <p><?php echo wp_kses_post($mission_content); ?></p>
+                    <h3 class="heading-five"><?php echo esc_html($mission_title); ?></h3>
+                    <p class="body-text"><?php echo wp_kses_post($mission_content); ?></p>
                 </div>
 
                 <div class="vission-content">
-                    <h3><?php echo esc_html($vision_title); ?></h3>
-                    <p><?php echo wp_kses_post($vision_content); ?></p>
+                    <h3 class="heading-five"><?php echo esc_html($vision_title); ?></h3>
+                    <p class="body-text"><?php echo wp_kses_post($vision_content); ?></p>
                 </div>
 
             </div>
