@@ -31,7 +31,7 @@ function footer_theme_options()
             Field::make('text', 'footer_address', 'Address'),
             Field::make('text', 'footer_email', 'Email'),
             Field::make('text', 'footer_copyright', 'Copyright Text'),
-            Field::make('text', 'footer_site_name', 'Site Name'), 
+            Field::make('text', 'footer_site_name', 'Site Name'),
             Field::make('text', 'footer_site_url', 'Site URL'),
             Field::make('text', 'footer_privacy_policy', 'Privacy Policy Page URL'),
             Field::make('text', 'footer_terms_conditions', 'Terms & Conditions Page URL'),
@@ -165,6 +165,87 @@ add_action('carbon_fields_register_fields', function () {
             set_query_var('lead_text', $fields['lead_text'] ?? '');
             get_template_part('components/home/legal-solution');
         });
+
+
+
+
+
+
+
+
+    // ===================Our expertise page========================
+    // ===========================================
+    Block::make('FAQ Section')
+        ->set_description('Add FAQ items with links')
+        ->set_category('common')
+        ->add_fields(array(
+            Field::make('text', 'faq_section_title', 'Section Title'),
+            Field::make('textarea', 'faq_section_description', 'Section Description'),
+            Field::make('complex', 'faq_items', 'FAQ Items')
+                ->set_layout('tabbed-horizontal')
+                ->add_fields(array(
+                    Field::make('text', 'faq_title', 'FAQ Title'),
+                    Field::make('complex', 'faq_links', 'Links / Content')
+
+                        ->add_fields(array(
+                            Field::make('text', 'link_text', 'Link Text'),
+                            Field::make('text', 'link_url', 'Link URL'),
+                        ))
+                        ->set_header_template('{{link_text}}')
+                ))
+        ))
+        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+            set_query_var('fields', $fields);
+            get_template_part('components/our-expertise/tailored-solution');
+        });
+
+    // common-footer-top
+    Block::make('Common footer top Section')
+        ->add_fields(array(
+            Field::make('text', 'lead_text', 'Lead Text')
+                ->set_help_text('Use <br> for line breaks if needed'),
+
+            Field::make('textarea', 'legal_text', 'Legal Text')
+                ->set_help_text('Use <br> for line breaks if needed'),
+
+            Field::make('text', 'button_text', 'Button Text')
+                ->set_default_value('Learn More'),
+
+            Field::make('text', 'button_link', 'Button Link')
+                ->set_default_value('#'),
+        ))
+        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+            // Variables
+            $lead_text = $fields['lead_text'] ?? '';
+            $legal_text = $fields['legal_text'] ?? '';
+            $button_text = $fields['button_text'] ?? '';
+            $button_link = $fields['button_link'] ?? '';
+
+            // Include template directly
+            include get_template_directory() . '/components/our-expertise/common-footer-top.php';
+        });
+
+
+// ...........................Our people..................................
+// .............................................................
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
