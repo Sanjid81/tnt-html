@@ -30,7 +30,11 @@ function footer_theme_options()
             Field::make('text', 'footer_tagline', 'Footer Tagline'),
             Field::make('text', 'footer_address', 'Address'),
             Field::make('text', 'footer_email', 'Email'),
-            Field::make('text', 'footer_copyright', 'Copyright Text')
+            Field::make('text', 'footer_copyright', 'Copyright Text'),
+            Field::make('text', 'footer_site_name', 'Site Name'), 
+            Field::make('text', 'footer_site_url', 'Site URL'),
+            Field::make('text', 'footer_privacy_policy', 'Privacy Policy Page URL'),
+            Field::make('text', 'footer_terms_conditions', 'Terms & Conditions Page URL'),
         ));
 }
 
@@ -257,8 +261,8 @@ add_action('carbon_fields_register_fields', function () {
 
 
 
-        // managing partner
-         Block::make('Managing Partner Section')
+    // managing partner
+    Block::make('Managing Partner Section')
         ->add_fields(array(
 
             Field::make('image', 'partner_image', 'Partner Image'),
