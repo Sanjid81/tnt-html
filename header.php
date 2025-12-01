@@ -11,11 +11,7 @@ defined('ABSPATH') || exit;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php bloginfo('name'); ?></title>
-    <!-- <link rel="stylesheet" href="< ?php echo THEMEROOT; ?>/dist/font.css"> -->
     <link rel="stylesheet" href="<?php echo THEMEROOT; ?>/dist/app.css">
-    <!-- <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" /> -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
     <?php wp_head(); ?>
 </head>
 
@@ -82,7 +78,7 @@ defined('ABSPATH') || exit;
 
                                 </a>
                             <?php endif; ?>
-                            <?php if ($insta = carbon_get_theme_option('instagram_link')): ?>
+                            <?php if ($insta = carbon_get_theme_option('linkedin_link')): ?>
                                 <a href="<?php echo esc_url($insta); ?>" target="_blank">
                                     <svg width="38" height="38" viewBox="0 0 38 38" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +97,7 @@ defined('ABSPATH') || exit;
                                     </svg>
                                 </a>
                             <?php endif; ?>
-                            <?php if ($li = carbon_get_theme_option('linkedin_link')): ?>
+                            <?php if ($li = carbon_get_theme_option('email_link')): ?>
                                 <a href="<?php echo esc_url($li); ?>" target="_blank">
                                     <svg width="38" height="38" viewBox="0 0 38 38" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -196,8 +192,8 @@ defined('ABSPATH') || exit;
 
                                     </a>
                                 <?php endif; ?>
-                                <?php if ($insta = carbon_get_theme_option('instagram_link')): ?>
-                                    <a href="<?php echo esc_url($insta); ?>" target="_blank">
+                                <?php if ($li = carbon_get_theme_option('linkedin_link')): ?>
+                                    <a href="<?php echo esc_url($li); ?>" target="_blank">
                                         <svg width="38" height="38" viewBox="0 0 38 38" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <rect x="0.5" y="0.5" width="37" height="37" rx="18.5" stroke="white"
@@ -216,8 +212,8 @@ defined('ABSPATH') || exit;
                                         </svg>
                                     </a>
                                 <?php endif; ?>
-                                <?php if ($li = carbon_get_theme_option('linkedin_link')): ?>
-                                    <a href="<?php echo esc_url($li); ?>" target="_blank">
+                                <?php if ($email = carbon_get_theme_option('email_link')): ?>
+                                    <a href="mailto:<?php echo esc_attr($email); ?>">
                                         <svg width="38" height="38" viewBox="0 0 38 38" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <rect x="0.5" y="0.5" width="37" height="37" rx="18.5" stroke="white"
@@ -227,6 +223,7 @@ defined('ABSPATH') || exit;
                                                 fill="white" />
                                         </svg>
                                     </a>
+                                  
                                 <?php endif; ?>
                             </div>
 

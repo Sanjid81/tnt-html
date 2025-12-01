@@ -8,10 +8,10 @@
 @import "./config/_animations";
 
 // utilities
-
+@import "../conponents/utilities/footer.scss";
+@import "../conponents/utilities/navbar.scss";
 // Home components
-@import "../conponents/home/navbar.scss";
-@import "../conponents/home/footer.scss";
+
 @import "../conponents/home/hero.scss";
 @import "../conponents/home/news-events.scss";
 @import "../conponents/home/testimonials.scss";

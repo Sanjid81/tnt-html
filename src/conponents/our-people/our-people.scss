@@ -1,0 +1,180 @@
+.team-section {
+    // background: url("https://i.postimg.cc/hGk6QtbV/hero-background-img.webp") center/cover no-repeat;
+    // background-size: cover;
+    // background-image: opacity(3%);
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+
+    .bg-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.09;
+        z-index: 0;
+    }
+
+    .people-container {
+        display: flex;
+
+        // flex-wrap: wrap;
+        @media (max-width:1500px) {
+            flex-wrap: wrap;
+        }
+
+        .left-side-container {
+            max-width: 803px;
+            width: 100%;
+            background-color: var(--dark-red);
+            // opacity: 90%;
+            z-index: 1 !important;
+
+
+            @media (max-width:1500px) {
+                max-width: 100%;
+            }
+
+            .left-side-content {
+                padding: 120px;
+
+                @media (max-width:1500px) {
+                    padding: 120px 80px;
+                }
+
+                @media (max-width:600px) {
+                    padding: 60px 30px;
+                }
+
+                .team-header {
+                    max-width: 563px;
+                    margin-bottom: 122px;
+
+                    @media (max-width:1500px) {
+                        max-width: 950px;
+                        margin-bottom: 80px;
+                    }
+
+                    @media (max-width:800px) {
+                        margin-bottom: 40px;
+                    }
+
+                    h1 {
+                        @extend .heading-one;
+                        color: var(--light-bg);
+                        margin-bottom: 40px;
+                    }
+
+                    .body-text {
+                        color: var(--light-bg-2);
+                    }
+
+
+
+
+                }
+
+                .team-filters {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    .form-wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+
+                        .input-group {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            background: transparent;
+                            border: 1px solid #ddd;
+                            border-radius: 8px;
+                            padding: 8px 12px;
+                            width: 250px;
+
+                            input,
+                            select {
+                                flex: 1;
+                                border: none;
+                                outline: none;
+                                font-size: 14px;
+                                background: transparent;
+
+                                &:focus {
+                                    outline: none;
+                                }
+                            }
+
+                            .icon {
+                                font-size: 14px;
+                                margin-left: 8px;
+                                pointer-events: none;
+                                color: #666;
+                            }
+                        }
+
+                        // Style only for select dropdown arrow hidden
+                        select {
+                            appearance: none;
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                        }
+                    }
+
+
+                }
+            }
+
+        }
+
+        .right-side-container {
+            background-color: rgb(251, 248, 249);
+            width: 100%;
+            // opacity: 95%;
+
+            .right-side-content {
+                padding: 70px;
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+
+                @media (max-width:1800px) {
+                    padding: 60px;
+                }
+
+                @media (max-width:800px) {
+                    padding: 60px 30px;
+                }
+                .category-tag{
+                    width: 177px;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1px 10px;
+                    background-color: rgba(255, 230, 233, 1);
+                }
+
+                .team-members {
+                    display: grid;
+                    gap: 30px;
+                    grid-template-columns: repeat(3, 1fr);
+                    z-index: 1 !important;
+
+                    @media (max-width:1200px) {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+
+                    @media (max-width:800px) {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            }
+        }
+    }
+}

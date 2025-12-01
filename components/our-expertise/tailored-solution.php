@@ -8,16 +8,17 @@ $faq_items = $fields['faq_items'] ?? [];
 ?>
 
 <section class="tailored-solution-section">
+    <img class="bg-img" src="https://i.postimg.cc/hGk6QtbV/hero-background-img.webp" alt="Hero Background">
     <div class="tailored-container">
         <div class="tailored-solution-wraper">
-            <div class="tailored-content-wraper">
+            <div class="tailored-content-wraper" data-aos="fade-right">
                 <div class="tailored-content">
                     <h1 class="tailored-heading"><?php echo esc_html($section_title); ?></h1>
                     <p class="tailored-paragraph"><?php echo esc_html($section_description); ?></p>
                 </div>
             </div>
 
-            <div class="faq-container">
+            <div class="faq-container" data-aos="fade-left">
                 <div class="faq-content-wraper">
                     <?php if ($faq_items): ?>
                         <?php foreach ($faq_items as $index => $item): ?>
