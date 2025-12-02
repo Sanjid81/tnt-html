@@ -1,25 +1,59 @@
-const searchInput = document.getElementById('searchName');
-const filterSelect = document.getElementById('filterPractice');
-const teamCards = document.querySelectorAll('#teamList .team-card');
+jQuery(function($){
 
-searchInput.addEventListener('input', filterTeam);
-filterSelect.addEventListener('change', filterTeam);
+    // debounce helper
+    function debounce(fn, delay){
+        let t;
+        return function(){
+            clearTimeout(t);
+            let args = arguments;
+            t = setTimeout(function(){ fn.apply(null, args); }, delay);
+        };
+    }
 
-function filterTeam() {
-    const nameVal = searchInput.value.toLowerCase();
-    const areaVal = filterSelect.value.toLowerCase();
+    function loadTeamMembers() {
+        let search = $('.search-field input').val() || '';
+        let category = $('.select-field select').val() || '';
 
-    teamCards.forEach(card => {
-        const cardName = card.dataset.name;
-        const cardArea = card.dataset.area;
+        console.log('[team-filter] sending AJAX', { search: search, category: category });
 
-        if (
-            cardName.includes(nameVal) &&
-            (areaVal === '' || cardArea === areaVal)
-        ) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
+        $.ajax({
+            url: ajax_object.ajax_url,
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                action: 'filter_team_members',
+                search: search,
+                category: category
+            },
+            beforeSend: function(){
+                $('.team-members').html('<p>Loading...</p>');
+            },
+            success: function(response){
+                console.log('[team-filter] success response', response);
+
+                if (!response || typeof response.html === 'undefined') {
+                    console.error('[team-filter] invalid response format', response);
+                    $('.team-members').html('<p>Unexpected response from server.</p>');
+                    return;
+                }
+
+                $('.team-members').html(response.html);
+                $('.category-tag-content').text(response.category_tag || 'All Team Members');
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.error('[team-filter] ajax error', textStatus, errorThrown, jqXHR.responseText);
+                $('.team-members').html('<p>AJAX error. Check console/network.</p>');
+            }
+        });
+    }
+
+    // debounced version for keyup
+    const debouncedLoad = debounce(loadTeamMembers, 250);
+
+    // triggers
+    $(document).on('keyup', '.search-field input', debouncedLoad);
+    $(document).on('change', '.select-field select', loadTeamMembers);
+
+    // optional: trigger initial load (comment out if you want initial blank)
+    // loadTeamMembers();
+});

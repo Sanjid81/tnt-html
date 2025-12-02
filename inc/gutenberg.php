@@ -256,6 +256,8 @@ add_action('carbon_fields_register_fields', function () {
                     Field::make('text', 'name', 'Name'),
                     Field::make('text', 'designation', 'Designation'),
                     Field::make('image', 'photo', 'Photo'),
+                    // Field::make('image', 'team_button_img', 'Button image'), 
+                    Field::make('text', 'team_button_link', 'Button Link'),
                     Field::make('text', 'category', 'Category'),
                 )),
         ))
@@ -265,7 +267,7 @@ add_action('carbon_fields_register_fields', function () {
         });
 
 
-    });
+});
 
 
 
@@ -315,119 +317,119 @@ add_action('carbon_fields_register_fields', function () {
 
 
 
-    // ===================About page========================
-    // ===========================================
+// ===================About page========================
+// ===========================================
 
-    // about-header
-    // Block::make('About Header Section')
-    //     ->add_fields(array(
-    //         Field::make('text', 'about_header_title', 'Header Title')
-    //             ->set_default_value('Trusted Legal Excellence Since 1973'),
+// about-header
+// Block::make('About Header Section')
+//     ->add_fields(array(
+//         Field::make('text', 'about_header_title', 'Header Title')
+//             ->set_default_value('Trusted Legal Excellence Since 1973'),
 
-    //         Field::make('textarea', 'about_header_description', 'Header Description')
-    //             ->set_default_value('Delivering innovative legal solutions with integrity, insight, and impact.'),
+//         Field::make('textarea', 'about_header_description', 'Header Description')
+//             ->set_default_value('Delivering innovative legal solutions with integrity, insight, and impact.'),
 
-    //         // Button fields
-    //         Field::make('checkbox', 'show_button', 'Show Button?'), // Check করলে button দেখাবে
-    //         Field::make('text', 'button_text', 'Button Text')
-    //             ->set_default_value('Learn More'),
-    //         Field::make('text', 'button_link', 'Button Link')
-    //             ->set_default_value('#'),
-    //         // Single Banner Image
-    //         Field::make('image', 'about_banner_image', 'Banner Image'),
-    //     ))
-    //     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-    //         set_query_var('about_header_fields', $fields);
-    //         get_template_part('components/about/about-header');
-    //     });
+//         // Button fields
+//         Field::make('checkbox', 'show_button', 'Show Button?'), // Check করলে button দেখাবে
+//         Field::make('text', 'button_text', 'Button Text')
+//             ->set_default_value('Learn More'),
+//         Field::make('text', 'button_link', 'Button Link')
+//             ->set_default_value('#'),
+//         // Single Banner Image
+//         Field::make('image', 'about_banner_image', 'Banner Image'),
+//     ))
+//     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+//         set_query_var('about_header_fields', $fields);
+//         get_template_part('components/about/about-header');
+//     });
 
 
-    // // about-our-story
-    // Block::make('Our Story Section')
-    //     ->add_fields(array(
-    //         Field::make('text', 'our_story_title', 'Section Title')
-    //             ->set_default_value('Our Story'),
+// // about-our-story
+// Block::make('Our Story Section')
+//     ->add_fields(array(
+//         Field::make('text', 'our_story_title', 'Section Title')
+//             ->set_default_value('Our Story'),
 
-    //         Field::make('textarea', 'our_story_content', 'Section Content')
-    //             ->set_default_value('Mahbub & Co. was founded with a vision to provide world-class legal services rooted in integrity, excellence, and client commitment.<br><br>Over the decades, the firm has evolved into one of Bangladesh’s most respected legal practices, representing leading corporations, institutions, and government entities.'),
-    //     ))
-    //     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-    //         set_query_var('our_story_fields', $fields);
-    //         get_template_part('components/about/about-our-story');
-    //     });
+//         Field::make('textarea', 'our_story_content', 'Section Content')
+//             ->set_default_value('Mahbub & Co. was founded with a vision to provide world-class legal services rooted in integrity, excellence, and client commitment.<br><br>Over the decades, the firm has evolved into one of Bangladesh’s most respected legal practices, representing leading corporations, institutions, and government entities.'),
+//     ))
+//     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+//         set_query_var('our_story_fields', $fields);
+//         get_template_part('components/about/about-our-story');
+//     });
 
 
-    // // /about counter
-    // Block::make('Counters Section')
-    //     ->add_fields(array(
-    //         Field::make('complex', 'counters', 'Counters')
-    //             ->set_layout('tabbed-vertical')
-    //             ->add_fields(array(
-    //                 Field::make('text', 'title', 'Title')
-    //                     ->set_default_value('Counter Title'),
-    //                 Field::make('text', 'number', 'Number')
-    //                     ->set_attribute('type', 'number')
-    //                     ->set_default_value('0'),
-    //                 Field::make('text', 'suffix', 'Suffix (like + or k)')
-    //                     ->set_default_value('+')
-    //             )),
-    //     ))
-    //     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-    //         set_query_var('counters_fields', $fields);
-    //         get_template_part('components/about/about-counter'); // your template file
-    //     });
+// // /about counter
+// Block::make('Counters Section')
+//     ->add_fields(array(
+//         Field::make('complex', 'counters', 'Counters')
+//             ->set_layout('tabbed-vertical')
+//             ->add_fields(array(
+//                 Field::make('text', 'title', 'Title')
+//                     ->set_default_value('Counter Title'),
+//                 Field::make('text', 'number', 'Number')
+//                     ->set_attribute('type', 'number')
+//                     ->set_default_value('0'),
+//                 Field::make('text', 'suffix', 'Suffix (like + or k)')
+//                     ->set_default_value('+')
+//             )),
+//     ))
+//     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+//         set_query_var('counters_fields', $fields);
+//         get_template_part('components/about/about-counter'); // your template file
+//     });
 
 
 
-    // // mission vission
-    // Block::make('Mission & Vision Section')
-    //     ->add_fields(array(
-    //         Field::make('text', 'section_heading', 'Section Heading')
-    //             ->set_default_value('Mission and Vision'),
+// // mission vission
+// Block::make('Mission & Vision Section')
+//     ->add_fields(array(
+//         Field::make('text', 'section_heading', 'Section Heading')
+//             ->set_default_value('Mission and Vision'),
 
-    //         Field::make('text', 'mission_title', 'Mission Title')
-    //             ->set_default_value('Mission'),
+//         Field::make('text', 'mission_title', 'Mission Title')
+//             ->set_default_value('Mission'),
 
-    //         Field::make('textarea', 'mission_content', 'Mission Content')
-    //             ->set_default_value('Your mission content goes here.'),
+//         Field::make('textarea', 'mission_content', 'Mission Content')
+//             ->set_default_value('Your mission content goes here.'),
 
-    //         Field::make('text', 'vision_title', 'Vision Title')
-    //             ->set_default_value('Vision'),
+//         Field::make('text', 'vision_title', 'Vision Title')
+//             ->set_default_value('Vision'),
 
-    //         Field::make('textarea', 'vision_content', 'Vision Content')
-    //             ->set_default_value('Your vision content goes here.'),
+//         Field::make('textarea', 'vision_content', 'Vision Content')
+//             ->set_default_value('Your vision content goes here.'),
 
-    //         Field::make('image', 'about_middle_image', 'Middle Image'),
-    //     ))
-    //     ->set_render_callback(function ($fields) {
+//         Field::make('image', 'about_middle_image', 'Middle Image'),
+//     ))
+//     ->set_render_callback(function ($fields) {
 
-    //         set_query_var('mission_vision_fields', $fields);
+//         set_query_var('mission_vision_fields', $fields);
 
-    //         get_template_part('components/about/mission-vission');
-    //     });
+//         get_template_part('components/about/mission-vission');
+//     });
 
 
 
-    // // managing partner
-    // Block::make('Managing Partner Section')
-    //     ->add_fields(array(
+// // managing partner
+// Block::make('Managing Partner Section')
+//     ->add_fields(array(
 
-    //         Field::make('image', 'partner_image', 'Partner Image'),
+//         Field::make('image', 'partner_image', 'Partner Image'),
 
-    //         Field::make('text', 'partner_heading', 'Heading')
-    //             ->set_default_value('Message from the Managing Partner'),
+//         Field::make('text', 'partner_heading', 'Heading')
+//             ->set_default_value('Message from the Managing Partner'),
 
-    //         Field::make('textarea', 'partner_message', 'Message')
-    //             ->set_default_value('“At Mahbub & Co., our legacy is built on trust, teamwork, and tenacity. We believe in delivering not just legal solutions, but peace of mind for every client we serve. As we look to the future, our focus remains on combining global standards with local insight to create meaningful impact.”'),
+//         Field::make('textarea', 'partner_message', 'Message')
+//             ->set_default_value('“At Mahbub & Co., our legacy is built on trust, teamwork, and tenacity. We believe in delivering not just legal solutions, but peace of mind for every client we serve. As we look to the future, our focus remains on combining global standards with local insight to create meaningful impact.”'),
 
-    //         Field::make('text', 'partner_signature', 'Signature')
-    //             ->set_default_value('— Mahbub Rahman, Managing Partner'),
+//         Field::make('text', 'partner_signature', 'Signature')
+//             ->set_default_value('— Mahbub Rahman, Managing Partner'),
 
-    //     ))
-    //     ->set_render_callback(function ($fields) {
-    //         set_query_var('partner_fields', $fields);
-    //         get_template_part('components/about/managing-partner');
-    //     });
+//     ))
+//     ->set_render_callback(function ($fields) {
+//         set_query_var('partner_fields', $fields);
+//         get_template_part('components/about/managing-partner');
+//     });
 
 // });
 

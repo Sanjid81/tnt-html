@@ -19,9 +19,9 @@ $category_name = 'Banking & Finance';
         <div class="left-side-container">
             <div class="left-side-content">
                 <!-- Header -->
-                <div class="team-header">
-                    <h1><?php echo esc_html($title); ?></h1>
-                    <p class="body-text"><?php echo esc_html($description); ?></p>
+                <div class="team-header" >
+                    <h1 data-aos="fade-up"><?php echo esc_html($title); ?></h1>
+                    <p class="body-text" data-aos="fade-up"><?php echo esc_html($description); ?></p>
                 </div>
 
                 <!-- Search & Filter -->
@@ -29,8 +29,8 @@ $category_name = 'Banking & Finance';
                     <div class="form-wrapper">
 
                         <!-- Search -->
-                        <div class="input-group search-field">
-                            <input type="text" placeholder="<?php echo esc_attr($search_placeholder); ?>">
+                        <div class="input-group search-field" data-aos="fade-up">
+                            <input type="text" placeholder="<?php echo esc_attr($search_placeholder); ?>" data-aos="fade-up">
                             <span class="icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -53,8 +53,8 @@ $category_name = 'Banking & Finance';
                         </div>
 
                         <!-- Select -->
-                        <div class="input-group select-field">
-                            <select>
+                        <div class="input-group select-field" data-aos="fade-up">
+                            <select data-aos="fade-up">
                                 <option value="" disabled selected><?php echo esc_attr($select_placeholder); ?></option>
                                 <?php
                                 // Generate unique categories dynamically
@@ -119,9 +119,9 @@ $category_name = 'Banking & Finance';
 
 
         <div class="right-side-container">
-            <div class="right-side-content">
+            <div class="right-side-content"data-aos="fade-left">
 
-                <div class="category-tag">
+                <div class="category-tag" id="category-tag">
                     <span class="category-tag-content"><?php echo esc_html($category_name); ?></span>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -130,17 +130,44 @@ $category_name = 'Banking & Finance';
                     </svg>
                 </div>
                 <!-- Team Members -->
-                <div class="team-members">
+                <div class="team-members" id="team-members-container">
                     <?php if ($team_members): ?>
                         <?php foreach ($team_members as $member): ?>
-                            <div class="team-member" data-category="<?php echo esc_attr($member['category']); ?>">
+                            <div data-aos="fade-up" class="team-member" data-category="<?php echo esc_attr($member['category']); ?>">
                                 <?php if ($member['photo']): ?>
-                                    <img src="<?php echo wp_get_attachment_url($member['photo']); ?>"
-                                        alt="<?php echo esc_attr($member['name']); ?>">
+                                    <div class="team-photo">
+                                        <img src="<?php echo wp_get_attachment_url($member['photo']); ?>"
+                                            alt="<?php echo esc_attr($member['name']); ?>">
+                                    </div>
+                                    <div>
+
+                                    </div>
                                 <?php endif; ?>
+                                <div class="team-details-btn-svg">
+                                    <?php if (!empty($member['team_button_link'])): ?>
+                                        <a href="<?php echo esc_url($member['team_button_link']); ?>" class="">
+                                            <!-- Tumi chawa SVG -->
+                                            <svg width="38" height="38" viewBox="0 0 38 38" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="38" height="38" rx="19" fill="#FFE6E9" />
+                                                <g clip-path="url(#clip0_927_12827)">
+                                                    <path d="M14.5 23.5L23.5 14.5" stroke="#BC001A" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M16.1875 14.5H23.5V21.8125" stroke="#BC001A" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_927_12827">
+                                                        <rect width="18" height="18" fill="white" transform="translate(10 10)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
                                 <div class="team-info">
-                                    <h4><?php echo esc_html($member['name']); ?></h4>
-                                    <span><?php echo esc_html($member['designation']); ?></span>
+                                    <h4 class="body-text-two"><?php echo esc_html($member['name']); ?></h4>
+                                    <span class="member-position"><?php echo esc_html($member['designation']); ?></span>
                                 </div>
                             </div>
                         <?php endforeach; ?>
