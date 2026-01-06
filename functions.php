@@ -42,6 +42,18 @@ function crb_load_carbonfields()
     if (file_exists($cf)) {
         require_once $cf;
     }
+    $cf = get_template_directory() . '/inc/theme-option.php';
+    if (file_exists($cf)) {
+        require_once $cf;
+    }
+    $cf = get_template_directory() . '/inc/team-post-type.php';
+    if (file_exists($cf)) {
+        require_once $cf;
+    }
+    $cf = get_template_directory() . '/inc/expertise-area.php';
+    if (file_exists($cf)) {
+        require_once $cf;
+    }
 }
 
 
@@ -141,108 +153,90 @@ function aos_init_script()
 }
 add_action('wp_footer', 'aos_init_script', 100);
 
-// =====================================================================================
+// ==================================== ajax register=================================================
+
 // =====================================================================================
 // =====================================================================================
 // =====================================================================================
 
-// ...........Ajax.............
-add_action('wp_enqueue_scripts', function () {
-    // ensure path to your JS is correct
-    wp_enqueue_script(
-        'team-filter-js',
-        get_template_directory_uri() . '/script/people/search-filte',
-        array('jquery'),
-        filemtime(get_template_directory() . '/script/people/search-filte'),
-        true
-    );
 
-    wp_localize_script('team-filter-js', 'ajax_object', array(
+function mahbub_team_search_scripts()
+{
+    wp_enqueue_script('mahbub-team-search', get_stylesheet_directory_uri() . '/src/scripts/components/people/team-search.js', array('jquery'), '1.0', true);
+    wp_localize_script('mahbub-team-search', 'mahbub_ajax', array(
         'ajax_url' => admin_url('admin-ajax.php'),
     ));
-});
+}
+add_action('wp_enqueue_scripts', 'mahbub_team_search_scripts');
 
+// ====================================// AJAX handler=================================================
 
+// =====================================================================================
+// =====================================================================================
+// =====================================================================================
 
-// ............AJAX............
-add_action('wp_ajax_filter_team_members', 'filter_team_members');
-add_action('wp_ajax_nopriv_filter_team_members', 'filter_team_members');
+// AJAX handler
+function mahbub_team_search_ajax()
+{
 
-function filter_team_members() {
-    // security: make sure request exists
     $search = isset($_POST['search']) ? sanitize_text_field($_POST['search']) : '';
-    $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+    $area = isset($_POST['area']) ? sanitize_text_field($_POST['area']) : '';
 
-    $team_members = carbon_get_theme_option('team_members');
+    $args = array(
+        'post_type' => 'team',
+        'posts_per_page' => -1,
+    );
 
-    $output = '';
-    $category_tag = 'All Team Members';
-
-    if ($category) {
-        $category_tag = $category;
-    } elseif ($search) {
-        $category_tag = 'Search Result';
+    if (!empty($search)) {
+        $args['s'] = $search;
     }
 
-    if ($team_members && is_array($team_members)) {
-        foreach ($team_members as $member) {
-            // ensure keys exist
-            $name = isset($member['name']) ? $member['name'] : '';
-            $member_cat = isset($member['category']) ? $member['category'] : '';
-            $photo_id = isset($member['photo']) ? $member['photo'] : '';
-            $link = isset($member['team_button_link']) ? $member['team_button_link'] : '#';
-            $designation = isset($member['designation']) ? $member['designation'] : '';
-
-            if ($search && stripos($name, $search) === false) {
-                continue;
-            }
-
-            if ($category && $member_cat !== $category) {
-                continue;
-            }
-
-            $img_url = $photo_id ? wp_get_attachment_url($photo_id) : '';
-
-            $output .= '<div class="team-member" data-category="' . esc_attr($member_cat) . '">';
-
-            if ($img_url) {
-                $output .= '<div class="team-photo"><img src="' . esc_url($img_url) . '" alt="' . esc_attr($name) . '"></div>';
-            } else {
-                $output .= '<div class="team-photo"><img src="' . esc_url(get_template_directory_uri() . '/assets/images/placeholder.png') . '" alt="' . esc_attr($name) . '"></div>';
-            }
-
-            $output .= '<div class="team-details-btn-svg">';
-            $output .= '<a href="' . esc_url($link) . '">';
-            $output .= '<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">';
-            $output .= '<rect width="38" height="38" rx="19" fill="#FFE6E9"/>';
-            $output .= '<g clip-path="url(#clip0_927_12827)">';
-            $output .= '<path d="M14.5 23.5L23.5 14.5" stroke="#BC001A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />';
-            $output .= '<path d="M16.1875 14.5H23.5V21.8125" stroke="#BC001A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />';
-            $output .= '</g>';
-            $output .= '<defs><clipPath id="clip0_927_12827"><rect width="18" height="18" fill="white" transform="translate(10 10)" /></clipPath></defs>';
-            $output .= '</svg>';
-            $output .= '</a>';
-            $output .= '</div>';
-
-            $output .= '<div class="team-info">';
-            $output .= '<h4 class="body-text-two">' . esc_html($name) . '</h4>';
-            $output .= '<span class="member-position">' . esc_html($designation) . '</span>';
-            $output .= '</div>';
-
-            $output .= '</div>';
-        }
+    if (!empty($area)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'team_area',
+                'field' => 'slug',
+                'terms' => $area,
+            ),
+        );
     }
 
-    if (empty($output)) {
-        $output = '<p>No team members found.</p>';
-    }
+    $query = new WP_Query($args);
 
-    wp_send_json(array(
-        'html' => $output,
-        'category_tag' => $category_tag
-    ));
+    if ($query->have_posts()):
+        while ($query->have_posts()):
+            $query->the_post(); ?>
+            <div class="mahbub__team-member">
+                <?php if (has_post_thumbnail()): ?>
+                    <div class="mahbub__team-thumb"><?php the_post_thumbnail('thumbnail'); ?></div>
+                <?php endif; ?>
+                <div class="team-member-info">
+                    <h3 class="mahbub__team-name">
+                        <?php the_title(); ?>
+                    </h3>
+                    <p class="mahbub__team-designation">
+                        <?php echo esc_html(get_post_meta(get_the_ID(), '_team_member_designation', true)); ?>
+                    </p>
+                </div>
+            </div>
+        <?php endwhile;
+        wp_reset_postdata();
+    else:
+        echo '<p>No Team Members found.</p>';
+    endif;
 
     wp_die();
 }
+add_action('wp_ajax_mahbub_team_search', 'mahbub_team_search_ajax');
+add_action('wp_ajax_nopriv_mahbub_team_search', 'mahbub_team_search_ajax');
+
+// ====================================register custon post=================================================
+
+// =====================================================================================
+// =====================================================================================
+// =====================================================================================
+
+
+
 
 

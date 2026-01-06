@@ -20,7 +20,7 @@ defined('ABSPATH') || exit;
 
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="container">
+        <!-- <div class="container"> -->
             <div class="nav-container">
                 <div class="nav-wraper">
                     <div class="nav-first-half">
@@ -256,5 +256,5 @@ defined('ABSPATH') || exit;
                 </div>
 
             </div>
-        </div>
+        <!-- </div> -->
     </nav>

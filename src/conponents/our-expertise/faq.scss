@@ -22,7 +22,7 @@
             display: flex;
 
             // flex-wrap: wrap;
-            @media (max-width:1500px) {
+            @media (max-width:1600px) {
                 flex-wrap: wrap;
             }
 
@@ -32,7 +32,7 @@
                 background-color: var(--dark-red);
                 // opacity: 90%;
 
-                @media (max-width:1500px) {
+                @media (max-width:1600px) {
                     max-width: 100%;
                 }
 
@@ -56,7 +56,7 @@
                         color: var(--light-bg);
                         margin-bottom: 40px;
 
-                        @media (max-width:1500px) {
+                        @media (max-width:1600px) {
                             max-width: 950px;
                         }
                     }
@@ -78,7 +78,7 @@
             background-color: rgb(251, 248, 249);
             width: 100%;
             // opacity: 95%;
-                                z-index: 1 !important;
+            z-index: 1 !important;
 
 
             .faq-content-wraper {
@@ -157,11 +157,7 @@
                             width: 100%;
                             padding-bottom: 20px;
 
-                            @media (max-width: 1600px) {
-                                grid-template-columns: 1fr;
-                            }
-
-                            @media (max-width:1500px) {
+                            @media (max-width:1600px) {
                                 grid-template-columns: repeat(2, 1fr);
                             }
 
@@ -180,21 +176,6 @@
                                 background-color: #fff;
                                 cursor: pointer;
                                 z-index: 1;
-
-                                // &::before {
-                                //     content: "";
-                                //     position: absolute;
-                                //     inset: 0; // => top:0; right:0; bottom:0; left:0;
-                                //     background-color: #faf5f5;
-                                //     transform: scaleX(0);
-                                //     transform-origin: left;
-                                //     transition: transform 0.45s ease;
-                                //     z-index: 0;
-                                // }
-
-                                // &:hover::before {
-                                //     transform: scaleX(1);
-                                // }
 
                                 span {
                                     z-index: 1;
