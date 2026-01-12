@@ -54,8 +54,8 @@ body {
 .container {
     margin: 0 auto;
     width: 100%;
-    padding-left: 120px;
-    padding-right: 120px;
+    padding-left: 104px;
+    padding-right: 104px;
     max-width: 1920px;
 
     @include breakpoint-max(3xl) {
@@ -143,85 +143,78 @@ button {
     align-items: center;
     width: fit-content;
     justify-content: center;
-    background: #FFFFFF;
-    color: var(--text-light);
-    padding: 6px 70px 6px 32px;
-    border-radius: 50px;
+    background: var(--primary-red);
+    color: var(--color-white);
+    padding: 10px 18px;
+    // border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    height: 56px;
     position: relative;
 
     @media (max-width: 1300px) {
-        height: 48px;
-        padding: 6px 50px 6px 16px;
+        // height: 48px;
+        padding: 10px 14px;
         gap: 8px;
     }
 
     .button-text {
-        color: var(--dark-bg);
+        color: var(--color-white);
+        // @extend .button-text;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: none;
+        text-wrap: nowrap;
+    }
+
+    &:hover {
+        background: var(--dark-red);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 30px rgba(255, 255, 255, 0.2);
+        transform: translateY(-1.5px);
+        /* subtle lift */
+    }
+}
+
+.secondary-button {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: fit-content;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    padding: 10px 18px;
+    // border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    text-wrap: nowrap;
+
+    @media (max-width: 1300px) {
+        // height: 48px;
+        padding: 10px 14px;
+        gap: 8px;
+    }
+
+    .button-text {
+        color: var(--color-white);
         // @extend .button-text;
         text-decoration: none;
         transition: all 0.3s ease;
         box-shadow: none;
-    }
-
-    svg {
-        transition: all 0.3s ease;
-        position: absolute;
-        top: 50%;
-        right: 6px;
-        transform: translateY(-50%);
-        transition: right 0.3s ease;
-
-        rect {
-            transition: fill 0.3s ease;
-        }
-
-        path {
-            transition: stroke 0.3s ease;
-        }
-
-        @media (max-width: 1300px) {
-            height: 36px;
-            width: 36px;
-
-        }
+        text-wrap: nowrap;
     }
 
     &:hover {
-        background-color: var(--primary-red);
-        padding: 6px 32px 6px 70px;
-
-        @media (max-width: 1300px) {
-            padding: 6px 16px 6px 50px;
-
-        }
-
-        .button-text {
-            color: #fff;
-            box-shadow: none;
-
-        }
-
-        svg {
-            right: calc(100% - 50px);
-
-            rect {
-                fill: #fff;
-            }
-
-            path {
-                stroke: var(--primary-red);
-            }
-
-            @media (max-width: 1300px) {
-                right: calc(100% - 42px);
-
-            }
-        }
-
+        background: var(--dark-red);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 30px rgba(255, 255, 255, 0.2);
+        transform: translateY(-1.5px);
+        /* subtle lift */
     }
 }

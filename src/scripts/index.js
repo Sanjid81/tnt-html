@@ -1,11 +1,14 @@
 import "../styles/index.scss";
 
 
-import "../scripts/components/hero-slider";
-import "../scripts/components/testimonials";
+
 import "../scripts/components/navbar";
-import "../scripts/components/about-counter";
-import  "./components/our-expertise/faq";
+import "./components/clients";
+import "./components/about-counter";
+
+
+
+
 
 
 

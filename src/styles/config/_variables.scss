@@ -1,31 +1,27 @@
 $font-body: "Manrope", sans-serif;
 
 :root {
-    --primary-red: rgba(150, 0, 20, 1);
-    --text-red: rgba(188, 0, 26, 1);
-    --dark-red: rgba(88, 0, 12, 1);
+
     --light-bg: rgba(255, 255, 255, 1);
-    --light-bg-2: rgba(255, 255, 255, 0.8);
+    --light-bg-2: rgba(255, 255, 255, 0.7);
     --dark-bg: #1A1A1A;
     --dark-normal: rgba(0, 0, 0, 1);
     --dark-80: rgba(0, 0, 0, 0.8);
     --text-dark: #333;
+
+    // ..............
+    --light-bg: rgba(255, 255, 255, 1);
     --color-white: #FFFFFF;
+    --color-white-80: rgba(255, 255, 255, 0.8);
+    --color-white-70: rgba(255, 255, 255, 0.7);
+    --color-white-30: rgba(255, 255, 255, 0.3);
+    --color-white-10: rgba(255, 255, 255, 0.1);
+    --primary-red: rgba(238, 44, 44, 1);
+    --text-red: rgba(188, 0, 26, 1);
+    --dark-red: rgb(163, 8, 28);
+
     --gold: #D4AF37;
 
     // font
     --font-primary: "Figtree", sans-serif;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

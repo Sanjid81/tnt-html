@@ -7,40 +7,6 @@ use Carbon_Fields\Block;
 
 
 
-// add_action('carbon_fields_register_fields', function () {
-//     Container::make('theme_options', 'Header Options')
-//         ->set_icon('dashicons-admin-generic') // optional
-//         ->add_fields(array(
-//             Field::make('image', 'site_logo', 'Site Logo'),
-//             Field::make('text', 'facebook_link', 'Facebook URL'),
-//             Field::make('text', 'email_link', 'Email'),
-//             Field::make('text', 'linkedin_link', 'LinkedIn URL'),
-//             Field::make('text', 'button_text', 'Button Text'),
-//             Field::make('text', 'button_link', 'Button Link'),
-//         ));
-// });
-
-// // footer
-
-
-// add_action('carbon_fields_register_fields', 'footer_theme_options');
-// function footer_theme_options()
-// {
-//     Container::make('theme_options', __('Footer Settings'))
-//         ->set_icon('dashicons-editor-quote')
-//         ->add_fields(array(
-//             Field::make('image', 'footer_logo', 'Footer Logo'),
-//             Field::make('image', 'footer_mobile_logo', 'Footer Mobile Logo'),
-//             Field::make('text', 'footer_tagline', 'Footer Tagline'),
-//             Field::make('text', 'footer_address', 'Address'),
-//             Field::make('text', 'footer_email', 'Email'),
-//             Field::make('text', 'footer_copyright', 'Copyright Text'),
-//             Field::make('text', 'footer_site_name', 'Site Name'),
-//             Field::make('text', 'footer_site_url', 'Site URL'),
-//             Field::make('text', 'footer_privacy_policy', 'Privacy Policy Page URL'),
-//             Field::make('text', 'footer_terms_conditions', 'Terms & Conditions Page URL'),
-//         ));
-// }
 
 // .................................................
 
@@ -48,96 +14,86 @@ add_action('carbon_fields_register_fields', function () {
     // ............// Home page..................
     // ............// Home page..................
     // Hero slider
-    // .............
-    Block::make('Hero section')
-        ->add_fields(array(
-            Field::make('complex', 'hero_slides', 'Hero Slides')
-                ->add_fields(array(
-                    Field::make('text', 'title', 'Slide Title'),
-                    Field::make('text', 'highlight_text', 'Highlighted Text (inside <span>)'),
-                    Field::make('textarea', 'description', 'Slide Description'),
-                    Field::make('text', 'button_text', 'Button Text')->set_default_value('Get Started'),
-                    Field::make('text', 'button_link', 'Button Link')->set_default_value('#contact'),
-                    Field::make('image', 'image', 'Slide Image')
-                ))
-                ->set_layout('tabbed-horizontal')
 
-        ))
+    // -----------------------------
+    // Hero Section
+    Block::make('Hero Section')
+        ->set_description('Dynamic Hero Section with Services Menu, Main Content, and Company Info')
+        ->set_category('custom-blocks')
+        ->set_icon('format-image')
+        ->add_fields([
+            // Background
+            Field::make('image', 'bg_image', 'Background Image')
+                ->set_value_type('url')
+                ->set_default_value('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1920&q=80'),
+
+            // Main Heading
+            Field::make('text', 'heading', 'Main Heading')
+                ->set_default_value('Delivering Industrial Cleaning with Experience, Quality, and Expertise.'),
+
+            // Company Info Text
+            Field::make('textarea', 'company_info', 'Company Info')
+                ->set_default_value('TnT High Pressure Waterworks Ltd. delivers industry-leading high-pressure cleaning, chemical cleaning, vacuum services and more.'),
+
+            // Button 1
+            Field::make('text', 'btn_one_text', 'Button One Text')
+                ->set_default_value('REQUEST A QUOTE'),
+            Field::make('text', 'btn_one_link', 'Button One Link')
+                ->set_default_value('#'),
+
+            // Button 2
+            Field::make('text', 'btn_two_text', 'Button Two Text')
+                ->set_default_value('EXPLORE SERVICES'),
+            Field::make('text', 'btn_two_link', 'Button Two Link')
+                ->set_default_value('#'),
+
+        ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            $slides = $fields['hero_slides'] ?? [];
-
-            // Include hero template and pass variable
-            set_query_var('slides', $slides);
-            get_template_part('components/home/hero');
+            set_query_var('fields', $fields);
+            get_template_part('components/home/hero'); // your hero template
         });
 
 
-    // .................News and insights.....................
-    Block::make('News & Insights Section')
+
+
+
+    // -----------------------------
+    // who we are Section
+    // -----------------------------
+    Block::make(__('Who We Are Section', 'textdomain'))
         ->add_fields(array(
-            // Section Titles
-            Field::make('text', 'news_title', 'News Section Title')
-                ->set_default_value('News & Events'),
-            Field::make('text', 'insights_title', 'Insights Section Title')
-                ->set_default_value('Insights'),
-
-            // News Cards
-            Field::make('complex', 'news_cards', 'News Cards')
-                ->set_layout('tabbed-horizontal')
-
-                ->add_fields(array(
-                    Field::make('image', 'image', 'Card Image'),
-                    Field::make('text', 'meta', 'Meta Text')->set_default_value('NEWS • APRIL 28, 2025'),
-                    Field::make('text', 'heading', 'Card Heading'),
-                    Field::make('textarea', 'excerpt', 'Excerpt'),
-                    Field::make('text', 'read_more_text', 'Read More Text')->set_default_value('Read More'),
-                    Field::make('text', 'read_more_link', 'Read More URL')->set_default_value('#'),
-                )),
-
-            // Insights Cards
-            Field::make('complex', 'insights_cards', 'Insights Cards')
-                ->set_layout('tabbed-horizontal')
-                ->add_fields(array(
-                    Field::make('image', 'image', 'Card Image'),
-                    Field::make('text', 'meta', 'Meta Text')->set_default_value('NEWS • APRIL 28, 2025'),
-                    Field::make('text', 'heading', 'Card Heading'),
-                    Field::make('textarea', 'excerpt', 'Excerpt'),
-                    Field::make('text', 'read_more_text', 'Read More Text')->set_default_value('Read More'),
-                    Field::make('text', 'read_more_link', 'Read More URL')->set_default_value('#'),
-                )),
-
-            // Buttons
-            Field::make('text', 'news_button_text', 'News Button Text')->set_default_value('View more'),
-            Field::make('text', 'news_button_link', 'News Button Link')->set_default_value('#'),
-            Field::make('text', 'insights_button_text', 'Insights Button Text')->set_default_value('Get Started'),
-            Field::make('text', 'insights_button_link', 'Insights Button Link')->set_default_value('#'),
+            Field::make('text', 'small_title', __('Small Title (e.g. WHO WE ARE)', 'textdomain'))
+                ->set_default_value('WHO WE ARE')
+                ->set_width(50),
+            Field::make('text', 'main_title', __('Main Title', 'textdomain'))
+                ->set_default_value("Western Canada's Leader in Industrial Cleaning Solutions"),
+            Field::make('rich_text', 'description', __('Description', 'textdomain'))
+                ->set_default_value('TnT High Pressure Waterworks Ltd. delivers industry-leading high-pressure cleaning, chemical cleaning, vacuum services, and specialized industrial solutions for the oil & gas, petrochemical, pulp & paper, mining, and power generation sectors. Trusted for over decades—equipped to perform in the toughest environments.'),
+            Field::make('text', 'button_text', __('Button Text', 'textdomain'))
+                ->set_default_value('MORE ABOUT US'),
+            Field::make('text', 'button_link', __('Button Link', 'textdomain'))
+                ->set_default_value('#')
+                ->set_attribute('type', 'url'),
         ))
+        ->set_category('custom-blocks', __('Custom Blocks', 'textdomain'))
+        ->set_icon('admin-page')
+        ->set_keywords(['who we are', 'about', 'section'])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            // Pass all fields to template
-            set_query_var('news_insights_fields', $fields);
-            get_template_part('components/home/news-and-insights');
+            set_query_var('fields', $fields);
+            get_template_part('components/home/who-we-are');
         });
 
 
-    // .....................Testimonials Section...................
-    Block::make('Testimonials Section')
-        ->add_fields(array(
-            Field::make('complex', 'testimonials', 'Testimonials')
-                ->set_layout('tabbed-horizontal')
-                ->add_fields(array(
-                    Field::make('textarea', 'text', 'Testimonial Text'),
-                    Field::make('text', 'author', 'Author / Position'),
-                )),
-        ))
-        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-
-            set_query_var('testimonials', $fields['testimonials'] ?? []);
-
-            get_template_part('components/home/home-testimonials');
-        });
 
 
-    // ......................Accolades.................
+
+
+
+
+
+    // -----------------------------
+    // clients Section
+    // -----------------------------
 
     Block::make('Accolades Section')
         ->add_fields(array(
@@ -155,103 +111,115 @@ add_action('carbon_fields_register_fields', function () {
         ))
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
             $companies = $fields['companies'] ?? [];
-            include get_template_directory() . '/components/home/accolades.php';
+            include get_template_directory() . '/components/home/clients.php';
         });
 
 
-    // legal solutions
-    Block::make('Legal Solutions Section')
+
+    // -----------------------------
+    // single img Section
+    // -----------------------------
+    Block::make('Single Image Block')
         ->add_fields(array(
-            Field::make('text', 'lead_text', 'Lead Text')
-                ->set_help_text('Use <br> for line breaks if needed'),
+            Field::make('image', 'single_image', 'Image')
         ))
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            set_query_var('lead_text', $fields['lead_text'] ?? '');
-            get_template_part('components/home/legal-solution');
+            // include get_template_directory() . '/components/home/single-image.php';
         });
 
 
 
+    // -----------------------------
+    // Home counter Section
+    // -----------------------------
+    Block::make('Counter Section')
+        ->set_description('Statistics counter section')
+        ->set_category('layout', 'Layout')
+        ->set_icon('chart-bar')
+        ->add_fields([
+            Field::make('complex', 'counters', 'Counters')
+                ->set_layout('tabbed-horizontal')
+                ->add_fields([
+                    Field::make('text', 'stat_number', 'Target Number')
+                        ->set_attribute('type', 'number')
+                        ->set_default_value('0'),
+
+                    Field::make('text', 'suffix', 'Suffix (e.g. +, %, /7, K)')
+                        ->set_default_value(''),
+
+                    Field::make('text', 'description', 'Description')
+                        ->set_default_value('Stat Description')
+                ])
+        ])
+        ->set_render_callback(function ($block) {
+            $counters = $block['counters'] ?? [];
+            include get_template_directory() . '/components/home/numbers-counter.php';
+        });
 
 
 
+    // ------------------------------------------
+    // Offsite Cleaning Section
+    // ------------------------------------------
 
 
-    // ===================Our expertise page========================
-    // ===========================================
-   
-    Block::make('FAQ Section')
-        ->set_description('Add FAQ section with dynamic team area categories')
-        ->set_category('common')
-        ->add_fields(array(
-            Field::make('text', 'faq_section_title', 'Section Title'),
-            Field::make('textarea', 'faq_section_description', 'Section Description'),
-            // No need to add faq_items manually, they will be fetched dynamically
-        ))
+    Block::make('Offsite Cleaning Section')
+        ->set_description('Specialized Offsite Cleaning Solutions Section')
+        ->set_category('custom-blocks') // optional, you can create a category
+        ->set_icon('admin-tools') // optional dashicon
+        ->add_fields([
+            Field::make('text', 'oc_label', 'Label')
+                ->set_default_value('Offsite Cleaning Services'),
+
+            Field::make('text', 'oc_heading', 'Heading')
+                ->set_default_value('Specialized Offsite Cleaning Solutions for Every Industrial Need'),
+
+            Field::make('textarea', 'oc_description', 'Description')
+                ->set_default_value('Our offsite cleaning facilities are designed to handle equipment that requires specialized, controlled-environment cleaning. With advanced high-pressure systems, expert technicians, and strict safety standards, we restore equipment to peak condition while minimizing downtime for your operations.'),
+
+            Field::make('text', 'oc_button_text', 'Button Text')
+                ->set_default_value('VIEW DETAILS'),
+
+            Field::make('text', 'oc_button_link', 'Button Link')
+                ->set_default_value('#'),
+
+            Field::make('image', 'oc_image', 'Right Section Image')
+                ->set_value_type('url')
+                ->set_default_value('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80'),
+        ])
+        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+            $offsit_cleaning = $fields['offsit_cleaning'] ?? [];
+            // include get_template_directory() . '/components/home/offsite-cleaning.php';
+        });
+
+
+
+    Block::make('footer-top Section')
+        ->set_description('Full-screen Hero Section with Background, Heading, and CTA Button')
+        ->set_category('custom-blocks')
+        ->set_icon('format-image')
+        ->add_fields([
+            Field::make('image', 'hero_bg', 'Background Image')
+                ->set_value_type('url')
+                ->set_default_value('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=80'),
+
+            Field::make('text', 'hero_heading', 'Heading')
+                ->set_default_value("Built on Sustainability.<br>Driven by Safety."),
+
+            Field::make('text', 'hero_button_text', 'Button Text')
+                ->set_default_value('Explore Our Safety'),
+
+            Field::make('text', 'hero_button_link', 'Button Link')
+                ->set_default_value('#'),
+
+            Field::make('color', 'hero_overlay_color', 'Overlay Color')
+                ->set_default_value('rgba(0,0,0,0.4)'),
+
+        ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
             set_query_var('fields', $fields);
-            get_template_part('components/our-expertise/tailored-solution');
+            // get_template_part('components/home/footer-fullscreen');
         });
-
-
-
-
-
-
-
-
-    // ===================Our expertise page========================
-    // ===========================================
-    // common-footer-top
-    // Block::make('Common footer top Section')
-    //     ->add_fields(array(
-    //         Field::make('text', 'lead_text', 'Lead Text')
-    //             ->set_help_text('Use <br> for line breaks if needed'),
-
-    //         Field::make('textarea', 'legal_text', 'Legal Text')
-    //             ->set_help_text('Use <br> for line breaks if needed'),
-
-    //         Field::make('text', 'button_text', 'Button Text')
-    //             ->set_default_value('Learn More'),
-
-    //         Field::make('text', 'button_link', 'Button Link')
-    //             ->set_default_value('#'),
-    //     ))
-    //     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-    //         // Variables
-    //         $lead_text = $fields['lead_text'] ?? '';
-    //         $legal_text = $fields['legal_text'] ?? '';
-    //         $button_text = $fields['button_text'] ?? '';
-    //         $button_link = $fields['button_link'] ?? '';
-
-    //         // Include template directly
-    //         include get_template_directory() . '/components/our-expertise/common-footer-top.php';
-    //     });
-
-
-
-    //// ...........................Our people page..................................
-    //// .............................................................
-    //// .............................................................
-    Block::make('Teams Section')
-        ->set_description('Our people page team section')
-        ->set_category('common')
-        ->add_fields(array(
-            Field::make('text', 'block_title', 'Block Title')
-                ->set_default_value('Our Team'),
-            Field::make('textarea', 'block_description', 'Block Description')
-                ->set_default_value('Meet our amazing team members.'),
-            Field::make('text', 'button_text', 'Button Text')
-                ->set_default_value('Learn More'),
-        ))
-        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            // Pass $fields to template
-            set_query_var('fields', $fields);
-            get_template_part('components/our-people/our-people');
-        });
-
-
-
 
 
 });

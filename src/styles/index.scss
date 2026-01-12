@@ -1,35 +1,39 @@
-@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
+@font-face {
+    font-family: "Geist Variable";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2") format("woff2-variations");
+}
+    // configs
+    @import "./config/_variables";
+    @import "./config/_typography";
+    @import "./config/_breakpoints";
+    @import "./config/_globals";
+    @import "./config/_animations";
 
-// configs
-@import "./config/_variables";
-@import "./config/_typography";
-@import "./config/_breakpoints";
-@import "./config/_globals";
-@import "./config/_animations";
+    // utilities
+    @import "../conponents/utilities/footer.scss";
+    @import "../conponents/utilities/navbar.scss";
+    // Home components
 
-// utilities
-@import "../conponents/utilities/footer.scss";
-@import "../conponents/utilities/navbar.scss";
-// Home components
-
-@import "../conponents/home/hero.scss";
-@import "../conponents/home/news-events.scss";
-@import "../conponents/home/testimonials.scss";
-@import "../conponents/home/accolades.scss";
-@import "../conponents/home/leagal-solution.scss";
-
-// our expertise components
-@import "../conponents//our-expertise/faq.scss";
-@import "../conponents//our-expertise/common-footer-top-section.scss";
-
-// Our people components
-@import "../conponents/our-people/our-people.scss";
+    @import "../conponents/home/hero.scss";
+    @import "../conponents/home/who-we-are.scss";
+    @import "../conponents/home/clients.scss";
+    @import "../conponents/home/numbers-counter.scss";
+  
 
 
-// about components
-@import "../conponents/about/about-header.scss";
-@import "../conponents/about/our-story.scss";
-@import "../conponents/about/counter.scss";
-@import "../conponents/about/mission-vission.scss";
-@import "../conponents/about/managing-partner.scss";
-@import "../conponents/our-expertise-details/our-expertise-details.scss";
+
+
+
+
+
+
+
+
+
+
+
+
+

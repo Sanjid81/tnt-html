@@ -1,38 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const counters = document.querySelectorAll('.counter');
+document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll(".stat-number");
 
-    const options = {
-        root: null,
-        threshold: 0.3,
-    };
+    counters.forEach(counter => {
+        const target = parseInt(counter.dataset.target, 10);
+        const suffix = counter.dataset.suffix || "";
+        let current = 0;
 
-    const startCounter = (counter) => {
-        const target = +counter.getAttribute('data-target');
-        const suffix = counter.getAttribute('data-suffix') || '';
-        let count = 0;
+        // যদি target number NaN হয় (e.g. fraction like 12/7), animation skip
+        if (isNaN(target)) {
+            counter.textContent = counter.dataset.target + suffix;
+            return;
+        }
 
-        const step = () => {
-            const increment = target / 50; // smaller increment for smoother animation
-            count += increment;
+        const duration = 1500; // ms
+        const step = target / (duration / 16);
 
-            if (count < target) {
-                counter.innerText = Math.floor(count) + suffix;
-                requestAnimationFrame(step); // smooth frame update
+        const updateCounter = () => {
+            current += step;
+            if (current < target) {
+                counter.textContent = Math.ceil(current) + suffix;
+                requestAnimationFrame(updateCounter);
             } else {
-                counter.innerText = target + suffix;
+                counter.textContent = target + suffix;
             }
         };
-        requestAnimationFrame(step);
-    };
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                startCounter(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-
-    counters.forEach(counter => observer.observe(counter));
+        updateCounter();
+    });
 });

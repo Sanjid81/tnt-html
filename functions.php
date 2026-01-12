@@ -86,6 +86,40 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
 
 
 
+// menu svg
+class Custom_Menu_With_SVG extends Walker_Nav_Menu
+{
+    public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
+    {
+        $classes = empty($item->classes) ? [] : (array) $item->classes;
+        $class_names = esc_attr(implode(' ', $classes));
+
+        $output .= '<li class="' . $class_names . '">';
+
+        // ✅ শুধু main menu item-এ SVG
+        if ($depth === 0) {
+            $output .= '
+                <svg width="4" height="4" viewBox="0 0 4 4" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" class="menu-dot">
+                    <rect width="4" height="4" fill="white"/>
+                </svg>
+            ';
+        }
+
+        // তারপর <a> tag
+        $atts = !empty($item->url) ? 'href="' . esc_url($item->url) . '"' : '';
+        $output .= '<a ' . $atts . '>';
+        $output .= esc_html($item->title);
+        $output .= '</a>';
+    }
+
+    public function end_el(&$output, $item, $depth = 0, $args = null)
+    {
+        $output .= '</li>';
+    }
+}
+
+
 
 
 
@@ -107,9 +141,9 @@ add_action('after_setup_theme', 'mytheme_setup');
 function yourthemename_register_menus()
 {
     register_nav_menus(array(
-        'footer_expertise_col1' => __('Areas of Expertise Column 1', 'yourthemename'),
-        'footer_expertise_col2' => __('Areas of Expertise Column 2', 'yourthemename'),
+        'footer_Services' => __('Services', 'yourthemename'),
         'footer_quicklinks' => __('Quick Links', 'yourthemename'),
+        'footer_legal' => __('Foote Legal', 'yourthemename'),
     ));
 
 }

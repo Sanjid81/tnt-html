@@ -1,0 +1,72 @@
+.hero-number-section {
+    background-color: var(--dark-normal);
+    padding-top: 100px;
+    padding-bottom: 149px;
+
+    .numbers-container {
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: flex-start;
+        width: 100%;
+
+        @media (max-width: 950px) {
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+        }
+
+
+
+        .stat-card {
+            text-align: start;
+
+
+            .stat-number {
+                color: var(--color-white);
+                margin-bottom: 14px;
+
+            }
+
+            .stat-label {
+                color: var(--color-white-70);
+            }
+
+            @media (max-width: 768px) {
+                .stats-container {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                .stat-card:nth-child(2)::after {
+                    display: none;
+                }
+
+                .stat-number {
+                    font-size: 36px;
+                }
+
+                .stat-label {
+                    font-size: 12px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .stats-container {
+                    grid-template-columns: 1fr;
+                }
+
+                .stat-card::after {
+                    display: none;
+                }
+
+                .stat-card {
+                    padding: 36px 24px;
+                }
+            }
+        }
+
+    }
+
+}
