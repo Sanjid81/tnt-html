@@ -15,7 +15,7 @@ defined('ABSPATH') || exit;
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body class="body-main-class" <?php body_class(); ?>>
 
 
     <!-- Navbar -->
@@ -146,3 +146,18 @@ defined('ABSPATH') || exit;
         </div>
         <!-- </div> -->
     </nav>
+
+
+
+
+    <div class="body-outlines">
+        <div class="container">
+           <div class="outline-container">
+             <div class="outline-one"></div>
+            <div class="outline-one"></div>
+            <div class="outline-one"></div>
+            <div class="outline-one"></div>
+            <div class="outline-one"></div>
+           </div>
+        </div>
+    </div>

@@ -74,11 +74,17 @@ add_action('carbon_fields_register_fields', function () {
             Field::make('text', 'button_link', __('Button Link', 'textdomain'))
                 ->set_default_value('#')
                 ->set_attribute('type', 'url'),
+
+            // ✅ Extra Class Field
+            Field::make('text', 'extra_class', __('Extra CSS Class', 'textdomain'))
+                ->set_help_text('Add any additional CSS classes for this block')
+                ->set_width(50),
         ))
         ->set_category('custom-blocks', __('Custom Blocks', 'textdomain'))
         ->set_icon('admin-page')
         ->set_keywords(['who we are', 'about', 'section'])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+            // template এ পাঠানো
             set_query_var('fields', $fields);
             get_template_part('components/home/who-we-are');
         });
@@ -124,7 +130,7 @@ add_action('carbon_fields_register_fields', function () {
             Field::make('image', 'single_image', 'Image')
         ))
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            // include get_template_directory() . '/components/home/single-image.php';
+            include get_template_directory() . '/components/comon-section/single-img.php';
         });
 
 
@@ -189,11 +195,11 @@ add_action('carbon_fields_register_fields', function () {
         ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
             $offsit_cleaning = $fields['offsit_cleaning'] ?? [];
-            // include get_template_directory() . '/components/home/offsite-cleaning.php';
+            include get_template_directory() . '/components/home/cleaning-solution.php';
         });
 
 
-
+    // =================footer-top-section=======================
     Block::make('footer-top Section')
         ->set_description('Full-screen Hero Section with Background, Heading, and CTA Button')
         ->set_category('custom-blocks')
@@ -212,14 +218,15 @@ add_action('carbon_fields_register_fields', function () {
             Field::make('text', 'hero_button_link', 'Button Link')
                 ->set_default_value('#'),
 
-            Field::make('color', 'hero_overlay_color', 'Overlay Color')
-                ->set_default_value('rgba(0,0,0,0.4)'),
-
+            // ✅ Extra Class field
+            Field::make('text', 'extra_class', 'Extra CSS Class')
+                ->set_help_text('Add custom CSS class to this block'),
         ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
             set_query_var('fields', $fields);
-            // get_template_part('components/home/footer-fullscreen');
+            include get_template_directory() . '/components/comon-section/footer-top-full-screen.php';
         });
+
 
 
 });

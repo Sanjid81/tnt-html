@@ -1,0 +1,9 @@
+.single-img-container {
+    background-color: var(--dark-normal);
+    img {
+        max-height: 780px;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+    }
+}

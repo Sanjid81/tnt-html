@@ -1,101 +1,53 @@
 <?php
-
-
 /**
- * Team Post Type + Team Area Taxonomy
+ * Service Post Type + Service Area Taxonomy
  */
-function register_team_post_type_and_taxonomy() {
-
-/* =========================
-* Team Post Type
-* ========================= */
-register_post_type('team', array(
-'labels' => array(
-'name' => 'All Teams',
-'singular_name' => 'Team Member',
-'add_new_item' => 'Add New Member',
-'edit_item' => 'Edit Team Member',
-),
-'public' => true,
-'menu_icon' => 'dashicons-groups',
-'supports' => array('title', 'thumbnail'), // Name + Photo
-'has_archive' => true,
-'rewrite' => array('slug' => 'team'),
-'show_in_rest' => true,
-));
-
-/* =========================
-* Team Area Taxonomy (Category)
-* ========================= */
-register_taxonomy('team_area', 'team', array(
-'labels' => array(
-'name' => 'Team Areas',
-'singular_name' => 'Team Area',
-'add_new_item' => 'Add New Practice Area',
-'edit_item' => 'Edit Team Area',
-'menu_name' => 'Area of practice',
-),
-'hierarchical' => true, // Category style
-'public' => true,
-'show_admin_column' => true,
-'show_in_rest' => true,
-'rewrite' => array('slug' => 'team-area'),
-));
-}
-add_action('init', 'register_team_post_type_and_taxonomy');
-
-/**
- * Team Member Designation (Post Meta)
- */
-
-/* Add Meta Box */
-function team_member_designation_meta_box()
-{
-    add_meta_box(
-        'team_member_designation',
-        'Member Designation',
-        'team_member_designation_callback',
-        'team',
-        'normal',
-        'default'
-    );
-}
-add_action('add_meta_boxes', 'team_member_designation_meta_box');
-
-
-/* Meta Box Field */
-function team_member_designation_callback($post)
+function register_service_post_type_and_taxonomy()
 {
 
-    $designation = get_post_meta($post->ID, '_team_member_designation', true);
+    // ── Service Post Type ────────────────────────────────────────
+    register_post_type('service', [
+        'labels' => [
+            'name' => 'Services',
+            'singular_name' => 'Service',
+            'menu_name' => 'Services',
+            'add_new' => 'Add New',
+            'add_new_item' => 'Add New Service',
+            'edit_item' => 'Edit Service',
+            'new_item' => 'New Service',
+            'view_item' => 'View Service',
+            'search_items' => 'Search Services',
+            'not_found' => 'No services found',
+            'not_found_in_trash' => 'No services found in Trash',
+        ],
+        'public' => true,
+        'menu_icon' => 'dashicons-hammer',
+        'supports' => ['title', 'editor', 'thumbnail', 'excerpt'], // editor যোগ করা যেতে পারে
+        'has_archive' => true,
+        'rewrite' => ['slug' => 'service'],
+        'show_in_rest' => true,
+    ]);
 
-    wp_nonce_field('team_designation_nonce_action', 'team_designation_nonce');
-
-    echo '<input type="text" name="team_member_designation" value="' . esc_attr($designation) . '" />';
+    // ── Service Category / Type Taxonomy ─────────────────────────
+    register_taxonomy('service_type', 'service', [
+        'labels' => [
+            'name' => 'Service Categories',
+            'singular_name' => 'Service Category',
+            'menu_name' => 'Categories',
+            'search_items' => 'Search Service Categories',
+            'all_items' => 'All Service Categories',
+            'parent_item' => 'Parent Category',
+            'parent_item_colon' => 'Parent Category:',
+            'edit_item' => 'Edit Service Category',
+            'update_item' => 'Update Service Category',
+            'add_new_item' => 'Add New Service Category',
+            'new_item_name' => 'New Service Category Name',
+        ],
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'rewrite' => ['slug' => 'service-category'], // ← এখানে আলাদা slug
+    ]);
 }
 
-
-/* Save Meta */
-function save_team_member_designation($post_id)
-{
-
-    if (
-        !isset($_POST['team_designation_nonce']) ||
-        !wp_verify_nonce($_POST['team_designation_nonce'], 'team_designation_nonce_action')
-    ) {
-        return;
-    }
-
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
-
-    if (isset($_POST['team_member_designation'])) {
-        update_post_meta(
-            $post_id,
-            '_team_member_designation',
-            sanitize_text_field($_POST['team_member_designation'])
-        );
-    }
-}
-add_action('save_post_team', 'save_team_member_designation');
+add_action('init', 'register_service_post_type_and_taxonomy');

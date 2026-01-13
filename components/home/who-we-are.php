@@ -1,11 +1,9 @@
 <?php
 $fields = get_query_var('fields', []);
-$bg_url = !empty($fields['background_image']) ? wp_get_attachment_image_url($fields['background_image'], 'full') : '';
+$extra_class = !empty($fields['extra_class']) ? esc_attr($fields['extra_class']) : '';
 ?>
 
-<section class="who-we-are">
-
-
+<section class="who-we-are <?php echo $extra_class; ?>">
     <!-- Content -->
     <div class="container">
         <div class="who-we-are-content">
@@ -16,8 +14,6 @@ $bg_url = !empty($fields['background_image']) ? wp_get_attachment_image_url($fie
                 </svg>
                 <?php if (!empty($fields['small_title'])): ?>
                     <p class="button-text">
-
-
                         <?php echo esc_html($fields['small_title']); ?>
                     </p>
                 <?php endif; ?>
@@ -27,7 +23,6 @@ $bg_url = !empty($fields['background_image']) ? wp_get_attachment_image_url($fie
             <div class="who-we-are-right">
                 <?php if (!empty($fields['main_title'])): ?>
                     <?php
-                    // Split the title at "Leader"
                     $title_parts = explode('Leader', $fields['main_title'], 2);
                     ?>
                     <h1 class="main-title heading-two">
