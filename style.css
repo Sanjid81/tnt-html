@@ -10,3 +10,47 @@ Tags: Multipage Page
 License: GNU General Public License 
 License URI: 
 */
+
+/* Services grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.service-item {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  text-align: center;
+}
+.service-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 12px;
+}
+.service-item h3 { font-size: 18px; margin: 0 0 8px; }
+.service-item .excerpt { font-size: 14px; color: #666; }
+
+@media (max-width: 768px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .services-grid { grid-template-columns: 1fr; }
+}
+
+/* Service card styles (match component markup) */
+.service-card {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  text-align: left;
+}
+.service-card .service-image img { display: block; width: 100%; height: auto; margin-bottom: 12px; border-radius: 4px; }
+.service-card .service-title { font-size: 18px; margin: 0 0 8px; }
+.service-card .service-excerpt { font-size: 14px; color: #666; margin-bottom: 12px; }
+.read-more-btn { display: inline-block; color: #0073aa; text-decoration: none; }
+.read-more-btn:hover { text-decoration: underline; }

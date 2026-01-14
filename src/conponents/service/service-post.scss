@@ -1,0 +1,16 @@
+.services-section{
+    background-color: var(--dark-normal);
+    padding-top: 200px;
+    .service-post-container{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+
+        .service-post-content{
+            .service-title{
+                color: var(--color-white);
+                z-index: 11;
+            }
+        }
+    }
+}

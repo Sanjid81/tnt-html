@@ -10,7 +10,7 @@ function register_service_post_type_and_taxonomy()
         'labels' => [
             'name' => 'Services',
             'singular_name' => 'Service',
-            'menu_name' => 'Services',
+            'menu_name' => 'All Services',
             'add_new' => 'Add New',
             'add_new_item' => 'Add New Service',
             'edit_item' => 'Edit Service',
@@ -22,7 +22,7 @@ function register_service_post_type_and_taxonomy()
         ],
         'public' => true,
         'menu_icon' => 'dashicons-hammer',
-        'supports' => ['title', 'editor', 'thumbnail', 'excerpt'], // editor যোগ করা যেতে পারে
+        'supports' => ['title', 'editor', 'thumbnail', 'excerpt'], 
         'has_archive' => true,
         'rewrite' => ['slug' => 'service'],
         'show_in_rest' => true,
@@ -46,7 +46,7 @@ function register_service_post_type_and_taxonomy()
         'hierarchical' => true,
         'show_ui' => true,
         'show_in_rest' => true,
-        'rewrite' => ['slug' => 'service-category'], // ← এখানে আলাদা slug
+        'rewrite' => ['slug' => 'service-category'], 
     ]);
 }
 
