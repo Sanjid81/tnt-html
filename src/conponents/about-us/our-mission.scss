@@ -1,0 +1,39 @@
+.about-mission-section {
+    background-color: var(--dark-normal);
+    padding-top: 100px;
+    padding-bottom: 120px;
+
+    @media (max-width:1600px) {
+        padding-top: 60px;
+        padding-bottom: 90px;
+    }
+
+    @media (max-width:1200px) {
+        padding-top: 60px;
+        padding-bottom: 90px;
+    }
+
+    .our-mission-content {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        align-items: center;
+        justify-content: center;
+        max-width: 1290px;
+        width: 100%;
+        margin: 0 auto;
+
+        @media (max-width:1200px) {
+            gap: 40px;
+        }
+
+        .mission-title {
+            color: var(--color-white-80);
+        }
+
+        .heading-two {
+            text-align: center;
+            color: var(--color-white);
+        }
+    }
+}

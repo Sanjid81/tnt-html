@@ -46,14 +46,15 @@ function crb_load_carbonfields()
     if (file_exists($cf)) {
         require_once $cf;
     }
-    $cf = get_template_directory() . '/inc/service-post-type.php';
+    $cf = get_template_directory() . '/inc/service-post-type/service-fields.php';
     if (file_exists($cf)) {
         require_once $cf;
     }
-    $cf = get_template_directory() . '/inc/expertise-area.php';
+    $cf = get_template_directory() . '/inc/service-post-type/service-post-type.php';
     if (file_exists($cf)) {
         require_once $cf;
     }
+
     $cf = get_template_directory() . '/inc/block/services-block.php';
     if (file_exists($cf)) {
         require_once $cf;
@@ -202,12 +203,6 @@ add_action('wp_footer', 'aos_init_script', 100);
 // =====================================================================================
 
 
-/**
- * Services shortcode and template helper
- * Usage:
- * - Shortcode: [services count="4" category="category-slug"]
- * - Template: <?php display_services(array('count' => 4, 'category' => 'slug')); ?>
- */
 
 
 
@@ -223,71 +218,8 @@ add_action('wp_footer', 'aos_init_script', 100);
 
 
 
-// function render_services_block($atts = array()) {
-//     $atts = shortcode_atts(array(
-//         'count' => 4,
-//         'category' => '',
-//         'orderby' => 'date',
-//         'order' => 'DESC',
-//     ), $atts, 'services');
 
-//     $args = array(
-//         'post_type' => 'service',
-//         'posts_per_page' => intval($atts['count']),
-//         'orderby' => sanitize_text_field($atts['orderby']),
-//         'order' => sanitize_text_field($atts['order']),
-//         'post_status' => 'publish',
-//     );
 
-//     if (!empty($atts['category'])) {
-//         $cats = array_map('sanitize_text_field', array_map('trim', explode(',', $atts['category'])));
-//         $args['tax_query'] = array(
-//             array(
-//                 'taxonomy' => 'service_type',
-//                 'field' => 'slug',
-//                 'terms' => $cats,
-//             ),
-//         );
-//     }
-
-//     set_query_var('services_args', $args);
-//     ob_start();
-//     get_template_part('components/home/service');
-//     return ob_get_clean();
-// }
-// add_shortcode('services', 'render_services_block');
-
-// function display_services($args = array()) {
-//     $defaults = array(
-//         'count' => 4,
-//         'category' => '',
-//         'orderby' => 'date',
-//         'order' => 'DESC',
-//     );
-//     $args = wp_parse_args($args, $defaults);
-
-//     $q = array(
-//         'post_type' => 'service',
-//         'posts_per_page' => intval($args['count']),
-//         'orderby' => sanitize_text_field($args['orderby']),
-//         'order' => sanitize_text_field($args['order']),
-//         'post_status' => 'publish',
-//     );
-
-//     if (!empty($args['category'])) {
-//         $cats = array_map('sanitize_text_field', array_map('trim', explode(',', $args['category'])));
-//         $q['tax_query'] = array(
-//             array(
-//                 'taxonomy' => 'service_type',
-//                 'field' => 'slug',
-//                 'terms' => $cats,
-//             ),
-//         );
-//     }
-
-//     set_query_var('services_args', $q);
-//     get_template_part('components/home/service');
-// }
 
 
 

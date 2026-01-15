@@ -9,6 +9,7 @@
     .container {
         padding: 0px 104px;
         padding-bottom: 120px;
+        padding-top: 180px;
         max-width: 1920px;
         margin: 0 auto;
         width: 100%;
@@ -24,22 +25,27 @@
             max-width: 1680px;
             padding-left: 40px;
             padding-right: 40px;
+            padding-top: 90px;
         }
 
         @include breakpoint-max(xxl) {
             max-width: 1440px;
             padding-left: 40px;
             padding-right: 40px;
+            padding-top: 90px;
         }
 
         @include breakpoint-max(xl) {
             padding-left: 40px;
             padding-right: 40px;
+            padding-top: 40px;
         }
 
         @include breakpoint-max(lg) {
             padding-left: 30px;
             padding-right: 30px;
+            gap: 5px;
+            padding-top: 40px;
         }
 
         @include breakpoint-max(md) {
@@ -76,6 +82,7 @@
 
         .initail-slider {
             background-color: var(--dark-normal);
+
             &::before {
                 content: "";
                 position: absolute;
@@ -109,7 +116,7 @@
             .company-swiper {
                 width: 100%;
                 position: relative;
-                z-index: 1; 
+                z-index: 1;
             }
 
             .company-swiper .swiper-wrapper {
