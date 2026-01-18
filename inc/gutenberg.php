@@ -323,7 +323,76 @@ add_action('carbon_fields_register_fields', function () {
         });
 
 
+          Block::make( 'details Overview' )
+        ->add_fields( [
+
+            // Left section
+            Field::make( 'text', 'overview_tag', 'Overview Tag' )
+                ->set_default_value( '• OVERVIEW' ),
+
+            Field::make( 'text', 'title', 'Title' ),
+
+            Field::make( 'textarea', 'description', 'Description' ),
+
+            // Right section – Specs
+            Field::make( 'text', 'pressure_value', 'Pressure Value' )
+                ->set_default_value( '40,000' ),
+
+            Field::make( 'text', 'pressure_unit', 'Pressure Unit' )
+                ->set_default_value( 'psi' ),
+
+            Field::make( 'text', 'flow_value', 'Flow Value' )
+                ->set_default_value( '60' ),
+
+            Field::make( 'text', 'flow_unit', 'Flow Unit' )
+                ->set_default_value( 'GPM' ),
+
+            // Button
+            Field::make( 'text', 'button_text', 'Button Text' )
+                ->set_default_value( 'Download our brochure' ),
+
+            Field::make( 'text', 'button_link', 'Button Link' ),
+
+        ] )
+           ->set_render_callback(function ($fields) {
+            set_query_var('fields', $fields);
+            include get_template_directory() . '/components/service-details/over-view.php';
+        });
+
+
+         Block::make( 'Key Features' )
+        ->add_fields( [
+
+            // Section tag
+            Field::make( 'text', 'section_tag', 'Section Tag' )
+                ->set_default_value( '• KEY FEATURES' ),
+
+            // Features repeater
+            Field::make( 'complex', 'features', 'Features' )
+                ->set_layout( 'tabbed-horizontal' )
+                ->add_fields( [
+                    Field::make( 'text', 'title', 'Feature Title' ),
+                    Field::make( 'textarea', 'description', 'Feature Description' ),
+                ] )
+                ->set_min( 1 ),
+
+        ] )
+        ->set_render_callback( function ( $fields ) {
+            set_query_var( 'fields', $fields );
+            include get_template_directory() . '/components/service-details/key-features.php';
+        } );
+
+            Block::make( 'Dynamic Paragraph' )
+        ->add_fields( [
+            Field::make( 'textarea', 'paragraph_text', 'Paragraph Text' )
+                ->set_default_value(
+                    'Ultra high pressure water blasting is an accepted non destructive method for coating and paint removal, while sandblasting can "peen" surface area trapping contaminates, the use of ultra high pressure systems can produce white metal surfaces with no erosion or structural change to surfaces. With special rust inhibitors added to the water stream, "flash rusting" can be prolonged for up to two days.'
+                ),
+        ] )
+        ->set_render_callback( function ( $fields ) {
+            set_query_var( 'fields', $fields );
+            include get_template_directory() . '/components/service-details/dynamic-paragraph.php';
+        } );
+
 });
-
-
 

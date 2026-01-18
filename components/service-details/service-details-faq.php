@@ -10,11 +10,19 @@
                 <div class="accordion-item <?php echo $index === 0 ? 'active' : ''; ?>">
                     <div class="accordion-header">
                         <div class="header-left">
-                            <span class="section-number"><?php echo $number; ?></span>
+                            <span class="section-number body-text"><?php echo $number; ?></span>
                             <h3 class="accordion-title heading-four"><?php echo $title; ?>
                             </h3>
 
-                            <div class="accordion-body">
+                           
+                        </div>
+                        <div class="accordion-icon">
+                            <span class="plus">+</span>
+                            <span class="minus">−</span>
+                        </div>
+                    </div>
+
+ <div class="accordion-body">
                                 <div class="accordion-content">
                                     <?php if (!empty($desc)): ?>
                                         <p class="body-text">
@@ -30,14 +38,6 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-icon">
-                            <span class="plus">+</span>
-                            <span class="minus">−</span>
-                        </div>
-                    </div>
-
-
                 </div>
             <?php endforeach; ?>
         </div>
