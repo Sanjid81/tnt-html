@@ -14,7 +14,7 @@
                             <h3 class="accordion-title heading-four"><?php echo $title; ?>
                             </h3>
 
-                           
+
                         </div>
                         <div class="accordion-icon">
                             <span class="plus">+</span>
@@ -22,22 +22,22 @@
                         </div>
                     </div>
 
- <div class="accordion-body">
-                                <div class="accordion-content">
-                                    <?php if (!empty($desc)): ?>
-                                        <p class="body-text">
-                                            <?php echo esc_html($desc); ?>
-                                        </p>
-                                    <?php endif; ?>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <?php if (!empty($desc)): ?>
+                                <p class="body-text">
+                                    <?php echo esc_html($desc); ?>
+                                </p>
+                            <?php endif; ?>
 
-                                    <?php if (!empty($image)): ?>
-                                        <div class="accordion-image-wrapper">
-                                            <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>"
-                                                class="accordion-image">
-                                        </div>
-                                    <?php endif; ?>
+                            <?php if (!empty($image)): ?>
+                                <div class="accordion-image-wrapper">
+                                    <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>"
+                                        class="accordion-image">
                                 </div>
-                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>

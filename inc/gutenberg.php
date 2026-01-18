@@ -83,7 +83,6 @@ add_action('carbon_fields_register_fields', function () {
         ->set_icon('admin-page')
         ->set_keywords(['who we are', 'about', 'section'])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            // template এ পাঠানো
             set_query_var('fields', $fields);
             get_template_part('components/home/who-we-are');
         });
@@ -113,6 +112,9 @@ add_action('carbon_fields_register_fields', function () {
             // Buttons
             Field::make('text', 'acolades_button_text', 'Acolades Button Text')->set_default_value('View more'),
             Field::make('text', 'acolades_button_link', 'Acolades Button Link')->set_default_value('#'),
+            // Extra Class field
+            Field::make('text', 'extra_class', 'Extra CSS Class')
+                ->set_help_text('Add custom CSS class to this block'),
         ))
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
             $companies = $fields['companies'] ?? [];

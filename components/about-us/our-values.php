@@ -6,7 +6,7 @@
                     $title = $value['value_title'] ?? '';
                     $desc = $value['value_description'] ?? '';
                     ?>
-                    <div class="value-card">
+                    <div class="value-card" data-aos="fade-up">
                         <?php if (!empty($title)): ?>
                             <h3><?php echo esc_html($title); ?></h3>
                         <?php endif; ?>

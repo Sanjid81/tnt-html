@@ -10,7 +10,7 @@ if (!empty($companies)):
 
     ?>
 
-    <section class="company-section">
+    <section class="company-section <?php echo esc_attr($fields['extra_class'] ?? ''); ?>">
 
         <div class="container">
             <div class="client-heading" data-aos="fade-up"> 

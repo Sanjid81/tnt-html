@@ -8,7 +8,7 @@
         <?php endif; ?>
         <div class="overlay"></div>
         <div class="container">
-            <div class="service-hero-content">
+            <div class="service-hero-content" data-aos="fade-up">
                 <?php if (!empty($fields['hero_title'])): ?>
                     <h1 class="hero-title heading-one">
                         <?php echo esc_html($fields['hero_title']); ?>

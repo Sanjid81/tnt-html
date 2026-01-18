@@ -40,6 +40,12 @@ add_action('carbon_fields_register_fields', function () {
             Field::make('text', 'footer_site_url', 'Site URL'),
             Field::make('text', 'footer_privacy_policy', 'Privacy Policy Page URL'),
             Field::make('text', 'footer_terms_conditions', 'Terms & Conditions Page URL'),
+
+            // Social Media Links
+            Field::make('text', 'footer_facebook', 'Facebook URL'),
+            Field::make('text', 'footer_twitter', 'Twitter URL'),
+            Field::make('text', 'footer_instagram', 'Instagram URL'),
+            Field::make('text', 'footer_linkedin', 'LinkedIn URL'),
         ));
 
     // ----------------------------

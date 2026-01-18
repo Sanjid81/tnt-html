@@ -44,7 +44,7 @@
         @include breakpoint-max(lg) {
             padding-left: 30px;
             padding-right: 30px;
-            gap: 5px;
+            gap: 50px;
             padding-top: 40px;
         }
 
@@ -64,6 +64,10 @@
             display: flex;
             gap: 12px;
             z-index: 10;
+
+            // @media (max-width: 800px) {
+            //     margin-top: 40px;
+            // }
 
             svg {
                 margin-top: 6px;
@@ -96,6 +100,11 @@
                 background: linear-gradient(to right,
                         rgba(6, 7, 14, 1) 0%,
                         rgba(6, 7, 14, 0) 100%);
+
+                @media (max-width: 800px) {
+                    width: 80px;
+                    height: 100%;
+                }
             }
 
             &::after {
@@ -111,6 +120,11 @@
                 background: linear-gradient(to left,
                         rgba(6, 7, 14, 1) 0%,
                         rgba(6, 7, 14, 0) 100%);
+
+                @media (max-width: 800px) {
+                    width: 80px;
+                    height: 100%;
+                }
             }
 
             .company-swiper {
@@ -139,10 +153,20 @@
                     align-items: center;
                     justify-content: center;
 
+                    @media (max-width: 800px) {
+                        width: 100%;
+                        height: 55px;
+                    }
+
                     img {
-                        max-width: 120px;
-                        max-height: 120px;
+                        width: 120px;
+                        height: 120px;
                         object-fit: contain;
+
+                        @media (max-width: 800px) {
+                            width: 162px;
+                            height: 55px;
+                        }
                     }
                 }
             }

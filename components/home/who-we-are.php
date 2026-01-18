@@ -8,7 +8,7 @@ $extra_class = !empty($fields['extra_class']) ? esc_attr($fields['extra_class'])
     <div class="container">
         <div class="who-we-are-content">
             <!-- Left Small Title -->
-            <div class="who-we-are-left">
+            <div class="who-we-are-left" data-aos="fade-up">
                 <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="6" height="6" fill="white" fill-opacity="0.8" />
                 </svg>
@@ -20,7 +20,7 @@ $extra_class = !empty($fields['extra_class']) ? esc_attr($fields['extra_class'])
             </div>
 
             <!-- Right Main Content -->
-            <div class="who-we-are-right">
+            <div class="who-we-are-right" data-aos="fade-up">
                 <?php if (!empty($fields['main_title'])): ?>
                     <?php
                     $title_parts = explode('Leader', $fields['main_title'], 2);

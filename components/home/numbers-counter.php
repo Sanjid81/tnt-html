@@ -2,7 +2,7 @@
    <div class="container">
      <div class="numbers-container">
         <?php foreach ($counters as $counter): ?>
-            <div class="stat-card">
+            <div class="stat-card" data-aos="fade-up">
     
                 <div class="stat-number heading-three" data-target="<?php echo esc_attr($counter['stat_number']); ?>"
                     data-suffix="<?php echo esc_attr($counter['suffix']); ?>">

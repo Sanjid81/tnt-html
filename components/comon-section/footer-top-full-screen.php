@@ -19,14 +19,14 @@ $extra_class = !empty($fields['extra_class']) ? esc_attr($fields['extra_class'])
     <div class="footer-top-container">
         <!-- Heading -->
         <?php if ($heading): ?>
-            <h1 class="heading-one">
+            <h1 class="heading-one" data-aos="fade-up">
                 <?php echo wp_kses_post($heading); ?>
             </h1>
         <?php endif; ?>
 
         <!-- CTA Button -->
         <?php if ($button_text && $button_link): ?>
-            <a href="<?php echo $button_link; ?>" class="primary-button ">
+            <a href="<?php echo $button_link; ?>" class="primary-button" data-aos="fade-up">
                 <?php echo $button_text; ?>
                 <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="6" height="6" fill="white" />

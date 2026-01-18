@@ -34,6 +34,17 @@ function register_tnt_services_block()
             Field::make('text', 'tnt_fallback_count', __('Fallback Count', 'tnt-html'))
                 ->set_default_value('4'),
 
+            // Show All Services button fields
+            Field::make('checkbox', 'tnt_show_all_button', __('Show "All Services" Button?', 'tnt-html'))
+                ->set_option_value('yes')
+                ->set_default_value(true),
+
+            Field::make('text', 'tnt_show_all_button_text', __('All Services Button Text', 'tnt-html'))
+                ->set_default_value('Show All Services'),
+
+            Field::make('text', 'tnt_show_all_button_url', __('All Services Button URL', 'tnt-html'))
+                ->set_default_value(site_url('/services')),
+
         ])
 
         ->set_render_callback(function ($fields) {
@@ -46,6 +57,7 @@ function register_tnt_services_block()
                 ? esc_html($fields['view_button_text'])
                 : __('View Details', 'tnt-html');
 
+            // WP_Query arguments
             $args = [
                 'post_type' => 'service',
                 'post_status' => 'publish',
@@ -83,54 +95,76 @@ function register_tnt_services_block()
                 <div class="container">
                     <div class="service-post-container">
 
-                        <?php while ($query->have_posts()):
-                                $query->the_post(); ?>
+                        <?php if (have_posts()): ?>
+                            <?php while ($query->have_posts()):
+                                    $query->the_post(); ?>
+                                <div class="service-post-content" data-aos="fade-up">
+                                    <div class="service-image">
+                                        <div class="post-thumbnail-img">
+                                            <a href="<?php the_permalink(); ?>">
+                                                <?php the_post_thumbnail('medium_large'); ?>
+                                            </a>
+                                        </div>
 
-                            <div class="service-post-content" data-aos="fade-up">
-
-                                <div class="service-image">
-                                    <div class="post-thumbnail-img">
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php the_post_thumbnail('medium_large'); ?>
-                                        </a>
+                                        <div class="details-button">
+                                            <a href="<?php the_permalink(); ?>" class="service-btn third-button">
+                                                <?php echo $button_text; ?>
+                                                <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="6" height="6" fill="#EE2C2C" />
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
 
-                                    <div class="details-button">
-                                        <a href="<?php the_permalink(); ?>" class="service-btn third-button">
-                                            <?php echo $button_text; ?>
-                                            <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="6" height="6" fill="#EE2C2C" />
-                                            </svg>
-                                        </a>
+                                    <div class="service-info">
+                                        <h3 class="service-title heading-four">
+                                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                        </h3>
 
-
+                                        <p class="service-short-desc body-text">
+                                            <?php
+                                                $desc = carbon_get_post_meta(get_the_ID(), 'tnt_service_short_description');
+                                                if (!empty($desc)) {
+                                                    echo esc_html($desc);
+                                                }
+                                                ?>
+                                        </p>
                                     </div>
                                 </div>
-
-                                <div class="service-info">
-                                    <h3 class="service-title heading-four">
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php the_title(); ?>
-                                        </a>
-                                    </h3>
-
-                                    <p class="service-short-desc body-text">
-                                        <?php
-                                            $desc = carbon_get_post_meta(get_the_ID(), 'tnt_service_short_description');
-                                            if (!empty($desc)) {
-                                                echo esc_html($desc);
-                                            }
-                                            ?>
-                                    </p>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
 
 
-                                </div>
 
-                            </div>
 
-                        <?php endwhile; ?>
+
 
                     </div>
+                    <!-- Show All Services Button -->
+                    <?php
+                        $show_all_btn = !empty($fields['tnt_show_all_button']);
+                        $show_all_btn_text = !empty($fields['tnt_show_all_button_text'])
+                            ? esc_html($fields['tnt_show_all_button_text'])
+                            : __('Show All Services', 'tnt-html');
+
+                        $show_all_btn_url = !empty($fields['tnt_show_all_button_url'])
+                            ? esc_url($fields['tnt_show_all_button_url'])
+                            : site_url('/services');
+                        ?>
+
+                    <?php if ($show_all_btn && $show_all_btn_url): ?>
+                        <div class="services-all-btn-wrap" data-aos="fade-up">
+                            <a href="<?php echo $show_all_btn_url; ?>" class="primary-button services-all-btn">
+                                <span>
+                                    <?php echo $show_all_btn_text; ?>
+                                </span>
+                                <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="6" height="6" fill="white" />
+                                </svg>
+
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </section>
 

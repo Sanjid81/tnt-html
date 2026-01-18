@@ -26,12 +26,12 @@ $btn_two_link = $fields['btn_two_link'] ?? '#';
 
             <div class="hero-left-info">
                 <!-- Main Heading -->
-                <h1 class="hero-heading heading-one">
+                <h1 class="hero-heading heading-one" data-aos="fade-up">
                     <?php echo wp_kses_post(nl2br($heading)); ?>
                 </h1>
 
                 <!-- CTA Buttons -->
-                <div class="hero-buttons">
+                <div class="hero-buttons" data-aos="fade-up">
                     <a href="<?php echo esc_url($btn_one_link); ?>" class="third-button">
                         <div class="button-text">
                             <?php echo esc_html($btn_one_text); ?>
@@ -57,7 +57,7 @@ $btn_two_link = $fields['btn_two_link'] ?? '#';
             </div>
 
             <!-- Company Info -->
-            <div class="hero-right-info">
+            <div class="hero-right-info" data-aos="fade-up">
                 <p class="right-info-content body-text">
                     <?php echo esc_html($company_info); ?>
                 </p>
