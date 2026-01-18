@@ -116,11 +116,11 @@
 }
 
 .heading-five {
-    font-size: 32px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: 500;
     font-family: var(--font-primary);
-    line-height: 38.4px;
-    letter-spacing: -0.32px;
+    line-height: 32px;
+    letter-spacing: -2px;
 
     @media (max-width: 1030px) {
         font-size: 20px;

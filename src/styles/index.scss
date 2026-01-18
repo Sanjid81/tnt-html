@@ -1,63 +1,49 @@
 @font-face {
-    font-family: "Geist Variable";
+    font-family: "Geist";
     font-style: normal;
     font-weight: 100 900;
     font-display: swap;
     src: url("https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2") format("woff2-variations");
 }
-    // configs
-    @import "./config/_variables";
-    @import "./config/_typography";
-    @import "./config/_breakpoints";
-    @import "./config/_globals";
-    @import "./config/_animations";
 
-    // utilities
-    @import "../conponents/utilities/footer.scss";
-    @import "../conponents/utilities/navbar.scss";
-    @import "../conponents/utilities/single-img.scss";
-    @import "../conponents/utilities/footer-top-section.scss";
-    // Home components
+// configs
+@import "./config/_variables";
+@import "./config/_typography";
+@import "./config/_breakpoints";
+@import "./config/_globals";
+@import "./config/_animations";
 
-    // home
-    @import "../conponents/home/hero.scss";
-    @import "../conponents/home/who-we-are.scss";
-    @import "../conponents/home/clients.scss";
-    @import "../conponents/home/numbers-counter.scss";
-    @import "../conponents/home/cleaning-solution.scss";
-    @import "../conponents/home/capabilities.scss";
+// utilities
+@import "../conponents/utilities/footer.scss";
+@import "../conponents/utilities/navbar.scss";
+@import "../conponents/utilities/single-img.scss";
+@import "../conponents/utilities/footer-top-section.scss";
+// Home components
 
-    // service
-    @import "../conponents/service/our-service-banner.scss";
-    @import "../conponents/service/service-post.scss";
-    @import "../conponents/service/service-details-faq.scss";
-    @import "../conponents/service/service-details-overview.scss";
-    @import "../conponents/service/service-key-features.scss";
-    @import "../conponents/service/service-key-features.scss";
+// home
+@import "../conponents/home/hero.scss";
+@import "../conponents/home/who-we-are.scss";
+@import "../conponents/home/clients.scss";
+@import "../conponents/home/numbers-counter.scss";
+@import "../conponents/home/cleaning-solution.scss";
+@import "../conponents/home/capabilities.scss";
 
-
-    // about us
-    @import "../conponents/about-us/our-values.scss";
-    @import "../conponents/about-us/our-mission.scss";
-    @import "../conponents/about-us/about-who-we-are.scss";
-    @import "../conponents/about-us/about-client.scss";
+// service
+@import "../conponents/service/our-service-banner.scss";
+@import "../conponents/service/service-post.scss";
+@import "../conponents/service/service-details-faq.scss";
+@import "../conponents/service/service-details-overview.scss";
+@import "../conponents/service/service-key-features.scss";
+@import "../conponents/service/service-key-features.scss";
 
 
-    // contact us
-    @import "../conponents/contact-us/contact-form.scss";
-  
+// about us
+@import "../conponents/about-us/our-values.scss";
+@import "../conponents/about-us/our-mission.scss";
+@import "../conponents/about-us/about-who-we-are.scss";
+@import "../conponents/about-us/about-client.scss";
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// contact us
+@import "../conponents/contact-us/contact-form.scss";
+@import "../conponents/contact-us//google-map.scss";

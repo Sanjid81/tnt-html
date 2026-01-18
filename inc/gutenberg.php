@@ -230,7 +230,8 @@ add_action('carbon_fields_register_fields', function () {
 
 
 
-
+// ================= comon banner =======================
+// =================  =======================
     // Service
     Block::make(__('comon banner'))
         ->add_fields([
@@ -248,7 +249,8 @@ add_action('carbon_fields_register_fields', function () {
         });
 
 
-
+// ============================================================
+// ============================================================
     // About Us – Our Values Block
     Block::make(__('Our Values', 'tnt-html'))
         ->set_description(__('Dynamic values cards grid', 'tnt-html'))
@@ -279,6 +281,7 @@ add_action('carbon_fields_register_fields', function () {
             }
         });
 
+        // ================= Our mission =====================
     // Service
     Block::make(__('our mission'))
         ->add_fields([
@@ -296,7 +299,7 @@ add_action('carbon_fields_register_fields', function () {
 
 
 
-
+// ================= Service Details FAQ =======================
     Block::make(__('FAQ Section', 'tnt-html'))
         ->set_description(__('Dynamic FAQ Accordion Section', 'tnt-html'))
         ->set_category('custom', __('Custom Blocks', 'tnt-html'), 'editor-help')
@@ -324,7 +327,7 @@ add_action('carbon_fields_register_fields', function () {
             }
         });
 
-
+// ================= Service Details overview =======================
           Block::make( 'details Overview' )
         ->add_fields( [
 
@@ -362,6 +365,8 @@ add_action('carbon_fields_register_fields', function () {
         });
 
 
+// ================= Service Details key-features =======================
+        // details key-features
          Block::make( 'Key Features' )
         ->add_fields( [
 
@@ -384,6 +389,11 @@ add_action('carbon_fields_register_fields', function () {
             include get_template_directory() . '/components/service-details/key-features.php';
         } );
 
+
+
+
+// ==============================================================
+        // ================= Service Details dynamic-paragraph =======================
             Block::make( 'Dynamic Paragraph' )
         ->add_fields( [
             Field::make( 'textarea', 'paragraph_text', 'Paragraph Text' )
@@ -396,5 +406,66 @@ add_action('carbon_fields_register_fields', function () {
             include get_template_directory() . '/components/service-details/dynamic-paragraph.php';
         } );
 
+
+
+        // contact us
+        Block::make(__('Contact Us Section', 'your-text-domain'))
+        ->set_icon('email')
+        ->set_category('custom')
+        ->set_description(__('Clean contact section with info cards + CF7 form – no fixed sizes', 'your-text-domain'))
+        
+        ->add_fields(array(
+            Field::make('text', 'heading', __('Heading', 'your-text-domain')),
+            
+            Field::make('textarea', 'description', __('Description', 'your-text-domain'))
+                ->set_rows(3),
+            
+            Field::make('text', 'address_label', __('Address Label', 'your-text-domain')),
+            Field::make('textarea', 'address_content', __('Address', 'your-text-domain'))
+                ->set_rows(3),
+            
+            Field::make('text', 'email_label', __('Email Label', 'your-text-domain')),
+            Field::make('text', 'email_content', __('Email', 'your-text-domain')),
+            
+            Field::make('complex', 'phones', __('Phone Numbers', 'your-text-domain'))
+                ->add_fields(array(
+                    Field::make('text', 'phone_number', __('Phone', 'your-text-domain')),
+                ))
+                ->set_layout('tabbed-horizontal'),
+            
+            Field::make('text', 'form_shortcode', __('CF7 Shortcode', 'your-text-domain'))
+                ->set_help_text(__('Example: [contact-form-7 id="123" title="Contact"]')),
+        ))
+
+        ->set_render_callback(function ($fields) {
+            set_query_var('fields', $fields);
+            include get_template_directory() . '/components/contact-us/contact-us.php';
+        });
+
+
+        // ===================================================
+    Block::make(__('Dynamic Google Map', 'your-text-domain'))
+        ->set_icon('location')
+        ->set_category('custom')
+        ->set_description(__('Google Maps iframe embed – paste full iframe code', 'your-text-domain'))
+
+        ->add_fields([
+            Field::make('textarea', 'map_iframe', __('Google Maps Embed Iframe', 'your-text-domain'))
+                ->set_rows(6)
+                ->set_help_text(__('Paste the complete <iframe>...</iframe> code from Google Maps embed option.'))
+        ])
+
+        ->set_render_callback(function ($fields, $attributes) {
+            set_query_var('map_fields', $fields);
+            set_query_var('map_attributes', $attributes);
+
+            $template_path = get_template_directory() . '/components/contact-us/google-map.php';
+
+            if (file_exists($template_path)) {
+                include $template_path;
+            } else {
+                echo '<p style="color:#e74c3c; padding:2rem; text-align:center;">Template file missing: ' . esc_html(basename($template_path)) . '</p>';
+            }
+        });  
 });
 
