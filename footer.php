@@ -35,7 +35,9 @@ $footer_linkedin = carbon_get_theme_option('footer_linkedin');
                     <?php endif; ?>
                 </a>
 
-                <p class="footer-text"><?php echo esc_html($footer_tagline); ?></p>
+                <p class="footer-text">
+                    <?php echo wp_kses_post($footer_tagline); ?>
+                </p>
 
 
                 <?php if ($footer_facebook || $footer_twitter || $footer_instagram || $footer_linkedin): ?>
@@ -113,7 +115,7 @@ $footer_linkedin = carbon_get_theme_option('footer_linkedin');
                         <?php
                         // First column
                         wp_nav_menu(array(
-                            'theme_location' => 'footer_expertise_col1',
+                            'theme_location' => 'footer_services',
                             'container' => false,
                             'menu_class' => 'footer-links',
                         ));
@@ -155,7 +157,7 @@ $footer_linkedin = carbon_get_theme_option('footer_linkedin');
 
 
 
-        <div class="footer-bottom" data-aos="fade-up">
+        <div class="footer-bottom">
             <div class="copy-right-text">
                 <div>
                     <span><?php echo esc_html($footer_copyright); ?>

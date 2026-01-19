@@ -146,9 +146,9 @@ add_action('after_setup_theme', 'mytheme_setup');
 function yourthemename_register_menus()
 {
     register_nav_menus(array(
-        'footer_Services' => __('Services', 'yourthemename'),
-        'footer_quicklinks' => __('Quick Links', 'yourthemename'),
-        'footer_legal' => __('Foote Legal', 'yourthemename'),
+        'footer_services' => __('Footer Services', 'yourthemename'),
+        'footer_quicklinks' => __('Footer Quick Links', 'yourthemename'),
+        'footer_legal' => __('Footer Legal', 'yourthemename'),
     ));
 
 }

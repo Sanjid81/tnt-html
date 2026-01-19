@@ -43,12 +43,12 @@
                     gap: 70px;
 
                     @media (max-width: 1600px) {
-                        gap: 30px;
+                        gap: 50px;
                     }
 
                     @media (max-width: 1100px) {
                         // grid-template-columns: 1fr;
-                        gap: 20px;
+                        gap: 50px;
                     }
 
                     @media (max-width: 970px) {
@@ -101,7 +101,7 @@
                 }
 
                 .footer-text {
-                    width: 285px;
+                    width: 268px;
                     @extend .body-text-two;
                     color: var(--light-bg-2);
                     opacity: 80%;
@@ -114,8 +114,23 @@
 
                 .footer-social-icons {
                     padding-top: 40px;
+
                     @media (max-width:900px) {
                         padding-top: 20px
+                    }
+
+                    a {
+                        svg {
+                            path {
+                                fill-opacity: 0.6;
+                                transition: fill 0.3s;
+
+                            }
+
+                            &:hover path {
+                                fill-opacity: 100%
+                            }
+                        }
                     }
                 }
             }
@@ -146,20 +161,12 @@
                     position: relative;
                     opacity: 80%;
 
-
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -4px;
-                        width: 0;
-                        height: 1px;
-                        background-color: var(--text-red);
-                        transition: width 0.3s ease;
+                    @media (max-width:400px) {
+                        text-wrap: wrap;
                     }
 
                     &:hover {
-                        color: var(--light-bg);
+                        color: var(--primary-red);
 
                         &::before {
                             width: 100%;
@@ -174,6 +181,7 @@
 
                 @media (max-width:700px) {
                     width: 133px;
+                    text-wrap: wrap;
                 }
             }
 
@@ -222,20 +230,20 @@
                     transition: color 0.3s;
                     position: relative;
 
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -4px;
-                        width: 0;
-                        height: 1px;
-                        background-color: var(--text-red);
-                        transition: width 0.3s ease;
-                    }
+                    // &::before {
+                    //     content: "";
+                    //     position: absolute;
+                    //     left: 0;
+                    //     bottom: -4px;
+                    //     width: 0;
+                    //     height: 1px;
+                    //     background-color: var(--text-red);
+                    //     transition: width 0.3s ease;
+                    // }
 
                     &:hover {
                         cursor: pointer;
-                        color: var(--light-bg);
+                        color: var(--primary-red);
 
                         &::before {
                             width: 100%;

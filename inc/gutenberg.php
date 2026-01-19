@@ -300,6 +300,7 @@ add_action('carbon_fields_register_fields', function () {
 
 
 // ================= Service Details FAQ =======================
+
     Block::make(__('FAQ Section', 'tnt-html'))
         ->set_description(__('Dynamic FAQ Accordion Section', 'tnt-html'))
         ->set_category('custom', __('Custom Blocks', 'tnt-html'), 'editor-help')
@@ -315,8 +316,7 @@ add_action('carbon_fields_register_fields', function () {
                 ])
                 ->set_min(1)
                 ->set_collapsed(true)
-                ->set_header_template('<%- faq_title %>')
-                // ->set_add_button_text(__('Add FAQ', 'tnt-html')),
+                ->set_header_template('<%- faq_title %>'),
         ])
         ->set_render_callback(function ($fields) {
             $faq_items = $fields['faq_items'] ?? [];

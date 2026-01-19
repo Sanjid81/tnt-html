@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const headers = document.querySelectorAll('.accordion-header');
 

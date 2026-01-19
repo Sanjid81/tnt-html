@@ -1,4 +1,8 @@
 <?php
+/**
+ * Dynamic Google Map Block Template
+ */
+
 $fields = get_query_var('map_fields', []);
 $attributes = get_query_var('map_attributes', []);
 
@@ -11,24 +15,26 @@ if (empty($iframe_raw)) {
 
 $allowed_tags = [
     'iframe' => [
-        'src' => [],
-        'width' => [],
-        'height' => [],
-        'style' => [],
-        'allowfullscreen' => [],
-        'loading' => [],
-        'referrerpolicy' => [],
-        'title' => [],
-    ]
+        'src' => true,
+        'width' => true,
+        'height' => true,
+        'style' => true,
+        'allowfullscreen' => true,
+        'loading' => true,
+        'referrerpolicy' => true,
+        'title' => true,
+    ],
 ];
+
 $safe_iframe = wp_kses($iframe_raw, $allowed_tags);
 
 $block_class = !empty($attributes['className']) ? esc_attr($attributes['className']) : '';
 ?>
 
 <div class="dynamic-google-map-block <?php echo $block_class; ?>">
-    <div class="map-container">
-        <?php echo $safe_iframe; ?>
+    <div class="container">
+        <div class="map-container">
+            <?php echo $safe_iframe; ?>
+        </div>
     </div>
 </div>
-

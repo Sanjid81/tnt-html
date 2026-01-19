@@ -92,11 +92,6 @@
                                 margin-right: 10px;
                             }
 
-                            // svg {
-                            //     margin-right: 10px;
-                            //     margin-top: 8px;
-                            // }
-
                             a {
                                 display: inline-flex;
                                 align-items: center;
@@ -106,17 +101,6 @@
                                 color: var(--color-white);
                                 transition: color 0.3s;
                                 position: relative;
-
-                                &::before {
-                                    content: "";
-                                    position: absolute;
-                                    left: 0;
-                                    bottom: -4px;
-                                    width: 0;
-                                    height: 1px;
-                                    background-color: var(--text-red);
-                                    transition: width 0.3s ease;
-                                }
 
                                 &:hover {
                                     color: var(--text-red);
@@ -135,25 +119,37 @@
                                 gap: 5px;
                                 cursor: pointer;
 
-                                svg {
-                                    transition: transform 0.3s ease;
-                                    stroke: white;
-                                }
+                                // svg {
+                                //     transition: transform 0.3s ease;
+                                //     stroke: white;
+                                // }
 
                                 .sub-menu {
                                     position: absolute;
                                     top: 100%;
                                     left: 0;
-                                    background: #1a1a1a;
-                                    border: 1px solid #555;
+                                    background: var(--dark-normal);
                                     list-style: none;
-                                    padding: 10px;
-                                    margin-top: 10px;
+                                    padding: 20px;
+                                    margin-top: 28px;
                                     opacity: 0;
                                     visibility: hidden;
                                     z-index: 10;
-                                    min-width: 300px;
+                                    min-width: 200px;
                                     transition: all 0.3s ease;
+                                    // border-top: 1px solid var(--primary-red);
+
+                                }
+
+                                .sub-menu::before {
+                                    content: "";
+                                    position: absolute;
+                                    top: 0;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    width: 115px;
+                                    height: 2px;
+                                    background: var(--primary-red);
                                 }
 
                                 &:hover .sub-menu {
@@ -161,19 +157,16 @@
                                     visibility: visible;
                                 }
 
-                                &:hover a svg {
-                                    transform: rotate(180deg);
-                                    stroke: #FF6600;
-                                }
+                              
 
                                 .sub-menu li {
-                                    margin-bottom: 10px;
+                                    margin-bottom: 14px;
 
                                     a {
-                                        color: #e2d5d5;
+                                        color: rgba(255, 255, 255, 1);
                                         font-weight: 500;
-                                        font-size: 16px;
-                                        line-height: 24px;
+                                        font-size: 14px;
+                                        line-height: 20px;
 
                                         &:hover {
                                             color: var(--text-red);
@@ -236,7 +229,7 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background-color: rgba(0, 0, 0, 1);
+                background-color: var(--dark-normal);
                 display: flex;
                 flex-direction: column;
                 padding: 12px 30px 40px;
@@ -320,17 +313,17 @@
                                             transition: color 0.3s;
                                             position: relative;
 
-                                            &::before {
-                                                content: "";
-                                                position: absolute;
-                                                left: 0;
-                                                bottom: -4px;
-                                                width: 0;
-                                                height: 1px;
-                                                color: var(--text-red);
-                                                background-color: var(--text-red);
-                                                transition: width 0.3s ease;
-                                            }
+                                            // &::before {
+                                            //     content: "";
+                                            //     position: absolute;
+                                            //     left: 0;
+                                            //     bottom: -4px;
+                                            //     width: 0;
+                                            //     height: 1px;
+                                            //     color: var(--text-red);
+                                            //     background-color: var(--text-red);
+                                            //     transition: width 0.3s ease;
+                                            // }
 
                                             &:hover {
                                                 color: var(--text-red);
@@ -362,18 +355,6 @@
                                                 transition: color 0.3s;
                                                 position: relative;
 
-                                                &::before {
-                                                    content: "";
-                                                    position: absolute;
-                                                    left: 0;
-                                                    bottom: -4px;
-                                                    width: 0;
-                                                    height: 1px;
-                                                    color: var(--text-red);
-                                                    background-color: var(--text-red);
-                                                    transition: width 0.3s ease;
-                                                }
-
                                                 &:hover {
                                                     color: var(--text-red);
 
@@ -397,7 +378,7 @@
                                                 max-height: 0;
                                                 overflow: hidden;
                                                 transition: max-height 0.3s ease;
-                                                background: rgba(255, 255, 255, 0.06);
+                                                background: var(--dark-normal);
                                                 border-radius: 5px;
                                                 border-bottom: none;
 
@@ -417,19 +398,19 @@
                                                         transition: color 0.3s;
                                                         position: relative;
 
-                                                        &::before {
-                                                            content: "";
-                                                            position: absolute;
-                                                            left: 0;
-                                                            bottom: -4px;
-                                                            width: 0;
-                                                            height: 1px;
-                                                            background-color: var(--text-red);
-                                                            transition: width 0.3s ease;
-                                                        }
+                                                        // &::before {
+                                                        //     content: "";
+                                                        //     position: absolute;
+                                                        //     left: 0;
+                                                        //     bottom: -4px;
+                                                        //     width: 0;
+                                                        //     height: 1px;
+                                                        //     background-color: var(--text-red);
+                                                        //     transition: width 0.3s ease;
+                                                        // }
 
                                                         &:hover {
-                                                            // color: var(--text-red);
+                                                            color: var(--text-red);
 
                                                             &::before {
                                                                 width: 100%;
@@ -438,6 +419,8 @@
                                                     }
                                                 }
                                             }
+
+
 
                                             &:hover a svg {
                                                 transform: rotate(0deg);
@@ -545,6 +528,8 @@
                 vertical-align: middle;
                 background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_924_233)'%3E%3Cpath d='M13 6L8 11L3 6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_924_233'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E") no-repeat center;
                 background-size: 16px 16px;
+                padding: 2px;
+                background-color: rgba(255, 255, 255, 0.1);
                 transition: transform 0.3s ease, filter 0.3s ease;
             }
 

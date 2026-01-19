@@ -1,10 +1,19 @@
-.dynamic-paragraph{
-    p{
-        font-size: 18px;
-        line-height: 1.8;
-        color: var(--light-normal);
-        @media (max-width: 800px) {
-            font-size: 16px;
-        }
+.dynamic-paragraph {
+    background-color: var(--dark-normal);
+    padding-top: 100px;
+    padding-bottom: 240px;
+    @media (max-width: 1600px) {
+        padding-top: 80px;
+        padding-bottom: 120px;
+    }
+    @media (max-width: 900px) {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    p {
+        max-width: 1264px;
+        width: 100%;
+        color: var(--color-white-70);
     }
 }
