@@ -5,9 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function wrapLetters(node) {
         let current = node;
         while (current && current !== title) {
-            if (current.tagName === 'SPAN') {
-                return;
-            }
+            if (current.tagName === 'SPAN') return;
             current = current.parentElement;
         }
 
@@ -19,28 +17,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (char === ' ' || char === '\u00A0') {
                     fragment.appendChild(document.createTextNode(char));
                 } else {
-                    const el = document.createElement('i');
-                    el.className = 'char';
-                    el.style.transitionDelay = `${delay}s`;
-                    el.textContent = char;
-                    fragment.appendChild(el);
-                    delay += 0.20;  
-                               }
+                    const span = document.createElement('span');
+                    span.className = 'char';
+                    span.style.transitionDelay = `${delay}s`;
+                    span.textContent = char;
+                    fragment.appendChild(span);
+                    delay += 0.2;
+                }
             });
 
             node.replaceWith(fragment);
-        }
-        else if (node.nodeType === Node.ELEMENT_NODE) {
-            if (node.tagName !== 'SPAN') {
-                [...node.childNodes].forEach(wrapLetters);
-            }
+        } 
+        else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'SPAN') {
+            [...node.childNodes].forEach(wrapLetters);
         }
     }
 
     wrapLetters(title);
+
     setTimeout(() => {
-        if (window.AOS) {
-            AOS.refresh();
-        }
+        if (window.AOS) AOS.refresh();
     }, 150);
 });

@@ -33,25 +33,25 @@ $btn_two_link = $fields['btn_two_link'] ?? '#';
                 <!-- CTA Buttons -->
                 <div class="hero-buttons" data-aos="fade-up">
                     <a href="<?php echo esc_url($btn_one_link); ?>" class="third-button">
-                        <div class="button-text">
+                        
                             <?php echo esc_html($btn_one_text); ?>
                             <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="6" height="6" fill="#EE2C2C" />
                             </svg>
 
-                        </div>
+                        
 
                     </a>
 
                     <a href="<?php echo esc_url($btn_two_link); ?>" class="secondary-button ">
-                        <div class="button-text">
-                            <?php echo esc_html($btn_one_text); ?>
+                       
+                            <?php echo esc_html($btn_two_text); ?>
                             <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="6" height="6" fill="white" />
                             </svg>
 
 
-                        </div>
+                        
                     </a>
                 </div>
             </div>

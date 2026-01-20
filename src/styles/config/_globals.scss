@@ -141,30 +141,49 @@ button {
 
 
 
-
+#wpadminbar {
+    display: none;
+}
 
 
 .body-outlines {
-    // position: relative;
-    // // z-index: 9;
+    position: relative;
+    z-index: 9;
 
-    // .outline-container {
-    //     position: fixed;
-    //     display: flex;
-    //     gap: 428px;
-    //     inset: 114px 0 120px 0;
-    //     height: auto;
-    //     transition: all 0.3s ease;
+    .outline-container {
+        position: fixed;
+        display: flex;
+        gap: 428px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        transition: top 0.3s ease, bottom 0.3s ease;
 
-    //     &.full-height {
-    //         inset: 0;
-    //     }
+        .outline-wrapper {
+            height: 100%;
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            max-width: 1712px;
+            margin: 0 auto;
 
-    //     .outline-one {
-    //         width: 1px;
-    //         background-color: rgba(255, 255, 255, 0.1);
-    //     }
-    // }
+            .outline-one {
+                width: 1px;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        &.top-offset {
+            top: 80px;
+        }
+
+        &.bottom-offset {
+            bottom: 120px;
+        }
+    }
 }
 
 
@@ -276,6 +295,7 @@ button {
     position: relative;
     text-wrap: nowrap;
     text-decoration: none;
+    text-transform: uppercase;
 
 
     @media (max-width: 1300px) {

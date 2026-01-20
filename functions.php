@@ -183,14 +183,19 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 function aos_init_script()
 {
     echo '<script>
-        AOS.init({
-            duration: 1000, // animation duration in ms
-            offset: 100,    // scroll offset before animation triggers
-            once: false,    // true: animate only once, false: animate every scroll
-        });
+        if (typeof AOS !== "undefined") {
+            AOS.init({
+                duration: 1000, // animation duration in ms
+                offset: 100,    // scroll offset before animation triggers
+                once: false     // 🔥 animate every time
+            });
+        }
     </script>';
+
+
 }
 add_action('wp_footer', 'aos_init_script', 100);
+
 
 
 

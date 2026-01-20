@@ -10,7 +10,9 @@ $alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
 
 <div class="single-img-container">
     <div class="container">
-        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($alt_text); ?>"
+       <div class="img-wraper">
+         <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($alt_text); ?>"
             class="object-cover max-w-full h-auto">
+       </div>
     </div>
 </div>

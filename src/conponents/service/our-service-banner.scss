@@ -90,4 +90,62 @@
             }
         }
     }
+
+
+    &.safety-banner {
+            .container {
+                    position: relative;
+                    height: 100%;
+                    z-index: 3;
+                    display: flex;
+                    align-items: stretch;
+            
+            
+                    .service-hero-content {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        width: 100%;
+                        padding: 63px 0;
+                        height: 100%;
+            
+                        @media (max-width: 768px) {
+                            grid-template-columns: 1fr;
+                            gap: 30px;
+                            padding: 60px 0;
+                        }
+            
+            
+            
+                        .hero-title {
+                            margin-top: 127px;
+                            align-self: flex-start;
+                            color: var(--color-white);
+                            max-width: 800px;
+            
+                        }
+            
+                        .hero-subtitle {
+                            align-self: flex-end;
+                            justify-self: end;
+                            max-width: 420px;
+            
+                            color: var(--color-white-70);
+                        }
+            
+                        @media (max-width: 768px) {
+            
+            
+                            .hero-title,
+                            .hero-subtitle {
+                                align-self: flex-start;
+                                justify-self: start;
+                                max-width: 100%;
+                            }
+            
+            
+                        }
+                    }
+                }
+    }
 }
+

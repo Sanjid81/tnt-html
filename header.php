@@ -142,11 +142,13 @@ defined('ABSPATH') || exit;
     <div class="body-outlines">
         <div class="container">
             <div class="outline-container">
-                <div class="outline-one"></div>
-                <div class="outline-one"></div>
-                <div class="outline-one"></div>
-                <div class="outline-one"></div>
-                <div class="outline-one"></div>
+                <div class="outline-wrapper">
+                    <div class="outline-one"></div>
+                    <div class="outline-one"></div>
+                    <div class="outline-one"></div>
+                    <div class="outline-one"></div>
+                    <div class="outline-one"></div>
+                </div>
             </div>
         </div>
     </div>

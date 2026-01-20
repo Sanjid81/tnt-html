@@ -63,8 +63,9 @@
   .specs-items-wrapper {
     max-width: 649px;
     display: flex;
-    gap: 139px;
+    gap: 10px;
     align-items: center;
+    justify-content: space-between;
 
     @media (max-width:600px) {
       gap: 40px;
@@ -83,6 +84,8 @@
     }
 
     .spec-item-two {
+      margin-right: 88px;
+
       .spec-value {
         display: flex;
         align-items: center;

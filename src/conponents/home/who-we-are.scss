@@ -43,7 +43,7 @@
     }
 
     .who-we-are-right {
-      max-width: 836px;
+      max-width: 848px;
 
 
 
@@ -57,7 +57,7 @@
 
       .who-we-are-description {
         color: var(--color-white-70);
-        // margin-bottom: 32px;
+        margin-bottom: 32px;
         margin-top: 32px;
       }
 
@@ -68,30 +68,34 @@
 
   .who-we-are-right {
 
-    .who-we-are-right .main-title span,
-    .who-we-are-right .main-title span * {
-      color: var(--color-white) !important;
+    // main title wrapper
+    .main-title {
+
+      // default state (initial)
+      .char {
+        display: inline-block;
+        color: var(--color-white-30);
+        transition: color 0.75s ease;
+      }
+
+      // span বা nested element থাকলে force white (static text)
+      span,
+      span * {
+        color: var(--color-white);
+      }
     }
 
-    .who-we-are-right .main-title i.char {
-      font-style: normal;
-      display: inline-block;
-      color: var(--color-white-30);
-      transition: color 0.75s ease;
+    // when section is visible (AOS active)
+    &.aos-animate {
+      .main-title {
+        .char {
+          color: var(--color-white);
+        }
+      }
     }
-
-    .who-we-are-right.aos-animate .main-title i.char {
-      color: var(--color-white);
-    }
-
-    .who-we-are-right .main-title span i.char {
-      color: var(--color-white) !important;
-      transition: none !important;
-    }
-
   }
-
 }
+
 
 }
 

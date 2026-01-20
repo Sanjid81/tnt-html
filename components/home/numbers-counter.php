@@ -1,4 +1,4 @@
-<div class="hero-number-section">
+<div class="hero-number-section <?php echo esc_attr($extra_class); ?>">
    <div class="container">
      <div class="numbers-container">
         <?php foreach ($counters as $counter): ?>

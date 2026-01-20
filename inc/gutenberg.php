@@ -50,7 +50,7 @@ add_action('carbon_fields_register_fields', function () {
         ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
             set_query_var('fields', $fields);
-            get_template_part('components/home/hero'); // your hero template
+            get_template_part('components/home/hero');
         });
 
 
@@ -155,11 +155,16 @@ add_action('carbon_fields_register_fields', function () {
                         ->set_default_value(''),
 
                     Field::make('text', 'description', 'Description')
-                        ->set_default_value('Stat Description')
-                ])
+                        ->set_default_value('Stat Description'),
+
+                ]),
+            Field::make('text', 'extra_class', 'Extra CSS Class')
+                ->set_help_text('Add custom CSS class to this block'),
         ])
-        ->set_render_callback(function ($block) {
-            $counters = $block['counters'] ?? [];
+        ->set_render_callback(function ($fields) {
+            $counters = $fields['counters'] ?? [];
+            $extra_class = $fields['extra_class'] ?? '';
+
             include get_template_directory() . '/components/home/numbers-counter.php';
         });
 
@@ -230,7 +235,7 @@ add_action('carbon_fields_register_fields', function () {
 
 
 
-// ================= comon banner =======================
+    // ================= comon banner =======================
 // =================  =======================
     // Service
     Block::make(__('comon banner'))
@@ -242,6 +247,11 @@ add_action('carbon_fields_register_fields', function () {
 
             Field::make('textarea', 'hero_subtitle', 'Hero Subtitle')
                 ->set_help_text('You can use line breaks'),
+            // Extra Class field
+            Field::make('text', 'extra_class', 'Extra CSS Class')
+                ->set_help_text('Add custom CSS class to this block'),
+
+
         ])
         ->set_render_callback(function ($fields) {
             set_query_var('fields', $fields);
@@ -249,7 +259,7 @@ add_action('carbon_fields_register_fields', function () {
         });
 
 
-// ============================================================
+    // ============================================================
 // ============================================================
     // About Us – Our Values Block
     Block::make(__('Our Values', 'tnt-html'))
@@ -281,7 +291,7 @@ add_action('carbon_fields_register_fields', function () {
             }
         });
 
-        // ================= Our mission =====================
+    // ================= Our mission =====================
     // Service
     Block::make(__('our mission'))
         ->add_fields([
@@ -299,7 +309,7 @@ add_action('carbon_fields_register_fields', function () {
 
 
 
-// ================= Service Details FAQ =======================
+    // ================= Service Details FAQ =======================
 
     Block::make(__('FAQ Section', 'tnt-html'))
         ->set_description(__('Dynamic FAQ Accordion Section', 'tnt-html'))
@@ -327,112 +337,112 @@ add_action('carbon_fields_register_fields', function () {
             }
         });
 
-// ================= Service Details overview =======================
-          Block::make( 'details Overview' )
-        ->add_fields( [
+    // ================= Service Details overview =======================
+    Block::make('details Overview')
+        ->add_fields([
 
             // Left section
-            Field::make( 'text', 'overview_tag', 'Overview Tag' )
-                ->set_default_value( '• OVERVIEW' ),
+            Field::make('text', 'overview_tag', 'Overview Tag')
+                ->set_default_value('• OVERVIEW'),
 
-            Field::make( 'text', 'title', 'Title' ),
+            Field::make('text', 'title', 'Title'),
 
-            Field::make( 'textarea', 'description', 'Description' ),
+            Field::make('textarea', 'description', 'Description'),
 
             // Right section – Specs
-            Field::make( 'text', 'pressure_value', 'Pressure Value' )
-                ->set_default_value( '40,000' ),
+            Field::make('text', 'pressure_value', 'Pressure Value')
+                ->set_default_value('40,000'),
 
-            Field::make( 'text', 'pressure_unit', 'Pressure Unit' )
-                ->set_default_value( 'psi' ),
+            Field::make('text', 'pressure_unit', 'Pressure Unit')
+                ->set_default_value('psi'),
 
-            Field::make( 'text', 'flow_value', 'Flow Value' )
-                ->set_default_value( '60' ),
+            Field::make('text', 'flow_value', 'Flow Value')
+                ->set_default_value('60'),
 
-            Field::make( 'text', 'flow_unit', 'Flow Unit' )
-                ->set_default_value( 'GPM' ),
+            Field::make('text', 'flow_unit', 'Flow Unit')
+                ->set_default_value('GPM'),
 
             // Button
-            Field::make( 'text', 'button_text', 'Button Text' )
-                ->set_default_value( 'Download our brochure' ),
+            Field::make('text', 'button_text', 'Button Text')
+                ->set_default_value('Download our brochure'),
 
-            Field::make( 'text', 'button_link', 'Button Link' ),
+            Field::make('text', 'button_link', 'Button Link'),
 
-        ] )
-           ->set_render_callback(function ($fields) {
+        ])
+        ->set_render_callback(function ($fields) {
             set_query_var('fields', $fields);
             include get_template_directory() . '/components/service-details/over-view.php';
         });
 
 
-// ================= Service Details key-features =======================
-        // details key-features
-         Block::make( 'Key Features' )
-        ->add_fields( [
+    // ================= Service Details key-features =======================
+    // details key-features
+    Block::make('Key Features')
+        ->add_fields([
 
             // Section tag
-            Field::make( 'text', 'section_tag', 'Section Tag' )
-                ->set_default_value( '• KEY FEATURES' ),
+            Field::make('text', 'section_tag', 'Section Tag')
+                ->set_default_value('• KEY FEATURES'),
 
             // Features repeater
-            Field::make( 'complex', 'features', 'Features' )
-                ->set_layout( 'tabbed-horizontal' )
-                ->add_fields( [
-                    Field::make( 'text', 'title', 'Feature Title' ),
-                    Field::make( 'textarea', 'description', 'Feature Description' ),
-                ] )
-                ->set_min( 1 ),
+            Field::make('complex', 'features', 'Features')
+                ->set_layout('tabbed-horizontal')
+                ->add_fields([
+                    Field::make('text', 'title', 'Feature Title'),
+                    Field::make('textarea', 'description', 'Feature Description'),
+                ])
+                ->set_min(1),
 
-        ] )
-        ->set_render_callback( function ( $fields ) {
-            set_query_var( 'fields', $fields );
+        ])
+        ->set_render_callback(function ($fields) {
+            set_query_var('fields', $fields);
             include get_template_directory() . '/components/service-details/key-features.php';
-        } );
+        });
 
 
 
 
-// ==============================================================
-        // ================= Service Details dynamic-paragraph =======================
-            Block::make( 'Dynamic Paragraph' )
-        ->add_fields( [
-            Field::make( 'textarea', 'paragraph_text', 'Paragraph Text' )
+    // ==============================================================
+    // ================= Service Details dynamic-paragraph =======================
+    Block::make('Dynamic Paragraph')
+        ->add_fields([
+            Field::make('textarea', 'paragraph_text', 'Paragraph Text')
                 ->set_default_value(
                     'Ultra high pressure water blasting is an accepted non destructive method for coating and paint removal, while sandblasting can "peen" surface area trapping contaminates, the use of ultra high pressure systems can produce white metal surfaces with no erosion or structural change to surfaces. With special rust inhibitors added to the water stream, "flash rusting" can be prolonged for up to two days.'
                 ),
-        ] )
-        ->set_render_callback( function ( $fields ) {
-            set_query_var( 'fields', $fields );
+        ])
+        ->set_render_callback(function ($fields) {
+            set_query_var('fields', $fields);
             include get_template_directory() . '/components/service-details/dynamic-paragraph.php';
-        } );
+        });
 
 
 
-        // contact us
-        Block::make(__('Contact Us Section', 'your-text-domain'))
+    // contact us
+    Block::make(__('Contact Us Section', 'your-text-domain'))
         ->set_icon('email')
         ->set_category('custom')
         ->set_description(__('Clean contact section with info cards + CF7 form – no fixed sizes', 'your-text-domain'))
-        
+
         ->add_fields(array(
             Field::make('text', 'heading', __('Heading', 'your-text-domain')),
-            
+
             Field::make('textarea', 'description', __('Description', 'your-text-domain'))
                 ->set_rows(3),
-            
+
             Field::make('text', 'address_label', __('Address Label', 'your-text-domain')),
             Field::make('textarea', 'address_content', __('Address', 'your-text-domain'))
                 ->set_rows(3),
-            
+
             Field::make('text', 'email_label', __('Email Label', 'your-text-domain')),
             Field::make('text', 'email_content', __('Email', 'your-text-domain')),
-            
+
             Field::make('complex', 'phones', __('Phone Numbers', 'your-text-domain'))
                 ->add_fields(array(
                     Field::make('text', 'phone_number', __('Phone', 'your-text-domain')),
                 ))
                 ->set_layout('tabbed-horizontal'),
-            
+
             Field::make('text', 'form_shortcode', __('CF7 Shortcode', 'your-text-domain'))
                 ->set_help_text(__('Example: [contact-form-7 id="123" title="Contact"]')),
         ))
@@ -443,7 +453,7 @@ add_action('carbon_fields_register_fields', function () {
         });
 
 
-        // ===================================================
+    // ===================================================
     Block::make(__('Dynamic Google Map', 'your-text-domain'))
         ->set_icon('location')
         ->set_category('custom')
@@ -466,31 +476,31 @@ add_action('carbon_fields_register_fields', function () {
             } else {
                 echo '<p style="color:#e74c3c; padding:2rem; text-align:center;">Template file missing: ' . esc_html(basename($template_path)) . '</p>';
             }
-        });  
+        });
 
 
 
 
 
-        // /===========================================================
-        Block::make(__('Certifications & Trainings'))
-    ->add_fields([
-        Field::make('text', 'section_title', __('Section Title'))
-            ->set_default_value('CERTIFICATIONS & TRAININGS'),
+    // /===========================================================
+    Block::make(__('Certifications & Trainings'))
+        ->add_fields([
+            Field::make('text', 'section_title', __('Section Title'))
+                ->set_default_value('CERTIFICATIONS & TRAININGS'),
 
-        Field::make('complex', 'certificates', __('Certificates'))
-            ->set_layout('tabbed-horizontal')
-            ->add_fields([
-                Field::make('image', 'certificate_image', __('Certificate Image'))
-                    ->set_required(true),
-                Field::make('text', 'certificate_alt', __('Image Alt Text'))
-                    ->set_default_value('Certificate'),
-            ]),
-    ])
-    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-        $certificates = $fields['certificates'] ?? [];
-        include get_template_directory() . '/components/safety/certification.php';
-    });
+            Field::make('complex', 'certificates', __('Certificates'))
+                ->set_layout('tabbed-horizontal')
+                ->add_fields([
+                    Field::make('image', 'certificate_image', __('Certificate Image'))
+                        ->set_required(true),
+                    Field::make('text', 'certificate_alt', __('Image Alt Text'))
+                        ->set_default_value('Certificate'),
+                ]),
+        ])
+        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+            $certificates = $fields['certificates'] ?? [];
+            include get_template_directory() . '/components/safety/certification.php';
+        });
 
 
     Block::make('Safety Resposibility')

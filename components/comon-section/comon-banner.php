@@ -1,4 +1,4 @@
-<section class="service-hero-section">
+<section class="service-hero-section <?php echo esc_attr($fields['extra_class'] ?? ''); ?>">
     <div class="service-image-wrapper">
         <?php if (!empty($fields['hero_image'])): ?>
 

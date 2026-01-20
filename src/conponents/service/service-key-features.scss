@@ -10,7 +10,8 @@
 
   .content-wrapper {
     display: flex;
-    gap: 293px;
+    // gap: 293px; //eta dile bady line er sathe align hoy na
+    gap: 310px;
 
     @media (max-width: 1600px) {
       gap: 100px;
