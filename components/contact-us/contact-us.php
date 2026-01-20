@@ -47,7 +47,9 @@ if (empty($heading) && empty($description) && empty($address_content) && empty($
                             <?php foreach ($phones as $p): ?>
                                 <?php if (!empty($p['phone_number'])): ?>
                                     <div class="heading-five">
-                                        <?php echo esc_html($p['phone_number']); ?>
+                                        <a href="tel:<?php echo esc_attr($p['phone_number']); ?>">
+                                            <?php echo esc_html($p['phone_number']); ?>
+                                        </a>
                                     </div>
                                 <?php endif; ?>
                             <?php endforeach; ?>
@@ -55,15 +57,18 @@ if (empty($heading) && empty($description) && empty($address_content) && empty($
                     <?php endif; ?>
 
 
-                    <?php if ($email_label || $email_content): ?>
-                        <div class="info-card">
-                            <?php if ($email_content): ?>
-                                <div class="heading-five">
+                <?php if ($email_label || $email_content): ?>
+                    <div class="info-card">
+                        <?php if ($email_content): ?>
+                            <div class="heading-five">
+                                <a href="mailto:<?php echo esc_attr($email_content); ?>">
                                     <?php echo esc_html($email_content); ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+
                 </div>
 
             </div>

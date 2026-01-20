@@ -17,6 +17,7 @@
         display: flex;
         justify-content: space-between;
         gap: 40px;
+        z-index: 10;
 
         @media (max-width: 1024px) {
             flex-direction: column;
@@ -29,6 +30,8 @@
             flex-direction: column;
             gap: 24px;
             max-width: 408px;
+            z-index: 10;
+            cursor: pointer;
 
             @media (max-width: 1024px) {
                 max-width: 100%;
@@ -38,6 +41,8 @@
                 display: flex;
                 flex-direction: column;
                 gap: 32px;
+                z-index: 10;
+                cursor: pointer;
 
                 .heading-two {
                     color: var(--color-white);
@@ -54,12 +59,22 @@
                 gap: 16px;
 
                 .info-card {
+
                     .body-text-two {
                         color: var(--color-white-70);
+
+                        a {
+                            color: var(--color-white-70);
+                        }
                     }
 
                     .heading-five {
                         color: var(--color-white-70);
+
+                        a {
+                            color: var(--color-white-70);
+
+                        }
                     }
                 }
             }
@@ -67,6 +82,7 @@
 
         .contact-form-wrapper {
             width: 836px;
+            z-index: 10;
 
             @media (max-width: 1024px) {
                 width: 100%;
@@ -85,6 +101,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    z-index: 10;
 
     @media (max-width: 1024px) {
         width: 100%;
@@ -126,6 +143,7 @@
                 line-height: 20px;
                 letter-spacing: 0;
                 color: var(--color-white);
+                z-index: 10;
 
                 @media (max-width: 1030px) {
                     font-size: 12px;
@@ -154,6 +172,7 @@
                 line-height: 20px;
                 letter-spacing: 0;
                 color: var(--color-white);
+                z-index: 10;
 
                 @media (max-width: 1030px) {
                     font-size: 12px;
@@ -183,6 +202,7 @@
         transition: all 0.3s ease;
         border: none;
         margin-top: 10px;
+        z-index: 10;
 
         &:hover {
             background-color: #e63333;
