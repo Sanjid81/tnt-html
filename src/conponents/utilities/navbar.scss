@@ -81,7 +81,6 @@
                             position: relative;
                             display: flex;
 
-
                             svg {
                                 margin-right: 10px;
                                 margin-top: 8px;
@@ -99,11 +98,25 @@
                                 text-decoration: none;
                                 @extend .button-text;
                                 color: var(--color-white);
-                                transition: color 0.3s;
                                 position: relative;
+                                padding-bottom: 6px;
+                                transition: color 0.3s ease;
+
+                                /* underline base */
+                                &::before {
+                                    content: "";
+                                    position: absolute;
+                                    left: 50%;
+                                    bottom: -24px;
+                                    transform: translateX(-60%);
+                                    width: 0;
+                                    height: 2px;
+                                    background: var(--primary-red);
+                                    transition: width 0.3s ease;
+                                }
 
                                 &:hover {
-                                    color: var(--text-red);
+                                    // color: var(--text-red);
 
                                     &::before {
                                         width: 100%;
@@ -111,18 +124,26 @@
                                 }
                             }
 
+                            /* =========================
+                           ✅ ONLY MAIN MENU ACTIVE
+                        ========================== */
+                            &.current-menu-item>a,
+                            &.current-menu-ancestor>a {
+                                // color: var(--text-red);
 
+                                &::before {
+                                    width: 100px;
+                                }
+                            }
+
+                            /* =========================
+                           ❌ SUBMENU STYLES
+                        ========================== */
                             &.menu-item-has-children {
                                 position: relative;
-                                display: flex;
                                 align-items: center;
                                 gap: 5px;
                                 cursor: pointer;
-
-                                // svg {
-                                //     transition: transform 0.3s ease;
-                                //     stroke: white;
-                                // }
 
                                 .sub-menu {
                                     position: absolute;
@@ -137,53 +158,51 @@
                                     z-index: 10;
                                     min-width: 200px;
                                     transition: all 0.3s ease;
-                                    // border-top: 1px solid var(--primary-red);
 
-                                }
+                                    // &::before {
+                                    //     content: "";
+                                    //     position: absolute;
+                                    //     top: 0;
+                                    //     left: 50%;
+                                    //     transform: translateX(-50%);
+                                    //     width: 115px;
+                                    //     height: 2px;
+                                    //     background: var(--primary-red);
+                                    // }
 
-                                .sub-menu::before {
-                                    content: "";
-                                    position: absolute;
-                                    top: 0;
-                                    left: 50%;
-                                    transform: translateX(-50%);
-                                    width: 115px;
-                                    height: 2px;
-                                    background: var(--primary-red);
+                                    li {
+                                        margin-bottom: 14px;
+
+                                        a {
+                                            font-size: 14px;
+                                            line-height: 20px;
+                                            font-weight: 500;
+                                            color: var(--color-white);
+
+                                            &:hover {
+                                                color: var(--text-red);
+                                            }
+
+                                            /* ❌ remove underline from submenu */
+                                            &::before {
+                                                display: none !important;
+                                            }
+                                        }
+
+                                        /* ❌ even if submenu is active */
+                                        &.current-menu-item a {
+                                            color: var(--color-white);
+                                        }
+                                    }
                                 }
 
                                 &:hover .sub-menu {
                                     opacity: 1;
                                     visibility: visible;
                                 }
-
-                              
-
-                                .sub-menu li {
-                                    margin-bottom: 14px;
-
-                                    a {
-                                        color: rgba(255, 255, 255, 1);
-                                        font-weight: 500;
-                                        font-size: 14px;
-                                        line-height: 20px;
-
-                                        &:hover {
-                                            color: var(--text-red);
-                                        }
-                                    }
-                                }
                             }
-
-
                         }
-
-
-
-
-
                     }
-
                 }
             }
 
