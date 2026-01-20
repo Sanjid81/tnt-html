@@ -69,7 +69,10 @@
          .image-wrapper {
              position: relative;
              overflow: hidden;
-             border-radius: 8px;
+             max-width: 796px;
+             @media (max-width: 950px) {
+                 max-width: 100%;
+             }
 
 
              img {
@@ -80,8 +83,8 @@
                  object-position: top center;
                  transition: transform 0.5s ease;
 
-                 @media (max-width: 950px) {
-                     height: 500px;
+                 @media (max-width: 1100px) {
+                     height: 515px;
                  }
                  @media (max-width: 550px) {
                      height: 320px;

@@ -23,29 +23,22 @@
 
         @include breakpoint-max(3xl) {
             max-width: 1680px;
-            padding-left: 40px;
-            padding-right: 40px;
-            padding-top: 90px;
+            padding: 80px 40px;
         }
 
         @include breakpoint-max(xxl) {
             max-width: 1440px;
-            padding-left: 40px;
-            padding-right: 40px;
-            padding-top: 90px;
+            padding: 80px 40px;
         }
 
         @include breakpoint-max(xl) {
-            padding-left: 40px;
-            padding-right: 40px;
-            padding-top: 40px;
+            padding: 40px;
         }
 
         @include breakpoint-max(lg) {
-            padding-left: 30px;
-            padding-right: 30px;
-            gap: 50px;
-            padding-top: 40px;
+            padding: 40px 30px;
+            gap: 30px;
+          
         }
 
         @include breakpoint-max(md) {
@@ -60,14 +53,9 @@
         }
 
         .client-heading {
-            margin-top: 5px;
             display: flex;
             gap: 12px;
             z-index: 10;
-
-            // @media (max-width: 800px) {
-            //     margin-top: 40px;
-            // }
 
             svg {
                 margin-top: 6px;
@@ -98,7 +86,7 @@
                 pointer-events: none;
 
                 background: linear-gradient(to right,
-                        rgba(6, 7, 14, 1) 0%,
+                        rgb(0, 0, 0) 0%,
                         rgba(6, 7, 14, 0) 100%);
 
                 @media (max-width: 800px) {
@@ -118,8 +106,8 @@
                 pointer-events: none;
 
                 background: linear-gradient(to left,
-                        rgba(6, 7, 14, 1) 0%,
-                        rgba(6, 7, 14, 0) 100%);
+                        rgb(0, 0, 0) 0%,
+                        rgba(52, 55, 75, 0) 100%);
 
                 @media (max-width: 800px) {
                     width: 80px;
@@ -143,29 +131,31 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                gap: 13px;
 
                 .company-content {
                     width: 162px;
                     height: 162px;
-                    padding: 20px;
+                    padding: 0 7px;
+                    // padding: 20px;
                     border-radius: 12px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
 
-                    @media (max-width: 800px) {
+                    @media (max-width: 500px) {
                         width: 100%;
-                        height: 55px;
+                        height: 100px;
                     }
 
                     img {
-                        width: 120px;
-                        height: 120px;
+                        width: 150px;
+                        height: 162px;
                         object-fit: contain;
 
-                        @media (max-width: 800px) {
-                            width: 162px;
-                            height: 55px;
+                        @media (max-width: 400px) {
+                            width: 150px;
+                            height: 100px;
                         }
                     }
                 }

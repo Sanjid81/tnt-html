@@ -1,4 +1,4 @@
-<div class="service-details-key-features">
+<div class="safety-responsibility-features">
     <div class="container">
         <div class="content-wrapper">
             <div class="section-header">

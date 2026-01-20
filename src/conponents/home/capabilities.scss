@@ -1,12 +1,18 @@
-.home-core-capabilities{
-padding-bottom: 10px;
+.home-core-capabilities {
+    background-color: rgba(15, 15, 20, 1);
+    padding-bottom: 0px;
+
     .who-we-are-content {
         .who-we-are-right {
             .main-title {
-                color: var(--color-white) ;
+                color: var(--color-white);
+
                 span {
                     color: var(--color-white);
                 }
+            }
+            .home-core-capabilities{
+               margin-bottom: 0px;
             }
         }
     }

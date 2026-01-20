@@ -2,10 +2,12 @@
   background-color: var(--dark-normal);
   padding-top: 186px;
   padding-bottom: 200px;
+
   @media (max-width: 1600px) {
     padding-top: 100px;
     padding-bottom: 100px;
   }
+
   @media (max-width: 900px) {
     padding-top: 80px;
     padding-bottom: 80px;
@@ -22,9 +24,10 @@
     @extend .body-text;
     color: var(--color-white-80);
     text-transform: uppercase;
- svg{
-    margin-bottom: 3px;
- }
+
+    svg {
+      margin-bottom: 3px;
+    }
   }
 
   .left-section {
@@ -38,14 +41,14 @@
   }
 
   h1 {
-  
+
     color: var(--color-white);
     margin-bottom: 32px;
-  
+
   }
 
   .description {
-  
+
     color: var(--color-white-70);
     margin-bottom: 100px;
   }
@@ -62,6 +65,10 @@
     display: flex;
     gap: 139px;
     align-items: center;
+
+    @media (max-width:600px) {
+      gap: 40px;
+    }
 
     .spec-item {
       display: flex;
@@ -99,7 +106,7 @@
     color: var(--color-white-70);
   }
 
-  
+
 
   /* Responsive Design */
   @media (max-width: 768px) {
@@ -130,5 +137,5 @@
     }
   }
 
-  
+
 }

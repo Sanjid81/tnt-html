@@ -37,11 +37,15 @@
 
       .button-text {
         color: var(--color-white-80);
+        font-family: var(--font-mono);
+        font-weight: 600;
       }
     }
 
     .who-we-are-right {
       max-width: 836px;
+
+
 
       .main-title {
         color: var(--color-white-30);
@@ -53,10 +57,41 @@
 
       .who-we-are-description {
         color: var(--color-white-70);
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
         margin-top: 32px;
       }
 
     }
   }
+
+&.home-who-we-are {
+
+  .who-we-are-right {
+
+    .who-we-are-right .main-title span,
+    .who-we-are-right .main-title span * {
+      color: var(--color-white) !important;
+    }
+
+    .who-we-are-right .main-title i.char {
+      font-style: normal;
+      display: inline-block;
+      color: var(--color-white-30);
+      transition: color 0.75s ease;
+    }
+
+    .who-we-are-right.aos-animate .main-title i.char {
+      color: var(--color-white);
+    }
+
+    .who-we-are-right .main-title span i.char {
+      color: var(--color-white) !important;
+      transition: none !important;
+    }
+
+  }
+
 }
+
+}
+

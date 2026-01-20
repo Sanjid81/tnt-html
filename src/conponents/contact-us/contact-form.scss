@@ -18,7 +18,7 @@
         justify-content: space-between;
         gap: 40px;
 
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
             flex-direction: column;
             gap: 80px;
         }
@@ -30,7 +30,7 @@
             gap: 24px;
             max-width: 408px;
 
-            @media (max-width: 900px) {
+            @media (max-width: 1024px) {
                 max-width: 100%;
             }
 
@@ -68,8 +68,8 @@
         .contact-form-wrapper {
             width: 836px;
 
-            @media (max-width: 900px) {
-                max-width: 100%;
+            @media (max-width: 1024px) {
+                width: 100%;
             }
         }
     }
@@ -86,9 +86,11 @@
     flex-direction: column;
     gap: 24px;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
+        width: 100%;
         max-width: 100%;
     }
+
 
     label {
         display: flex;
@@ -129,6 +131,10 @@
                     font-size: 12px;
                     line-height: 16px;
                 }
+            }
+
+            input:focus {
+                outline: none;
             }
 
             textarea {
@@ -180,7 +186,8 @@
 
         &:hover {
             background-color: #e63333;
-            transform: translateX(2px);
+            transition: all 0.3s ease;
+            // transform: translateX(2px);
         }
 
         &:active {

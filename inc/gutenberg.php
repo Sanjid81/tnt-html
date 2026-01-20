@@ -467,5 +467,52 @@ add_action('carbon_fields_register_fields', function () {
                 echo '<p style="color:#e74c3c; padding:2rem; text-align:center;">Template file missing: ' . esc_html(basename($template_path)) . '</p>';
             }
         });  
+
+
+
+
+
+        // /===========================================================
+        Block::make(__('Certifications & Trainings'))
+    ->add_fields([
+        Field::make('text', 'section_title', __('Section Title'))
+            ->set_default_value('CERTIFICATIONS & TRAININGS'),
+
+        Field::make('complex', 'certificates', __('Certificates'))
+            ->set_layout('tabbed-horizontal')
+            ->add_fields([
+                Field::make('image', 'certificate_image', __('Certificate Image'))
+                    ->set_required(true),
+                Field::make('text', 'certificate_alt', __('Image Alt Text'))
+                    ->set_default_value('Certificate'),
+            ]),
+    ])
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+        $certificates = $fields['certificates'] ?? [];
+        include get_template_directory() . '/components/safety/certification.php';
+    });
+
+
+    Block::make('Safety Resposibility')
+        ->add_fields([
+
+            // Section tag
+            Field::make('text', 'section_tag', 'Section Tag')
+                ->set_default_value('SAFETY FEATURES'),
+
+            // Features repeater
+            Field::make('complex', 'features', 'Features')
+                ->set_layout('tabbed-horizontal')
+                ->add_fields([
+                    Field::make('text', 'title', 'Feature Title'),
+                    Field::make('textarea', 'description', 'Feature Description'),
+                ])
+                ->set_min(1),
+
+        ])
+        ->set_render_callback(function ($fields) {
+            set_query_var('fields', $fields);
+            include get_template_directory() . '/components/safety/safety-responsibility.php';
+        });
 });
 

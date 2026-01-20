@@ -90,6 +90,9 @@
                 }
 
                 .details-button {
+                    transition: all 0.3s ease;
+                    opacity: 0;
+
                     .service-btn {
                         position: absolute;
                         top: 50%;
@@ -97,6 +100,12 @@
                         transform: translate(-50%, -50%);
                         z-index: 2;
                     }
+
+
+                }
+
+                &:hover .details-button {
+                    opacity: 1;
                 }
             }
 
@@ -146,6 +155,19 @@
 
         svg {
             margin-top: 4px;
+        }
+    }
+
+    &.Home-page-service {
+        background-color: rgba(15, 15, 20, 1);
+        padding-top: 120px;
+
+        @media (max-width:1600px) {
+            padding-top: 80px;
+        }
+
+        @media (max-width: 900px) {
+            padding-top: 60px;
         }
     }
 

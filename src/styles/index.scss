@@ -6,6 +6,14 @@
     src: url("https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2") format("woff2-variations");
 }
 
+@font-face {
+    font-family: "Geist Mono";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@latest/latin-wght-normal.woff2") format("woff2-variations");
+}
+
 // configs
 @import "./config/_variables";
 @import "./config/_typography";
@@ -48,3 +56,7 @@
 // contact us
 @import "../conponents/contact-us/contact-form.scss";
 @import "../conponents/contact-us//google-map.scss";
+
+// safety
+@import "../conponents/safety/certification.scss";
+@import "../conponents/safety/safety-resposibility.scss";

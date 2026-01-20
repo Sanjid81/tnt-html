@@ -3,7 +3,7 @@
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(10px);
     position: absolute;
-    top: 30px;
+    top: 0px;
     left: 0;
     right: 0;
     z-index: 10;
@@ -97,7 +97,7 @@
                                 align-items: center;
                                 gap: 5px;
                                 text-decoration: none;
-                                @extend .navbar-text;
+                                @extend .button-text;
                                 color: var(--color-white);
                                 transition: color 0.3s;
                                 position: relative;
@@ -127,8 +127,8 @@
                                 .sub-menu {
                                     position: absolute;
                                     top: 100%;
-                                    left: 0;
-                                    background: var(--dark-normal);
+                                    left: -33px;
+                                    background: var(--dark-bg);
                                     list-style: none;
                                     padding: 20px;
                                     margin-top: 28px;
@@ -470,7 +470,7 @@
                 .hamburger-icon,
                 .cross {
                     position: absolute;
-                    top: -12px;
+                    top: -20px;
                     left: -30px;
                     transition: opacity 0.3s ease, transform 0.3s ease;
                 }

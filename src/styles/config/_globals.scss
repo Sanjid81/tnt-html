@@ -172,7 +172,7 @@ button {
 
 .primary-button {
     display: flex;
-    gap: 6px;
+    gap: 12px;
     align-items: center;
     width: fit-content;
     justify-content: center;
@@ -180,7 +180,11 @@ button {
     color: var(--color-white);
     padding: 10px 18px;
     text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0px;
     font-weight: 600;
+    font-family: var(--font-mono);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -188,20 +192,6 @@ button {
     @media (max-width: 1300px) {
         padding: 10px 14px;
         gap: 6px;
-    }
-
-    .button-text {
-        color: var(--color-white);
-        @extend .button-text;
-        text-transform: uppercase;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: none;
-        text-wrap: nowrap;
-    }
-
-    &:hover .button-text {
-        color: var(--primary-red);
     }
 
     &:hover {
@@ -224,7 +214,7 @@ button {
 
 .secondary-button {
     display: flex;
-    gap: 6px;
+    gap: 12px;
     align-items: center;
     width: fit-content;
     justify-content: center;
@@ -232,7 +222,11 @@ button {
     color: var(--color-white);
     padding: 10px 18px;
     text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0px;
     font-weight: 600;
+    font-family: var(--font-mono);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -264,7 +258,7 @@ button {
 
 .third-button {
     display: flex;
-    gap: 6px;
+    gap: 12px;
     align-items: center;
     width: fit-content;
     justify-content: center;
@@ -272,31 +266,23 @@ button {
     background: var(--color-white);
     padding: 10px 18px;
     text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0px;
     font-weight: 600;
+    font-family: var(--font-mono);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     text-wrap: nowrap;
+    text-decoration: none;
+
 
     @media (max-width: 1300px) {
         padding: 10px 14px;
         gap: 8px;
     }
 
-    .button-text {
-        color: var(--primary-red);
-        @extend .button-text;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: none;
-        text-wrap: nowrap;
-
-
-    }
-
-    &:hover .button-text {
-        color: var(--color-white);
-    }
 
     &:hover {
         background: var(--primary-red);

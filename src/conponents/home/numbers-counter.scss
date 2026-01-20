@@ -1,14 +1,19 @@
 .hero-number-section {
     background-color: var(--dark-normal);
-    padding-top: 100px;
+    padding-top: 0px;
     padding-bottom: 149px;
 
     @media (max-width: 950px) {
         padding-bottom: 80px;
-        padding-top: 30px;
+        // padding-top: 30px;
     }
 
+
+
     .numbers-container {
+        max-width: 1491px;
+        width: 100%;
+        margin: 0 auto;
 
         display: grid;
         grid-template-columns: repeat(4, 1fr);

@@ -21,6 +21,9 @@ function register_tnt_services_block()
             Field::make('text', 'view_button_text', __('Button Text', 'tnt-html'))
                 ->set_default_value('View Details'),
 
+            Field::make('text', 'tnt_custom_class', __('Custom CSS Class', 'tnt-html'))
+                ->set_help_text(__('Add custom CSS class for services container', 'tnt-html')),
+
             Field::make('association', 'tnt_selected_services', __('Select Specific Services', 'tnt-html'))
                 ->set_types([
                     [
@@ -52,6 +55,7 @@ function register_tnt_services_block()
             $show_all = !empty($fields['tnt_show_all_services']);
             $selected = $fields['tnt_selected_services'] ?? [];
             $fallback = max(1, min(12, intval($fields['tnt_fallback_count'] ?? 4)));
+            $custom_class = !empty($fields['tnt_custom_class']) ? esc_attr($fields['tnt_custom_class']) : '';
 
             $button_text = !empty($fields['view_button_text'])
                 ? esc_html($fields['view_button_text'])
@@ -91,7 +95,7 @@ function register_tnt_services_block()
 
             if ($query->have_posts()): ?>
 
-            <section class="services-section">
+            <section class="services-section <?php echo $custom_class; ?>">
                 <div class="container">
                     <div class="service-post-container">
 

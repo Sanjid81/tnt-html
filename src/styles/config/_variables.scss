@@ -4,8 +4,8 @@ $font-body: "Geist", sans-serif;
 
     --light-bg: rgba(255, 255, 255, 1);
     --light-bg-2: rgba(255, 255, 255, 0.7);
-    --dark-bg: #1A1A1A;
-    --dark-normal: rgba(0, 0, 0, 1);
+    --dark-bg: rgba(6, 7, 14, 1);
+    --dark-normal: rgb(0, 0, 0);
     --dark-80: rgba(0, 0, 0, 0.8);
     --text-dark: #333;
 
@@ -24,4 +24,5 @@ $font-body: "Geist", sans-serif;
 
     // font
     --font-primary: "Geist", sans-serif;
+    --font-mono: "Geist Mono", monospace;
 }
