@@ -10,7 +10,7 @@ setRealVH();
 function handleOutlineScroll() {
     const outline = document.querySelector('.outline-container');
     const navbar = document.querySelector('.navbar'); 
-    const footer = document.querySelector('.footer'); 
+    const footer = document.querySelector('.footer-bottom'); 
 
     if (!outline) return;
 
