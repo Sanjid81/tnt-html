@@ -64,38 +64,53 @@
     }
   }
 
-&.home-who-we-are {
+  &.home-who-we-are {
 
-  .who-we-are-right {
+    .who-we-are-right {
+      .main-title {
 
-    // main title wrapper
-    .main-title {
+        .word,
+        .char {
+          display: inline-block;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.5s ease, transform 0.5s ease, color 0.5s ease;
+          color: var(--color-white-30);
+          white-space: nowrap;
+        }
 
-      // default state (initial)
-      .char {
-        display: inline-block;
-        color: var(--color-white-30);
-        transition: color 0.75s ease;
+        span:not(.char):not(.word) {
+          color: var(--color-white); // static content
+        }
       }
 
-      // span বা nested element থাকলে force white (static text)
-      span,
-      span * {
-        color: var(--color-white);
+      &.aos-animate {
+        .main-title {
+
+          .char,
+          .word {
+            opacity: 1;
+            transform: translateY(0);
+            color: var(--color-white);
+          }
+        }
       }
     }
 
-    // when section is visible (AOS active)
-    &.aos-animate {
-      .main-title {
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .who-we-are-right .main-title {
         .char {
-          color: var(--color-white);
+          display: inline; // prevent letter-by-letter break
+          white-space: normal;
+        }
+
+        .word {
+          white-space: normal; // allow wrap
         }
       }
     }
   }
-}
 
 
 }
-

@@ -164,14 +164,14 @@ $footer_linkedin = carbon_get_theme_option('footer_linkedin');
                     </span>
                 </div>
 
-                <div class="nh-site-link">
+                <!-- <div class="nh-site-link">
                     <span> Site by - </span>
-                    <?php if ($footer_site_name && $footer_site_url): ?>
-                        <a href="<?php echo esc_url($footer_site_url); ?>" target="_blank" rel="noopener noreferrer">
-                            <?php echo esc_html($footer_site_name); ?>
+                    < ?php if ($footer_site_name && $footer_site_url): ?>
+                        <a href="< ?php echo esc_url($footer_site_url); ?>" target="_blank" rel="noopener noreferrer">
+                            < ?php echo esc_html($footer_site_name); ?>
                         </a>
-                    <?php endif; ?>
-                </div>
+                    < ?php endif; ?>
+                </div> -->
             </div>
 
 
@@ -181,58 +181,7 @@ $footer_linkedin = carbon_get_theme_option('footer_linkedin');
 </footer>
 
 <?php wp_footer(); ?>
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // -------- Desktop Swiper --------
-        const autoSwiper = new Swiper('.company-swiper', {
-            loop: true,
-            slidesPerView: 'auto',
-            allowTouchMove: true,
-            grabCursor: true,
-            simulateTouch: true,
-            speed: 10000,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false, // autoplay off hobe na click/swipe korleo
-                reverseDirection: true, // left e scroll hobe
-            },
-            freeMode: true,
-            freeModeMomentum: false,
-            spaceBetween: 20,
 
-            breakpoints: {
-                0: {
-                    spaceBetween: 10,
-                },
-                801: {
-                    spaceBetween: 20,
-                }
-            }
-        });
-
-        // Slide click listener (desktop)
-        autoSwiper.slides.forEach(slide => {
-            slide.addEventListener('click', () => {
-                autoSwiper.slideNext();
-            });
-        });
-
-        autoSwiper.on('slidesLengthChange', () => {
-            autoSwiper.slides.forEach(slide => {
-                slide.addEventListener('click', () => {
-                    autoSwiper.slideNext();
-                });
-            });
-        });
-
-
-    });
-
-
-
-
-
-</script> -->
 </body>
 
 </html>

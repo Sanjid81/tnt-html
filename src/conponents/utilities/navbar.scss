@@ -107,10 +107,10 @@
                                     content: "";
                                     position: absolute;
                                     left: 50%;
-                                    bottom: -24px;
-                                    transform: translateX(-60%);
+                                    bottom: -28px;
+                                    transform: translateX(-55%);
                                     width: 0;
-                                    height: 2px;
+                                    height: 1px;
                                     background: var(--primary-red);
                                     transition: width 0.3s ease;
                                 }
@@ -132,7 +132,7 @@
                                 // color: var(--text-red);
 
                                 &::before {
-                                    width: 100px;
+                                    width: 70px;
                                 }
                             }
 
@@ -251,7 +251,7 @@
                 background-color: var(--dark-normal);
                 display: flex;
                 flex-direction: column;
-                padding: 12px 30px 40px;
+                padding: 12px 20px 40px;
                 overflow: hidden;
                 height: calc(100vh - 103px);
                 max-height: 0;
