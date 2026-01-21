@@ -7,6 +7,10 @@
         padding-top: 100px;
         padding-bottom: 120px;
     }
+    @media (max-width: 900px) {
+        padding-top: 70px;
+        padding-bottom: 120px;
+    }
 
     .content-wrapper {
         max-width: 1692px;
@@ -75,8 +79,6 @@
 
         .feature-card:hover {
             background-color: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
         }
 
         .feature-title {
@@ -89,19 +91,7 @@
         }
 
         /* Grid line decorative element */
-        .grid-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px,
-                    transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: -1;
-        }
+        
 
         /* Responsive Design */
         @media (max-width: 1024px) {

@@ -87,8 +87,8 @@
                             }
 
                             &:nth-child(3) svg {
-                                margin-top: 0;
-                                margin-right: 10px;
+                                margin-top: -7px;
+                                margin-right: 5px;
                             }
 
                             a {
@@ -125,7 +125,7 @@
                             }
 
                             /* =========================
-                           ✅ ONLY MAIN MENU ACTIVE
+                           ONLY MAIN MENU ACTIVE
                         ========================== */
                             &.current-menu-item>a,
                             &.current-menu-ancestor>a {
@@ -137,7 +137,7 @@
                             }
 
                             /* =========================
-                           ❌ SUBMENU STYLES
+                            SUBMENU STYLES
                         ========================== */
                             &.menu-item-has-children {
                                 position: relative;
@@ -159,17 +159,6 @@
                                     min-width: 200px;
                                     transition: all 0.3s ease;
 
-                                    // &::before {
-                                    //     content: "";
-                                    //     position: absolute;
-                                    //     top: 0;
-                                    //     left: 50%;
-                                    //     transform: translateX(-50%);
-                                    //     width: 115px;
-                                    //     height: 2px;
-                                    //     background: var(--primary-red);
-                                    // }
-
                                     li {
                                         margin-bottom: 14px;
 
@@ -183,13 +172,13 @@
                                                 color: var(--text-red);
                                             }
 
-                                            /* ❌ remove underline from submenu */
+                                            /*  remove underline from submenu */
                                             &::before {
                                                 display: none !important;
                                             }
                                         }
 
-                                        /* ❌ even if submenu is active */
+                                        /* even if submenu is active */
                                         &.current-menu-item a {
                                             color: var(--color-white);
                                         }
@@ -259,7 +248,7 @@
                 visibility: hidden;
                 transition: all 0.4s ease, max-height 0.4s ease;
                 // z-index: 10;
-                z-index: 9999!important;
+                z-index: 9999 !important;
 
                 @media (max-width: 782px) {
                     top: 70px;
@@ -333,18 +322,6 @@
                                             transition: color 0.3s;
                                             position: relative;
 
-                                            // &::before {
-                                            //     content: "";
-                                            //     position: absolute;
-                                            //     left: 0;
-                                            //     bottom: -4px;
-                                            //     width: 0;
-                                            //     height: 1px;
-                                            //     color: var(--text-red);
-                                            //     background-color: var(--text-red);
-                                            //     transition: width 0.3s ease;
-                                            // }
-
                                             &:hover {
                                                 color: var(--text-red);
 
@@ -413,21 +390,10 @@
                                                         display: inline-flex;
                                                         // padding: 12px;
                                                         font-size: 14px;
-                                                        color: #e2d5d5;
+                                                        color: var(--color-white);
                                                         text-decoration: none;
                                                         transition: color 0.3s;
                                                         position: relative;
-
-                                                        // &::before {
-                                                        //     content: "";
-                                                        //     position: absolute;
-                                                        //     left: 0;
-                                                        //     bottom: -4px;
-                                                        //     width: 0;
-                                                        //     height: 1px;
-                                                        //     background-color: var(--text-red);
-                                                        //     transition: width 0.3s ease;
-                                                        // }
 
                                                         &:hover {
                                                             color: var(--text-red);
@@ -576,8 +542,50 @@
         }
 
 
+        /* ──────────────────────────────────────────────── */
+        /* Mobile menu - make arrow go to the far right     */
+        /* ──────────────────────────────────────────────── */
 
+        @media (max-width: 800px) {
+            .small-nav-wraper {
+                .main-menu-list {
+                    li.menu-item-has-children {
+                        position: relative;
 
+                        >a {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 100%;
+                            padding-right: 40px; 
+                            position: relative;
+                            margin-right: -20px;
+
+                            &::after {
+                                position: absolute;
+                                right: 12px; 
+                                top: 50%;
+                                transform: translateY(-60%);
+                                width: 20px; 
+                                height: 20px;
+                                margin-right: 8px;
+                                pointer-events: auto;
+                                z-index: 2; // above text
+                                transition: transform 0.3s ease;
+                            }
+                        }
+
+                        &.active>a::after {
+                            transform: translateY(-50%) rotate(180deg);
+                        }
+
+                        >a::before {
+                            pointer-events: none;
+                        }
+                    }
+                }
+            }
+        }
 
     }
 }

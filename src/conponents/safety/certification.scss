@@ -1,5 +1,9 @@
 .certifications-section {
     background-color: var(--dark-normal);
+    padding-bottom: 100px;
+    @media (max-width: 1400px) {
+        padding-bottom: 80px;
+    }
 
     .certificate-content {
         max-width: 1274px;

@@ -160,18 +160,14 @@ $footer_linkedin = carbon_get_theme_option('footer_linkedin');
         <div class="footer-bottom">
             <div class="copy-right-text">
                 <div>
-                    <span><?php echo esc_html($footer_copyright); ?>
+                    <span>
+                        <?php
+                        echo '© ' . date('Y') . ' ' . esc_html($footer_copyright);
+                        ?>
                     </span>
                 </div>
 
-                <!-- <div class="nh-site-link">
-                    <span> Site by - </span>
-                    < ?php if ($footer_site_name && $footer_site_url): ?>
-                        <a href="< ?php echo esc_url($footer_site_url); ?>" target="_blank" rel="noopener noreferrer">
-                            < ?php echo esc_html($footer_site_name); ?>
-                        </a>
-                    < ?php endif; ?>
-                </div> -->
+
             </div>
 
 

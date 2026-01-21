@@ -7,7 +7,7 @@ $button_text = $fields['oc_button_text'] ?? '';
 $button_link = $fields['oc_button_link'] ?? '#';
 $image_url = $fields['oc_image'] ?? '';
 ?>
-<section class="cleaning-section">
+<section class="cleaning-section <?php echo esc_attr($extra_class); ?>">
     <div class="container">
         <div class="content-wrapper">
             <div class="text-content">

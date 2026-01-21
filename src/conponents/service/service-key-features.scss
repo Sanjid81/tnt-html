@@ -8,6 +8,11 @@
     padding-bottom: 120px;
   }
 
+  @media (max-width: 900px) {
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+
   .content-wrapper {
     display: flex;
     // gap: 293px; //eta dile bady line er sathe align hoy na
@@ -58,15 +63,14 @@
       height: 344px;
       backdrop-filter: blur(10px);
 
-      @media (max-width: 1024px) {
-        height: 200px;
+      @media (max-width: 1440px) {
+        height: 100%;
       }
     }
 
     .feature-card:hover {
       background-color: rgba(0, 0, 0, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      transform: translateY(-5px);
     }
 
     .feature-title {
@@ -78,20 +82,6 @@
       color: var(--color-white-70);
     }
 
-    /* Grid line decorative element */
-    .grid-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px,
-          transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      pointer-events: none;
-      z-index: -1;
-    }
 
     /* Responsive Design */
     @media (max-width: 1024px) {
@@ -106,14 +96,15 @@
     }
 
     @media (max-width: 768px) {
- 
+
       .features-grid {
         grid-template-columns: 1fr;
       }
+
       .feature-card {
         padding: 30px;
         min-height: auto;
       }
-    } 
+    }
   }
 }

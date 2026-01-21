@@ -73,6 +73,7 @@
 
                 .footer-title {
                     @extend .button-text;
+                    font-family: var(--font-mono);
                     text-transform: uppercase;
                     color: var(--light-bg);
                     margin-bottom: 32px
@@ -149,6 +150,7 @@
 
             .footer-title {
                 @extend .button-text;
+                font-family: var(--font-mono);
 
                 p {
                     cursor: pointer;

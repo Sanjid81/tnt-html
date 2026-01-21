@@ -41,56 +41,16 @@
 // });
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const title = document.querySelector('.who-we-are-right .main-title');
-    if (!title) return;
+function handleScroll() {
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
-    const isMobile = window.innerWidth <= 768; // breakpoint
-
-    function wrapLetters(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
-            const fragment = document.createDocumentFragment();
-
-            if (isMobile) {
-                // word wrap
-                const words = node.textContent.split(' ');
-                words.forEach((word, index) => {
-                    const wordSpan = document.createElement('span');
-                    wordSpan.className = 'word';
-                    wordSpan.style.transitionDelay = `${index * 0.2}s`;
-                    wordSpan.textContent = word;
-                    fragment.appendChild(wordSpan);
-                    if (index < words.length - 1) {
-                        fragment.appendChild(document.createTextNode(' '));
-                    }
-                });
-            } else {
-                // letter wrap
-                let delay = 0;
-                [...node.textContent].forEach(char => {
-                    if (char === ' ') {
-                        fragment.appendChild(document.createTextNode(' '));
-                    } else {
-                        const span = document.createElement('span');
-                        span.className = 'char';
-                        span.style.transitionDelay = `${delay}s`;
-                        span.textContent = char;
-                        fragment.appendChild(span);
-                        delay += 0.05;
-                    }
-                });
-            }
-
-            node.replaceWith(fragment);
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-            [...node.childNodes].forEach(wrapLetters);
-        }
+    let visible = 0;
+    if (rect.top < windowHeight && rect.bottom > 0) {
+        const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+        visible = visibleHeight / rect.height; // 0 → 1
     }
 
-    wrapLetters(title);
-
-    // refresh AOS
-    setTimeout(() => {
-        if (window.AOS) AOS.refresh();
-    }, 150);
-});
+    const newOpacity = 0.7 + 0.3 * visible;
+    title.style.opacity = newOpacity;
+}

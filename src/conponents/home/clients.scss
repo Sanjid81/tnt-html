@@ -57,11 +57,13 @@
             gap: 12px;
             z-index: 10;
 
+
             svg {
                 margin-top: 6px;
             }
 
             .button-text {
+                font-family: var(--font-mono);
                 display: flex;
                 color: var(--color-white-80);
                 text-align: center;

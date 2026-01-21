@@ -5,6 +5,7 @@
      @media (max-width: 1600px) {
          padding-bottom: 100px;
      }
+
      @media (max-width: 1200px) {
          padding-bottom: 80px;
      }
@@ -26,14 +27,13 @@
              @media (max-width: 800px) {
                  grid-template-columns: repeat(2, 1fr);
              }
+
              @media (max-width: 450px) {
                  grid-template-columns: 1fr;
              }
 
              .value-card {
-                 background: linear-gradient(145deg, #1a1a1a 0%, #0f0f0f 100%);
-                 border: 1px solid #2a2a2a;
-                 border-radius: 12px;
+                 background: var(--color-white-10);
                  padding: 40px;
                  transition: all 0.3s ease;
                  cursor: pointer;
@@ -46,15 +46,13 @@
              }
 
              .value-card h3 {
-                 font-size: 22px;
-                 font-weight: 600;
+                 @extend.heading-four;
                  margin-bottom: 10px;
-                 color: #ffffff;
+                 color: var(--color-white);
              }
 
              .value-card p {
-                 font-size: 15px;
-                 line-height: 1.6;
+                 @extend .body-text-two;
                  color: #a0a0a0;
              }
 

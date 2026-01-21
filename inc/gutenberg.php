@@ -69,10 +69,8 @@ add_action('carbon_fields_register_fields', function () {
                 ->set_default_value("Western Canada's Leader in Industrial Cleaning Solutions"),
             Field::make('rich_text', 'description', __('Description', 'textdomain'))
                 ->set_default_value('TnT High Pressure Waterworks Ltd. delivers industry-leading high-pressure cleaning, chemical cleaning, vacuum services, and specialized industrial solutions for the oil & gas, petrochemical, pulp & paper, mining, and power generation sectors. Trusted for over decades—equipped to perform in the toughest environments.'),
-            Field::make('text', 'button_text', __('Button Text', 'textdomain'))
-                ->set_default_value('MORE ABOUT US'),
+            Field::make('text', 'button_text', __('Button Text', 'textdomain')),
             Field::make('text', 'button_link', __('Button Link', 'textdomain'))
-                ->set_default_value('#')
                 ->set_attribute('type', 'url'),
 
             Field::make('text', 'extra_class', __('Extra CSS Class', 'textdomain'))
@@ -173,12 +171,11 @@ add_action('carbon_fields_register_fields', function () {
     // ------------------------------------------
     // Offsite Cleaning Section
     // ------------------------------------------
-
-
     Block::make('Offsite Cleaning Section')
         ->set_description('Specialized Offsite Cleaning Solutions Section')
         ->set_category('custom-blocks')
         ->set_icon('admin-tools')
+
         ->add_fields([
             Field::make('text', 'oc_label', 'Label')
                 ->set_default_value('Offsite Cleaning Services'),
@@ -199,8 +196,14 @@ add_action('carbon_fields_register_fields', function () {
                 ->set_value_type('url')
                 ->set_default_value('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80'),
         ])
+        ->add_fields([
+            Field::make('text', 'extra_class', 'Extra CSS Class')
+                ->set_help_text('Add custom CSS class to this block'),
+        ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
             $offsit_cleaning = $fields['offsit_cleaning'] ?? [];
+            $extra_class = $fields['extra_class'] ?? '';
+
             include get_template_directory() . '/components/home/cleaning-solution.php';
         });
 

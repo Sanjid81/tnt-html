@@ -66,51 +66,14 @@
 
   &.home-who-we-are {
 
-    .who-we-are-right {
-      .main-title {
-
-        .word,
-        .char {
-          display: inline-block;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: opacity 0.5s ease, transform 0.5s ease, color 0.5s ease;
-          color: var(--color-white-30);
-          white-space: nowrap;
-        }
-
-        span:not(.char):not(.word) {
-          color: var(--color-white); // static content
-        }
-      }
-
-      &.aos-animate {
-        .main-title {
-
-          .char,
-          .word {
-            opacity: 1;
-            transform: translateY(0);
-            color: var(--color-white);
-          }
-        }
-      }
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .who-we-are-right .main-title {
-        .char {
-          display: inline; // prevent letter-by-letter break
-          white-space: normal;
-        }
-
-        .word {
-          white-space: normal; // allow wrap
-        }
-      }
-    }
+.who-we-are-right .main-title {
+    color: #ffffff;
+    opacity: 0.7;
+    /* default faded */
+    transition: opacity 0.6s ease;
+    /* smooth opacity change */
+    line-height: 1.2;
   }
-
+  }
 
 }
