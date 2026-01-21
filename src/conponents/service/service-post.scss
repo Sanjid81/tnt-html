@@ -150,8 +150,12 @@
         justify-content: center;
         padding-top: 120px;
 
-        @media (max-width: 700px) {
-            padding-top: 80px;
+        @media (max-width: 1200px) {
+            padding-top: 60px;
+        }
+        @media (max-width: 500px) {
+            padding-top: 40px;
+            justify-content: start;
         }
 
         svg {
