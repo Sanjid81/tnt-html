@@ -1,12 +1,12 @@
 <?php
 $heading = trim($fields['heading'] ?? '');
 $description = trim($fields['description'] ?? '');
-$address_label = trim($fields['address_label'] ?? '');
-$address_content = trim($fields['address_content'] ?? '');
 $email_label = trim($fields['email_label'] ?? '');
 $email_content = trim($fields['email_content'] ?? '');
 $phones = $fields['phones'] ?? [];
 $shortcode = trim($fields['form_shortcode'] ?? '');
+$address_text = $fields['address_text'] ?? '';
+$address_link = $fields['address_link'] ?? '';
 
 if (empty($heading) && empty($description) && empty($address_content) && empty($email_content) && empty($phones) && empty($shortcode)) {
     return ''; // nothing to show
@@ -31,13 +31,22 @@ if (empty($heading) && empty($description) && empty($address_content) && empty($
                 </div>
 
                 <div class="info-grid">
-                    <?php if ($address_label || $address_content): ?>
+                    <?php if ($address_label || $address_text || $address_link): ?>
                         <div class="info-card">
-                            <?php if ($address_content): ?>
+
+
+                            <div class="body-text-two">
                                 <div class="body-text-two">
-                                    <?php echo wp_kses_post($address_content); ?>
+                                    <?php if ($address_link): ?>
+                                        <a href="<?php echo esc_url($address_link); ?>" target="_blank">
+                                            <?php echo wp_kses_post(nl2br($address_text ?: $address_link)); ?>
+                                        </a>
+                                    <?php else: ?>
+                                        <?php echo wp_kses_post(nl2br($address_text)); ?>
+                                    <?php endif; ?>
                                 </div>
-                            <?php endif; ?>
+
+                            </div>
                         </div>
                     <?php endif; ?>
 
@@ -57,17 +66,17 @@ if (empty($heading) && empty($description) && empty($address_content) && empty($
                     <?php endif; ?>
 
 
-                <?php if ($email_label || $email_content): ?>
-                    <div class="info-card">
-                        <?php if ($email_content): ?>
-                            <div class="heading-five">
-                                <a href="mailto:<?php echo esc_attr($email_content); ?>">
-                                    <?php echo esc_html($email_content); ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
+                    <?php if ($email_label || $email_content): ?>
+                        <div class="info-card">
+                            <?php if ($email_content): ?>
+                                <div class="heading-five">
+                                    <a href="mailto:<?php echo esc_attr($email_content); ?>">
+                                        <?php echo esc_html($email_content); ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
 
                 </div>
 

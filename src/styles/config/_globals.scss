@@ -148,7 +148,7 @@ button {
 
 .body-outlines {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 
     .outline-container {
         position: fixed;
@@ -211,6 +211,7 @@ button {
 
                 // Hide outlines 2, 3, 4 on mobile (768px and below)
                 @include breakpoint-max(md) {
+
                     &:nth-child(2),
                     &:nth-child(3),
                     &:nth-child(4) {
@@ -227,6 +228,11 @@ button {
         &.bottom-offset {
             bottom: 120px;
             height: calc(100vh - 114px);
+
+            @media(max-width:500px) {
+                height: calc(100vh - 127px);
+
+            }
         }
     }
 }
@@ -283,7 +289,7 @@ button {
     }
 
     svg {
-        margin-bottom: 3px;
+        margin-bottom: 2px;
 
 
     }
@@ -362,7 +368,7 @@ button {
     line-height: 20px;
     letter-spacing: 0px;
     font-weight: 600;
-    font-family: var(--font-mono);
+    font-family: var(--font-mono) !important;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;

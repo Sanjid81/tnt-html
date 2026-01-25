@@ -420,8 +420,8 @@ add_action('carbon_fields_register_fields', function () {
         });
 
 
-
-    // contact us
+// =====================    // contact us======================================
+// ===========================================================
     Block::make(__('Contact Us Section', 'your-text-domain'))
         ->set_icon('email')
         ->set_category('custom')
@@ -433,9 +433,8 @@ add_action('carbon_fields_register_fields', function () {
             Field::make('textarea', 'description', __('Description', 'your-text-domain'))
                 ->set_rows(3),
 
-            Field::make('text', 'address_label', __('Address Label', 'your-text-domain')),
-            Field::make('textarea', 'address_content', __('Address', 'your-text-domain'))
-                ->set_rows(3),
+            Field::make('text', 'address_text', __('Address Text', 'your-text-domain')),
+            Field::make('text', 'address_link', __('Address Link', 'your-text-domain')),
 
             Field::make('text', 'email_label', __('Email Label', 'your-text-domain')),
             Field::make('text', 'email_content', __('Email', 'your-text-domain')),

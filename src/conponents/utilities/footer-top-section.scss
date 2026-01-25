@@ -35,7 +35,8 @@
         bottom: 130px;
         left: 50%;
         transform: translateX(-50%);
-        max-width: 836px;
+        max-width: 1136px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -50,7 +51,7 @@
             width: 320px;
             align-items: flex-start;
             margin-left: 20px;
-            left: 50%;
+            left: 44%;
         }
 
         .heading-one {

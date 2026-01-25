@@ -9,7 +9,7 @@
   }
 
   @media (max-width: 900px) {
-    padding-top: 120px;
+    padding-top: 100px;
     padding-bottom: 80px;
   }
 
@@ -21,10 +21,17 @@
     @media (max-width: 1600px) {
       gap: 100px;
     }
+    @media (max-width: 900px) {
+      gap: 80px;
+    }
 
     @media (max-width: 1400px) {
       flex-direction: column;
       gap: 80px;
+    }
+    @media (max-width: 900px) {
+      flex-direction: column;
+      gap: 40px;
     }
 
     .section-header {

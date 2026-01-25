@@ -31,7 +31,6 @@
             gap: 24px;
             max-width: 408px;
             z-index: 10;
-            cursor: pointer;
 
             @media (max-width: 1024px) {
                 max-width: 100%;
@@ -42,7 +41,7 @@
                 flex-direction: column;
                 gap: 32px;
                 z-index: 10;
-                cursor: pointer;
+                // cursor: pointer;
 
                 .heading-two {
                     color: var(--color-white);
@@ -53,7 +52,7 @@
                     color: var(--color-white-70);
 
                     &:hover {
-                        color: var(--color-white);
+                        // color: var(--color-white);
                     }
                 }
             }
@@ -62,6 +61,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 16px;
+                cursor: pointer;
 
                 .info-card {
 
@@ -240,8 +240,8 @@
         }
 
         &:hover {
-            background-color:var(--color-white);
-            color: var(--primary-red)  ;
+            background-color: var(--color-white);
+            color: var(--primary-red);
             transition: all 0.3s ease;
             // transform: translateX(2px);
         }

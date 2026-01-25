@@ -1,81 +1,21 @@
 
-// function initNavbar() {
-//   const hamburger = document.getElementById("hamburger");
-//   const smallNavWrapper = document.querySelector(".small-nav-wraper");
-//   const navbar = document.querySelector(".navbar");
-
-//   // Check if elements exist before adding listeners
-//   if (!hamburger || !smallNavWrapper || !navbar) {
-//     console.error("Navbar elements not found - hamburger:", hamburger, "smallNav:", smallNavWrapper, "navbar:", navbar);
-//     return;
-//   }
-
-//   console.log("Navbar initialized successfully");
-
-//   // Hamburger toggle
-//   hamburger.addEventListener("click", (e) => {
-//     console.log("Hamburger clicked!", e);
-//     e.stopPropagation();
-    
-//     hamburger.classList.toggle("active");
-//     smallNavWrapper.classList.toggle("active");
-//     navbar.classList.toggle("menu-open");
-
-//     document.body.style.overflow =
-//       smallNavWrapper.classList.contains("active") ? "hidden" : "auto";
-//   });
-
-//   // Mobile submenu accordion
-//   const menuItems = document.querySelectorAll(".menu-item-has-children");
-
-//   menuItems.forEach((item) => {
-//     const link = item.querySelector("a");
-//     const submenu = item.querySelector(".sub-menu");
-
-//     if (!submenu) return;
-
-//     link.addEventListener("click", (e) => {
-//       if (window.innerWidth > 800) return; // desktop untouched
-
-//       e.preventDefault();
-
-//       const isActive = item.classList.contains("active");
-
-//       menuItems.forEach((other) => {
-//         if (other !== item) {
-//           other.classList.remove("active");
-//           const otherSub = other.querySelector(".sub-menu");
-//           if (otherSub) otherSub.style.maxHeight = null;
-//         }
-//       });
-
-//       if (!isActive) {
-//         item.classList.add("active");
-//         submenu.style.maxHeight = submenu.scrollHeight + "px";
-//       } else {
-//         item.classList.remove("active");
-//         submenu.style.maxHeight = null;
-//       }
-//     });
-//   });
-// }
-
-// // Initialize on DOMContentLoaded
-// if (document.readyState === "loading") {
-//   document.addEventListener("DOMContentLoaded", initNavbar);
-// } else {
-//   initNavbar();
-// }
-
-
-
-
 
 function initNavbar() {
   const hamburger = document.getElementById("hamburger");
   const smallNavWrapper = document.querySelector(".small-nav-wraper");
   const navbar = document.querySelector(".navbar");
 
+  const isMenuOpen = smallNavWrapper.classList.contains("active");
+
+  // body scroll lock
+  document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+
+  // ✅ iOS safe body height control
+  document.body.style.height = isMenuOpen ? "100vh" : "";
+
+
+
+  
   // Safety check
   if (!hamburger || !smallNavWrapper || !navbar) {
     console.error("Navbar elements not found", {
@@ -174,6 +114,38 @@ function initNavbar() {
       document.body.style.overflow = "auto";
     }
   });
+
+
+
+
+  // ─── Show navbar initially + on scroll up ─────────────────────
+  let lastScrollY = window.scrollY;
+
+  //  SHOW navbar on page load
+  navbar.classList.add("show-navbar");
+
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+
+    // if menu open, don't hide navbar
+    if (navbar.classList.contains("menu-open")) return;
+
+    // Always show at top
+    if (currentScrollY <= 10) {
+      navbar.classList.add("show-navbar");
+    }
+    // Scroll UP → show
+    else if (currentScrollY < lastScrollY) {
+      navbar.classList.add("show-navbar");
+    }
+    // Scroll DOWN → hide
+    else {
+      navbar.classList.remove("show-navbar");
+    }
+
+    lastScrollY = currentScrollY;
+  });
+
 }
 
 // Initialize
@@ -182,3 +154,5 @@ if (document.readyState === "loading") {
 } else {
   initNavbar();
 }
+
+

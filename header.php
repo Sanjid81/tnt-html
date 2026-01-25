@@ -65,9 +65,9 @@ defined('ABSPATH') || exit;
                     if (!empty($btn_text) && !empty($btn_link)):
                         ?>
                         <a href="<?php echo esc_url($btn_link); ?>" class="primary-button">
-                            <div class="button-text">
+                          
                                 <?php echo esc_html($btn_text); ?>
-                            </div>
+                            
                             <svg width="6" height="6" aria-hidden="true">
                                 <rect width="6" height="6" fill="white"></rect>
                             </svg>

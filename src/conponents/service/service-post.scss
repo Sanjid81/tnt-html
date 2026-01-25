@@ -158,14 +158,14 @@
             justify-content: start;
         }
 
-        svg {
-            margin-top: -5px;
-        }
+        // svg {
+        //     margin-top: -5px;
+        // }
     }
 
     &.Home-page-service {
         background-color: rgba(15, 15, 20, 1);
-        padding-top: 120px;
+        padding-top: 88px;
 
         @media (max-width:1600px) {
             padding-top: 80px;
